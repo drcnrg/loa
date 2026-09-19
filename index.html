@@ -1,0 +1,7134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+
+  <meta
+    name="theme-color"
+    content="#040705"
+  />
+
+  <meta
+    name="description"
+    content="The Legend of Adonis. A cinematic dark-fantasy reading experience by Mayur Borgude."
+  />
+
+  <meta
+    name="author"
+    content="Mayur Borgude"
+  />
+
+  <meta
+    name="color-scheme"
+    content="dark"
+  />
+
+  <title>The Legend of Adonis</title>
+
+  <!--
+    The favicon is entirely self-contained.
+    No external image file is required.
+  -->
+  data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23f5d76e'/%3E%3Cstop offset='1' stop-color='%23936d18'/%3E%3C/linearGradient%3E%3Cfilter id='s'%3E%3CfeDropShadow dx='0' dy='0' stdDeviation='5' flood-color='%23d4af37' flood-opacity='.7'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='128' height='128' rx='28' fill='%23040705'/%3E%3Cpath d='M64 15 98 106 64 88 30 106Z' fill='none' stroke='url(%23g)' stroke-width='7' stroke-linejoin='round' filter='url(%23s)'/%3E%3Cpath d='m64 32 11 45-11 11-11-11Z' fill='url(%23g)'/%3E%3Ccircle cx='64' cy='102' r='5' fill='%23f5d76e'/%3E%3C/svg%3E
+
+  <!--
+    Font loading was specifically requested.
+    These are the only visual network resources other than story images.
+    The fallback font stacks keep the experience usable if Google Fonts
+    cannot be reached.
+  -->
+  https://fonts.googleapis.com
+  https://fonts.gstatic.com
+
+  https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap
+
+  <style>
+    /* =========================================================
+       1. DESIGN TOKENS
+       ========================================================= */
+
+    :root {
+      --abyss: #040705;
+      --abyss-soft: #07100b;
+      --abyss-green: #0b1510;
+
+      --surface-1: rgba(12, 18, 14, 0.66);
+      --surface-2: rgba(17, 27, 20, 0.78);
+      --surface-3: rgba(22, 32, 24, 0.88);
+      --surface-solid: #101812;
+
+      --gold: #d4af37;
+      --gold-bright: #f5d76e;
+      --gold-soft: #c9ad5a;
+      --gold-deep: #785d1c;
+
+      --ivory: #f3ead2;
+      --parchment: #d7cab0;
+      --muted: #9eaa9e;
+      --danger: #e09a83;
+
+      --gold-border: rgba(212, 175, 55, 0.16);
+      --gold-border-strong: rgba(245, 215, 110, 0.42);
+      --white-border: rgba(255, 255, 255, 0.06);
+
+      --shadow-deep:
+        0 30px 80px rgba(0, 0, 0, 0.58),
+        0 8px 24px rgba(0, 0, 0, 0.32);
+
+      --shadow-gold:
+        0 0 0 1px rgba(212, 175, 55, 0.08),
+        0 16px 55px rgba(0, 0, 0, 0.46),
+        0 0 42px rgba(212, 175, 55, 0.07);
+
+      --header-height: clamp(4.75rem, 9dvh, 6rem);
+      --page-gutter: clamp(1rem, 3.5vw, 3.75rem);
+
+      --display-font:
+        "Cinzel Decorative",
+        "Palatino Linotype",
+        Georgia,
+        serif;
+
+      --body-font:
+        "EB Garamond",
+        Garamond,
+        Georgia,
+        serif;
+
+      --ease-out:
+        cubic-bezier(0.16, 1, 0.3, 1);
+
+      --ease-soft:
+        cubic-bezier(0.22, 0.61, 0.36, 1);
+
+      --radius-xs: 0.65rem;
+      --radius-sm: 1rem;
+      --radius-md: 1.45rem;
+      --radius-lg: 2rem;
+
+      --reading-width: 70ch;
+    }
+
+    /* =========================================================
+       2. NORMALIZATION AND PAGE SHELL
+       ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--abyss);
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    html::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    body {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 100dvh;
+      margin: 0;
+      overflow: hidden;
+      color: var(--ivory);
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(108, 83, 26, 0.14),
+          transparent 38%
+        ),
+        linear-gradient(
+          160deg,
+          #020403 0%,
+          var(--abyss) 48%,
+          #07100b 100%
+        );
+      font-family: var(--body-font);
+      font-size: clamp(1rem, 1.1vw, 1.16rem);
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    button,
+    a,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::selection {
+      color: var(--abyss);
+      background: var(--gold-bright);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold-bright);
+      outline-offset: 4px;
+    }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    /* Hide every scrollbar while preserving scrolling. */
+    * {
+      scrollbar-width: none;
+    }
+
+    *::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+    }
+
+    /* =========================================================
+       3. CINEMATIC ENVIRONMENT
+       ========================================================= */
+
+    .environment {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      overflow: hidden;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse at 50% 12%,
+          rgba(174, 130, 38, 0.13),
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 14% 70%,
+          rgba(20, 77, 45, 0.13),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 88% 72%,
+          rgba(86, 51, 19, 0.09),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #020403 0%,
+          #08110c 47%,
+          #030604 100%
+        );
+      transform: scale(1.03);
+    }
+
+    .environment::before {
+      content: "";
+      position: absolute;
+      inset: -7%;
+      background:
+        repeating-linear-gradient(
+          116deg,
+          transparent 0 82px,
+          rgba(206, 170, 67, 0.013) 83px 84px,
+          transparent 85px 170px
+        ),
+        radial-gradient(
+          ellipse at 50% 52%,
+          transparent 0 24%,
+          rgba(0, 0, 0, 0.18) 56%,
+          rgba(0, 0, 0, 0.78) 100%
+        );
+      opacity: 0.92;
+    }
+
+    .environment::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.17;
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          rgba(255, 255, 255, 0.018) 1px,
+          transparent 1px
+        );
+      background-size: 5.5rem 5.5rem;
+      mask-image:
+        radial-gradient(
+          circle at center,
+          black,
+          transparent 78%
+        );
+    }
+
+    .environment-blur {
+      position: fixed;
+      inset: -2rem;
+      z-index: -9;
+      pointer-events: none;
+      opacity: 0;
+      backdrop-filter: blur(0);
+      -webkit-backdrop-filter: blur(0);
+      background:
+        linear-gradient(
+          rgba(2, 5, 3, 0.08),
+          rgba(2, 5, 3, 0.28)
+        );
+      transition:
+        opacity 900ms var(--ease-soft),
+        backdrop-filter 900ms var(--ease-soft);
+    }
+
+    body.is-deep-view .environment-blur {
+      opacity: 1;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    #emberCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: -5;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.92;
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      pointer-events: none;
+      box-shadow:
+        inset 0 0 clamp(5rem, 15vw, 14rem) rgba(0, 0, 0, 0.72),
+        inset 0 -6rem 8rem rgba(0, 0, 0, 0.25);
+    }
+
+    .film-grain {
+      position: fixed;
+      inset: -40%;
+      z-index: 998;
+      pointer-events: none;
+      opacity: 0.022;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+      animation: grain 650ms steps(2) infinite;
+    }
+
+    @keyframes grain {
+      0% {
+        transform: translate3d(-2%, 1%, 0);
+      }
+
+      25% {
+        transform: translate3d(2%, -1%, 0);
+      }
+
+      50% {
+        transform: translate3d(-1%, 2%, 0);
+      }
+
+      75% {
+        transform: translate3d(1%, -2%, 0);
+      }
+
+      100% {
+        transform: translate3d(-2%, 1%, 0);
+      }
+    }
+
+    /* =========================================================
+       4. LOADING EXPERIENCE
+       ========================================================= */
+
+    .loading-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(69, 54, 19, 0.2),
+          transparent 28%
+        ),
+        #020403;
+      opacity: 1;
+      visibility: visible;
+      transition:
+        opacity 700ms var(--ease-soft),
+        visibility 700ms;
+    }
+
+    .loading-gate.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-content {
+      display: grid;
+      justify-items: center;
+      gap: 1.4rem;
+      width: min(90vw, 28rem);
+      text-align: center;
+    }
+
+    .loader-sigil {
+      position: relative;
+      width: 7.5rem;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .loader-ring {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      border-top-color: var(--gold-bright);
+      border-radius: 50%;
+      box-shadow:
+        0 0 32px rgba(212, 175, 55, 0.12),
+        inset 0 0 24px rgba(212, 175, 55, 0.05);
+      animation: revolve 2.5s linear infinite;
+    }
+
+    .loader-ring::before,
+    .loader-ring::after {
+      content: "";
+      position: absolute;
+      inset: 0.65rem;
+      border: 1px solid rgba(212, 175, 55, 0.14);
+      border-bottom-color: rgba(245, 215, 110, 0.72);
+      border-radius: 50%;
+      animation: revolve 1.75s linear infinite reverse;
+    }
+
+    .loader-ring::after {
+      inset: 1.45rem;
+      border-style: dashed;
+      animation-duration: 4s;
+      animation-direction: normal;
+    }
+
+    .crossed-blades {
+      position: relative;
+      width: 3.2rem;
+      height: 3.2rem;
+      filter:
+        drop-shadow(0 0 12px rgba(245, 215, 110, 0.44));
+    }
+
+    .blade {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 0.18rem;
+      height: 3.15rem;
+      border-radius: 100% 100% 18% 18%;
+      background:
+        linear-gradient(
+          to bottom,
+          #fff0a4,
+          var(--gold),
+          #5e4614
+        );
+      transform-origin: center 76%;
+    }
+
+    .blade::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0.65rem;
+      width: 1.15rem;
+      height: 0.14rem;
+      border-radius: 999px;
+      background: var(--gold-bright);
+      transform: translateX(-50%);
+    }
+
+    .blade:first-child {
+      transform:
+        translateX(-50%)
+        rotate(42deg);
+    }
+
+    .blade:last-child {
+      transform:
+        translateX(-50%)
+        rotate(-42deg);
+    }
+
+    .loader-title {
+      margin: 0;
+      color: var(--gold-bright);
+      font-family: var(--display-font);
+      font-size: clamp(0.9rem, 3vw, 1.12rem);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .loader-status {
+      min-height: 1.75rem;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+    }
+
+    .loader-progress {
+      width: min(72vw, 19rem);
+      height: 2px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(245, 215, 110, 0.1);
+    }
+
+    .loader-progress-fill {
+      width: 12%;
+      height: 100%;
+      border-radius: inherit;
+      background:
+        linear-gradient(
+          90deg,
+          var(--gold-deep),
+          var(--gold-bright),
+          var(--gold)
+        );
+      box-shadow:
+        0 0 14px rgba(245, 215, 110, 0.6);
+      transition:
+        width 350ms var(--ease-out);
+    }
+
+    @keyframes revolve {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================================================
+       5. GLOBAL HEADER
+       ========================================================= */
+
+    .app-header {
+      position: fixed;
+      top: max(0px, env(safe-area-inset-top));
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: clamp(0.8rem, 2.3vw, 2.25rem);
+      min-height: var(--header-height);
+      padding:
+        0.65rem
+        var(--page-gutter);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+      background:
+        linear-gradient(
+          180deg,
+          rgba(3, 7, 4, 0.88),
+          rgba(3, 7, 4, 0.48)
+        );
+      backdrop-filter: blur(18px) saturate(1.15);
+      -webkit-backdrop-filter: blur(18px) saturate(1.15);
+      box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.16);
+    }
+
+    .brand {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex: 0 0 auto;
+      min-width: 0;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .brand-mark {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      flex: 0 0 2.75rem;
+      border: 1px solid var(--gold-border-strong);
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          circle,
+          rgba(245, 215, 110, 0.14),
+          rgba(212, 175, 55, 0.03) 58%,
+          transparent 60%
+        );
+      box-shadow:
+        0 0 30px rgba(212, 175, 55, 0.1);
+    }
+
+    .brand-mark svg {
+      width: 1.45rem;
+      height: 1.45rem;
+      color: var(--gold-bright);
+      filter:
+        drop-shadow(0 0 8px rgba(245, 215, 110, 0.38));
+    }
+
+    .brand-text {
+      display: grid;
+      gap: 0.01rem;
+      min-width: max-content;
+      font-family: var(--display-font);
+      line-height: 1.02;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-text span:first-child {
+      color: var(--parchment);
+      font-size: clamp(0.57rem, 0.9vw, 0.74rem);
+    }
+
+    .brand-text span:last-child {
+      color: var(--gold-bright);
+      font-size: clamp(0.75rem, 1.1vw, 0.98rem);
+      font-weight: 700;
+    }
+
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .primary-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(0.12rem, 0.8vw, 0.45rem);
+      width: 100%;
+      min-width: 0;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+    }
+
+    .primary-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-button {
+      position: relative;
+      display: inline-grid;
+      place-items: center;
+      min-width: max-content;
+      min-height: 44px;
+      padding:
+        0.65rem
+        clamp(0.65rem, 1.35vw, 1.1rem);
+      border: 0;
+      border-radius: 999px;
+      color: rgba(243, 234, 210, 0.7);
+      background: transparent;
+      font-family: var(--display-font);
+      font-size: clamp(0.57rem, 0.8vw, 0.75rem);
+      font-weight: 700;
+      letter-spacing: 0.105em;
+      text-transform: uppercase;
+      scroll-snap-align: center;
+      cursor: pointer;
+      transition:
+        color 260ms ease,
+        background 260ms ease,
+        transform 260ms var(--ease-out);
+    }
+
+    .nav-button::after {
+      content: "";
+      position: absolute;
+      left: 22%;
+      right: 22%;
+      bottom: 0.42rem;
+      height: 1px;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          var(--gold-bright),
+          transparent
+        );
+      opacity: 0;
+      transform: scaleX(0.2);
+      transition:
+        opacity 250ms ease,
+        transform 300ms var(--ease-out);
+    }
+
+    .nav-button:hover,
+    .nav-button.is-active {
+      color: var(--gold-bright);
+      background: rgba(212, 175, 55, 0.055);
+      transform: translateY(-1px);
+    }
+
+    .nav-button:hover::after,
+    .nav-button.is-active::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .header-audio {
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0;
+      border: 1px solid var(--gold-border);
+      border-radius: 50%;
+      color: var(--gold-bright);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(212, 175, 55, 0.09),
+          rgba(4, 7, 5, 0.72)
+        );
+      cursor: pointer;
+      transition:
+        border-color 250ms ease,
+        box-shadow 250ms ease,
+        transform 250ms var(--ease-out);
+    }
+
+    .header-audio:hover {
+      border-color: var(--gold-border-strong);
+      box-shadow:
+        0 0 22px rgba(212, 175, 55, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .header-audio svg {
+      width: 1.15rem;
+      height: 1.15rem;
+    }
+
+    .header-audio.is-muted {
+      color: var(--muted);
+    }
+
+    /* =========================================================
+       6. SPA VIEW SYSTEM
+       ========================================================= */
+
+    .app-main {
+      position: fixed;
+      top: calc(
+        max(0px, env(safe-area-inset-top)) +
+        var(--header-height)
+      );
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+    }
+
+    .view {
+      position: absolute;
+      inset: 0;
+      display: block;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding:
+        clamp(1.25rem, 4vw, 3rem)
+        var(--page-gutter)
+        max(2.5rem, env(safe-area-inset-bottom));
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(1.25rem) scale(0.995);
+      transition:
+        opacity 480ms var(--ease-soft),
+        transform 520ms var(--ease-out),
+        visibility 480ms;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .view::-webkit-scrollbar {
+      display: none;
+      width: 0;
+    }
+
+    .view.is-active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .view-content {
+      width: min(100%, 93rem);
+      min-height: calc(100% - 1px);
+      margin-inline: auto;
+    }
+
+    .page-heading {
+      display: grid;
+      gap: 0.65rem;
+      margin-bottom: clamp(1.6rem, 4vw, 3.5rem);
+      text-align: center;
+    }
+
+    .page-kicker {
+      margin: 0;
+      color: var(--gold);
+      font-family: var(--display-font);
+      font-size: clamp(0.62rem, 1.2vw, 0.78rem);
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+
+    .page-title {
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(1.7rem, 5vw, 3.8rem);
+      line-height: 1.12;
+      text-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.75);
+    }
+
+    .page-description {
+      width: min(100%, 49rem);
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: min(100%, 17rem);
+      margin: 0.35rem auto 0;
+      color: var(--gold);
+    }
+
+    .ornament::before,
+    .ornament::after {
+      content: "";
+      width: 4rem;
+      height: 1px;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          currentColor
+        );
+      opacity: 0.44;
+    }
+
+    .ornament::after {
+      background:
+        linear-gradient(
+          90deg,
+          currentColor,
+          transparent
+        );
+    }
+
+    .ornament-icon {
+      width: 0.48rem;
+      height: 0.48rem;
+      border: 1px solid currentColor;
+      transform: rotate(45deg);
+      box-shadow:
+        0 0 10px rgba(212, 175, 55, 0.24);
+    }
+
+    .scroll-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-top: 1.7rem;
+      color: rgba(215, 202, 176, 0.58);
+      font-family: var(--display-font);
+      font-size: 0.62rem;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+      pointer-events: none;
+      transition: opacity 250ms ease;
+    }
+
+    .scroll-hint.is-hidden {
+      opacity: 0;
+    }
+
+    .scroll-hint-arrow {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-right: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      transform: rotate(45deg);
+      animation: hint-bob 1.7s ease-in-out infinite;
+    }
+
+    @keyframes hint-bob {
+      0%,
+      100% {
+        transform:
+          translateY(-2px)
+          rotate(45deg);
+        opacity: 0.42;
+      }
+
+      50% {
+        transform:
+          translateY(4px)
+          rotate(45deg);
+        opacity: 1;
+      }
+    }
+
+    /* =========================================================
+       7. HOME
+       ========================================================= */
+
+    #view-home {
+      display: grid;
+      align-items: center;
+      padding-top: clamp(1.35rem, 5dvh, 4.5rem);
+    }
+
+    #view-home .view-content {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      justify-items: center;
+      width: min(100%, 72rem);
+      text-align: center;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      width: min(88vw, 52rem);
+      aspect-ratio: 2 / 1;
+      border: 1px solid rgba(212, 175, 55, 0.07);
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          ellipse,
+          rgba(212, 175, 55, 0.09),
+          transparent 64%
+        );
+      filter: blur(0.2px);
+      transform:
+        translate(-50%, -50%)
+        rotate(-5deg);
+      box-shadow:
+        0 0 80px rgba(212, 175, 55, 0.04);
+    }
+
+    .hero-sigil {
+      display: grid;
+      place-items: center;
+      width: clamp(4rem, 8vw, 5.7rem);
+      aspect-ratio: 1;
+      margin-bottom: clamp(1rem, 2.5dvh, 1.7rem);
+      border: 1px solid var(--gold-border);
+      border-radius: 50%;
+      color: var(--gold-bright);
+      background:
+        radial-gradient(
+          circle,
+          rgba(245, 215, 110, 0.12),
+          transparent 65%
+        );
+      box-shadow:
+        0 0 55px rgba(212, 175, 55, 0.11);
+      animation: sigil-breathe 4.5s ease-in-out infinite;
+    }
+
+    .hero-sigil svg {
+      width: 48%;
+      height: 48%;
+      filter:
+        drop-shadow(0 0 8px rgba(245, 215, 110, 0.52));
+    }
+
+    @keyframes sigil-breathe {
+      0%,
+      100% {
+        transform: scale(0.98);
+        box-shadow:
+          0 0 35px rgba(212, 175, 55, 0.08);
+      }
+
+      50% {
+        transform: scale(1.025);
+        box-shadow:
+          0 0 65px rgba(212, 175, 55, 0.17);
+      }
+    }
+
+    .hero-kicker {
+      margin: 0 0 0.8rem;
+      color: var(--gold);
+      font-family: var(--display-font);
+      font-size: clamp(0.63rem, 1.5vw, 0.84rem);
+      font-weight: 700;
+      letter-spacing: clamp(0.2em, 0.9vw, 0.42em);
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      max-width: 16ch;
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(2.45rem, 8vw, 6.8rem);
+      font-weight: 900;
+      line-height: 0.94;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+      text-shadow:
+        0 0 42px rgba(212, 175, 55, 0.13),
+        0 12px 42px rgba(0, 0, 0, 0.86);
+    }
+
+    .hero-title .gold-word {
+      color: var(--gold-bright);
+      background:
+        linear-gradient(
+          180deg,
+          #fff2a5 0%,
+          var(--gold-bright) 25%,
+          var(--gold) 64%,
+          #8a6719 100%
+        );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter:
+        drop-shadow(0 7px 18px rgba(212, 175, 55, 0.13));
+    }
+
+    .hero-subtitle {
+      margin:
+        clamp(1rem, 2.8dvh, 1.8rem)
+        0
+        0;
+      color: var(--parchment);
+      font-size: clamp(1.08rem, 2.5vw, 1.48rem);
+      font-style: italic;
+      letter-spacing: 0.035em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      width: min(100%, 52rem);
+      margin-top: clamp(1.5rem, 4dvh, 2.8rem);
+    }
+
+    .mythic-button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      min-height: 48px;
+      overflow: hidden;
+      padding:
+        0.78rem
+        clamp(1rem, 2.3vw, 1.55rem);
+      border: 1px solid var(--gold-border);
+      border-radius: 999px;
+      color: var(--parchment);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(212, 175, 55, 0.075),
+          rgba(10, 16, 12, 0.66)
+        );
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+      font-family: var(--display-font);
+      font-size: clamp(0.64rem, 1vw, 0.77rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 1.25;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition:
+        color 260ms ease,
+        border-color 260ms ease,
+        background 260ms ease,
+        transform 260ms var(--ease-out),
+        box-shadow 260ms ease;
+    }
+
+    .mythic-button::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          110deg,
+          transparent 20%,
+          rgba(245, 215, 110, 0.12) 48%,
+          transparent 74%
+        );
+      transform: translateX(-120%);
+      transition: transform 600ms var(--ease-out);
+    }
+
+    .mythic-button:hover::before {
+      transform: translateX(120%);
+    }
+
+    .mythic-button:hover,
+    .mythic-button:active {
+      color: var(--gold-bright);
+      border-color: var(--gold-border-strong);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(212, 175, 55, 0.13),
+          rgba(10, 16, 12, 0.78)
+        );
+      box-shadow:
+        0 10px 32px rgba(0, 0, 0, 0.3),
+        0 0 26px rgba(212, 175, 55, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .mythic-button:active {
+      transform:
+        translateY(0)
+        scale(0.985);
+    }
+
+    .mythic-button.primary {
+      color: #171206;
+      border-color: rgba(245, 215, 110, 0.68);
+      background:
+        linear-gradient(
+          135deg,
+          #f7df80,
+          #d3ab35 58%,
+          #a88021
+        );
+      box-shadow:
+        0 12px 38px rgba(0, 0, 0, 0.4),
+        0 0 35px rgba(212, 175, 55, 0.14);
+    }
+
+    .mythic-button.primary:hover {
+      color: #0f0b03;
+      background:
+        linear-gradient(
+          135deg,
+          #fff1a5,
+          #e2bc48 58%,
+          #b68b24
+        );
+      box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.46),
+        0 0 42px rgba(245, 215, 110, 0.24);
+    }
+
+    .mythic-button svg {
+      width: 1rem;
+      height: 1rem;
+      flex: 0 0 auto;
+    }
+
+    .hero-statline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.65rem 1.7rem;
+      margin-top: clamp(1.4rem, 3.4dvh, 2.2rem);
+      color: rgba(215, 202, 176, 0.58);
+      font-size: 0.88rem;
+      font-style: italic;
+    }
+
+    .hero-statline span {
+      position: relative;
+    }
+
+    .hero-statline span + span::before {
+      content: "◆";
+      position: absolute;
+      left: -1.02rem;
+      color: rgba(212, 175, 55, 0.38);
+      font-size: 0.43rem;
+      transform: translateY(0.38rem);
+    }
+
+    /* =========================================================
+       8. GENERAL CARDS
+       ========================================================= */
+
+    .card-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(min(100%, 17rem), 1fr)
+        );
+      gap: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .glass-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(22, 32, 24, 0.76),
+          rgba(8, 13, 10, 0.72)
+        );
+      box-shadow: var(--shadow-gold);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition:
+        transform 340ms var(--ease-out),
+        border-color 340ms ease,
+        box-shadow 340ms ease;
+    }
+
+    .glass-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        linear-gradient(
+          130deg,
+          rgba(245, 215, 110, 0.09),
+          transparent 35%
+        );
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+    }
+
+    .glass-card:hover,
+    .glass-card:focus-within {
+      border-color: rgba(245, 215, 110, 0.34);
+      box-shadow:
+        0 28px 70px rgba(0, 0, 0, 0.48),
+        0 0 36px rgba(212, 175, 55, 0.08);
+      transform: translateY(-5px);
+    }
+
+    .glass-card:hover::after,
+    .glass-card:focus-within::after {
+      opacity: 1;
+    }
+
+    /* =========================================================
+       9. CHRONICLES
+       ========================================================= */
+
+    .chapter-card {
+      min-height: 19rem;
+    }
+
+    .chapter-button {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      padding: 0;
+      border: 0;
+      color: inherit;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .chapter-image {
+      position: relative;
+      min-height: 8.5rem;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(212, 175, 55, 0.16),
+          transparent 60%
+        ),
+        #0a110c;
+    }
+
+    .chapter-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 8.5rem;
+      object-fit: cover;
+      opacity: 0.68;
+      filter:
+        saturate(0.72)
+        contrast(1.08)
+        brightness(0.68);
+      transition:
+        transform 800ms var(--ease-out),
+        filter 450ms ease,
+        opacity 450ms ease;
+    }
+
+    .chapter-card:hover .chapter-image img {
+      opacity: 0.88;
+      filter:
+        saturate(0.9)
+        contrast(1.08)
+        brightness(0.78);
+      transform: scale(1.055);
+    }
+
+    .chapter-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          transparent 22%,
+          rgba(6, 10, 7, 0.35) 58%,
+          rgba(8, 13, 10, 0.98) 100%
+        );
+    }
+
+    .chapter-marker {
+      position: absolute;
+      z-index: 2;
+      left: 1rem;
+      bottom: 0.7rem;
+      color: var(--gold-bright);
+      font-family: var(--display-font);
+      font-size: clamp(1.4rem, 3vw, 2.3rem);
+      font-weight: 700;
+      text-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.82);
+    }
+
+    .chapter-body {
+      display: grid;
+      align-content: start;
+      gap: 0.7rem;
+      padding: 1.25rem;
+    }
+
+    .chapter-label {
+      color: var(--gold);
+      font-family: var(--display-font);
+      font-size: 0.64rem;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    .chapter-card-title {
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(1.05rem, 2.2vw, 1.38rem);
+      line-height: 1.3;
+    }
+
+    .chapter-summary {
+      display: -webkit-box;
+      margin: 0;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+
+    .chapter-open-row {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-top: 0.2rem;
+      color: var(--gold-bright);
+      font-family: var(--display-font);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .chapter-open-row svg {
+      width: 0.9rem;
+      transition: transform 280ms var(--ease-out);
+    }
+
+    .chapter-card:hover .chapter-open-row svg {
+      transform: translateX(0.3rem);
+    }
+
+    /* =========================================================
+       10. READER
+       ========================================================= */
+
+    #view-reader {
+      padding:
+        0
+        0
+        calc(
+          6rem +
+          env(safe-area-inset-bottom)
+        );
+    }
+
+    .reader-shell {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    .reader-banner {
+      position: relative;
+      display: grid;
+      place-items: end center;
+      min-height: clamp(17rem, 48dvh, 31rem);
+      overflow: hidden;
+      padding:
+        clamp(2rem, 6vw, 4.5rem)
+        var(--page-gutter);
+      isolation: isolate;
+      text-align: center;
+    }
+
+    .reader-banner-media {
+      position: absolute;
+      z-index: -3;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(212, 175, 55, 0.13),
+          transparent 60%
+        ),
+        #09100b;
+    }
+
+    .reader-banner-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.62;
+      filter:
+        saturate(0.75)
+        brightness(0.58)
+        contrast(1.14);
+    }
+
+    .reader-banner::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(4, 7, 5, 0.2) 0%,
+          rgba(4, 7, 5, 0.32) 42%,
+          rgba(4, 7, 5, 0.96) 95%,
+          var(--abyss) 100%
+        );
+    }
+
+    .reader-banner::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background:
+        radial-gradient(
+          ellipse at center,
+          transparent 15%,
+          rgba(0, 0, 0, 0.55) 100%
+        );
+    }
+
+    .reader-heading {
+      display: grid;
+      justify-items: center;
+      gap: 0.5rem;
+      width: min(100%, 69rem);
+    }
+
+    .reader-chapter-number {
+      color: var(--gold-bright);
+      font-family: var(--display-font);
+      font-size: clamp(0.67rem, 1.3vw, 0.84rem);
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+
+    .reader-title {
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(2rem, 6vw, 4.9rem);
+      line-height: 1.07;
+      text-wrap: balance;
+      text-shadow:
+        0 8px 36px rgba(0, 0, 0, 0.9);
+    }
+
+    .reader-summary {
+      width: min(100%, 48rem);
+      margin: 0.45rem auto 0;
+      color: rgba(243, 234, 210, 0.72);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-style: italic;
+      text-wrap: balance;
+    }
+
+    .manuscript {
+      width: min(
+        calc(100% - (2 * var(--page-gutter))),
+        var(--reading-width)
+      );
+      margin: 0 auto;
+      padding:
+        clamp(2rem, 6vw, 5rem)
+        0;
+    }
+
+    .manuscript-content {
+      color: var(--parchment);
+      font-size: clamp(1.08rem, 2.1vw, 1.32rem);
+      line-height: clamp(1.72, 3vw, 1.9);
+    }
+
+    .prose-paragraph {
+      margin:
+        0
+        0
+        clamp(1.35rem, 3vw, 2rem);
+      text-align: left;
+      text-wrap: pretty;
+    }
+
+    .prose-paragraph.first-paragraph::first-letter {
+      float: left;
+      margin:
+        0.08em
+        0.14em
+        0
+        0;
+      color: var(--gold-bright);
+      font-family: var(--display-font);
+      font-size: 4.3em;
+      font-weight: 700;
+      line-height: 0.78;
+      text-shadow:
+        0 0 22px rgba(212, 175, 55, 0.28);
+    }
+
+    .inline-figure {
+      width: min(100%, 62rem);
+      margin:
+        clamp(2.2rem, 5vw, 4rem)
+        auto;
+    }
+
+    .inline-figure-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-md);
+      background: #080d09;
+      box-shadow: var(--shadow-deep);
+    }
+
+    .inline-figure-frame img {
+      width: 100%;
+      max-height: min(67dvh, 42rem);
+      object-fit: cover;
+      filter:
+        saturate(0.84)
+        contrast(1.06);
+    }
+
+    .inline-figure-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(245, 215, 110, 0.1);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .inline-figure figcaption {
+      padding-top: 0.95rem;
+      color: rgba(215, 202, 176, 0.64);
+      font-size: 0.95rem;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .poem-block {
+      position: relative;
+      width: min(100%, 56rem);
+      margin:
+        clamp(3rem, 8vw, 6rem)
+        auto;
+      padding:
+        clamp(2rem, 6vw, 4.25rem)
+        clamp(1.2rem, 6vw, 4.5rem);
+      border:
+        1px solid
+        rgba(212, 175, 55, 0.2);
+      border-radius: var(--radius-md);
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(212, 175, 55, 0.07),
+          transparent 46%
+        ),
+        rgba(10, 16, 12, 0.52);
+      box-shadow:
+        inset 0 0 60px rgba(0, 0, 0, 0.24),
+        0 24px 75px rgba(0, 0, 0, 0.26);
+      text-align: center;
+    }
+
+    .poem-block::before,
+    .poem-block::after {
+      content: "◆";
+      position: absolute;
+      left: 50%;
+      color: var(--gold);
+      font-size: 0.72rem;
+      background: var(--abyss);
+      transform: translateX(-50%);
+    }
+
+    .poem-block::before {
+      top: -0.7rem;
+      padding: 0 1.15rem;
+    }
+
+    .poem-block::after {
+      bottom: -0.7rem;
+      padding: 0 1.15rem;
+    }
+
+    .poem-title {
+      margin:
+        0
+        0
+        clamp(1.4rem, 4vw, 2.5rem);
+      color: var(--gold-bright);
+      font-family: var(--display-font);
+      font-size: clamp(1.25rem, 3.5vw, 2rem);
+      line-height: 1.3;
+    }
+
+    .poem-stanza {
+      margin: 0;
+      color: var(--parchment);
+      font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+      font-style: italic;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    .poem-stanza + .poem-stanza {
+      margin-top: 1.5rem;
+    }
+
+    .reader-controls {
+      position: fixed;
+      z-index: 900;
+      left: 50%;
+      bottom:
+        max(
+          0.7rem,
+          env(safe-area-inset-bottom)
+        );
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      width: min(
+        calc(100% - 1.5rem),
+        42rem
+      );
+      padding: 0.5rem;
+      border: 1px solid var(--gold-border);
+      border-radius: 999px;
+      background:
+        rgba(7, 12, 8, 0.88);
+      box-shadow:
+        0 16px 50px rgba(0, 0, 0, 0.66);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transform: translateX(-50%);
+    }
+
+    body.reader-open .reader-controls {
+      display: flex;
+    }
+
+    .reader-nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.48rem;
+      min-width: 44px;
+      min-height: 44px;
+      padding:
+        0.6rem
+        clamp(0.75rem, 2vw, 1.15rem);
+      border: 0;
+      border-radius: 999px;
+      color: var(--parchment);
+      background: transparent;
+      font-family: var(--display-font);
+      font-size: clamp(0.58rem, 1.2vw, 0.7rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition:
+        color 220ms ease,
+        background 220ms ease,
+        transform 220ms var(--ease-out);
+    }
+
+    .reader-nav-button:hover:not(:disabled) {
+      color: var(--gold-bright);
+      background: rgba(212, 175, 55, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .reader-nav-button:disabled {
+      opacity: 0.28;
+      cursor: not-allowed;
+    }
+
+    .reader-nav-button svg {
+      width: 0.9rem;
+      height: 0.9rem;
+    }
+
+    .reader-progress {
+      position: relative;
+      flex: 1 1 auto;
+      max-width: 7rem;
+      height: 2px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: rgba(245, 215, 110, 0.12);
+    }
+
+    .reader-progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--gold-bright);
+      box-shadow:
+        0 0 9px rgba(245, 215, 110, 0.62);
+      transition: width 100ms linear;
+    }
+
+    /* =========================================================
+       11. HISTORICAL EVENTS
+       ========================================================= */
+
+    .events-list {
+      display: grid;
+      gap: clamp(1.1rem, 3vw, 2rem);
+    }
+
+    .event-card {
+      position: relative;
+      display: grid;
+      grid-template-columns:
+        minmax(14rem, 0.8fr)
+        minmax(18rem, 1.2fr);
+      min-height: clamp(20rem, 43vw, 31rem);
+      overflow: hidden;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      background: rgba(8, 13, 10, 0.7);
+      box-shadow: var(--shadow-deep);
+    }
+
+    .event-card:nth-child(even) {
+      grid-template-columns:
+        minmax(18rem, 1.2fr)
+        minmax(14rem, 0.8fr);
+    }
+
+    .event-card:nth-child(even) .event-art {
+      order: 2;
+    }
+
+    .event-art {
+      position: relative;
+      min-height: 17rem;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(212, 175, 55, 0.12),
+          transparent 62%
+        ),
+        #0b120d;
+    }
+
+    .event-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.78;
+      filter:
+        saturate(0.72)
+        contrast(1.14)
+        brightness(0.72);
+      transition:
+        transform 900ms var(--ease-out),
+        filter 500ms ease;
+    }
+
+    .event-card:hover .event-art img {
+      filter:
+        saturate(0.9)
+        contrast(1.1)
+        brightness(0.82);
+      transform: scale(1.045);
+    }
+
+    .event-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(8, 13, 10, 0.25)
+        );
+    }
+
+    .event-content {
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      padding:
+        clamp(1.5rem, 5vw, 4.5rem);
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(212, 175, 55, 0.055),
+          transparent 46%
+        ),
+        linear-gradient(
+          150deg,
+          rgba(22, 32, 24, 0.82),
+          rgba(9, 14, 10, 0.83)
+        );
+    }
+
+    .event-era {
+      margin: 0;
+      color: var(--gold);
+      font-family: var(--display-font);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .event-title {
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(1.55rem, 4vw, 3rem);
+      line-height: 1.16;
+    }
+
+    .event-description {
+      max-width: 58ch;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.7vw, 1.18rem);
+      line-height: 1.7;
+    }
+
+    .event-action {
+      justify-self: start;
+      margin-top: 0.35rem;
+    }
+
+    /* =========================================================
+       12. RELICS VAULT
+       ========================================================= */
+
+    .relic-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(min(100%, 19rem), 1fr)
+        );
+      gap: clamp(1rem, 2.4vw, 1.65rem);
+    }
+
+    .relic-card {
+      display: grid;
+      grid-template-rows: auto 12rem 1fr;
+      min-height: 31rem;
+      padding: 1.3rem;
+    }
+
+    .relic-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .relic-aura {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 3.5rem;
+      height: 3.5rem;
+      flex: 0 0 auto;
+      border: 1px solid var(--gold-border-strong);
+      border-radius: 50%;
+      color: var(--gold-bright);
+      background:
+        radial-gradient(
+          circle,
+          rgba(245, 215, 110, 0.16),
+          rgba(212, 175, 55, 0.04) 60%,
+          transparent 62%
+        );
+      box-shadow:
+        0 0 28px rgba(212, 175, 55, 0.1);
+    }
+
+    .relic-aura::before {
+      content: "";
+      position: absolute;
+      inset: -0.45rem;
+      border: 1px solid rgba(212, 175, 55, 0.11);
+      border-radius: inherit;
+      animation: aura-pulse 3s ease-in-out infinite;
+    }
+
+    .relic-aura svg {
+      width: 1.7rem;
+      height: 1.7rem;
+      filter:
+        drop-shadow(0 0 8px rgba(245, 215, 110, 0.45));
+      transition: transform 380ms var(--ease-out);
+    }
+
+    .relic-card:hover .relic-aura svg {
+      transform:
+        translateY(-0.2rem)
+        rotate(-3deg);
+    }
+
+    @keyframes aura-pulse {
+      0%,
+      100% {
+        opacity: 0.28;
+        transform: scale(0.94);
+      }
+
+      50% {
+        opacity: 0.9;
+        transform: scale(1.08);
+      }
+    }
+
+    .relic-badge {
+      padding: 0.42rem 0.7rem;
+      border: 1px solid var(--gold-border);
+      border-radius: 999px;
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.055);
+      font-family: var(--display-font);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .relic-image {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: var(--radius-sm);
+      background:
+        radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.12),
+          transparent 65%
+        ),
+        #080d09;
+    }
+
+    .relic-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.74;
+      filter:
+        saturate(0.72)
+        contrast(1.08)
+        brightness(0.7);
+      transition:
+        opacity 400ms ease,
+        filter 400ms ease,
+        transform 700ms var(--ease-out);
+    }
+
+    .relic-card:hover .relic-image img {
+      opacity: 0.92;
+      filter:
+        saturate(0.92)
+        contrast(1.08)
+        brightness(0.82);
+      transform: scale(1.055);
+    }
+
+    .relic-copy {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      align-content: start;
+      gap: 0.65rem;
+      padding-top: 1.2rem;
+    }
+
+    .relic-title {
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(1.2rem, 2.6vw, 1.65rem);
+      line-height: 1.25;
+    }
+
+    .relic-description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.62;
+    }
+
+    /* =========================================================
+       13. CREDITS
+       ========================================================= */
+
+    #view-credits {
+      display: grid;
+      align-items: center;
+    }
+
+    #view-credits .view-content {
+      display: grid;
+      place-items: center;
+    }
+
+    .credits-card {
+      position: relative;
+      display: grid;
+      justify-items: center;
+      gap: 1rem;
+      width: min(100%, 47rem);
+      padding:
+        clamp(2rem, 6vw, 5rem)
+        clamp(1.2rem, 6vw, 4rem);
+      overflow: hidden;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(212, 175, 55, 0.1),
+          transparent 48%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(22, 32, 24, 0.78),
+          rgba(7, 12, 8, 0.72)
+        );
+      box-shadow: var(--shadow-deep);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      text-align: center;
+    }
+
+    .credits-card::before {
+      content: "";
+      position: absolute;
+      width: 14rem;
+      aspect-ratio: 1;
+      border: 1px solid rgba(212, 175, 55, 0.07);
+      border-radius: 50%;
+      transform: translateY(-58%);
+      box-shadow:
+        0 0 70px rgba(212, 175, 55, 0.06);
+    }
+
+    .credits-emblem {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 5.8rem;
+      height: 5.8rem;
+      border: 1px solid var(--gold-border-strong);
+      border-radius: 50%;
+      color: var(--gold-bright);
+      background:
+        radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.15),
+          transparent 64%
+        );
+      box-shadow:
+        0 0 45px rgba(212, 175, 55, 0.14);
+    }
+
+    .credits-emblem svg {
+      width: 2.6rem;
+      height: 2.6rem;
+    }
+
+    .credits-kicker {
+      margin: 0;
+      color: var(--gold);
+      font-family: var(--display-font);
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .credits-title {
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(1.65rem, 5vw, 3.2rem);
+      line-height: 1.18;
+    }
+
+    .credits-text {
+      width: min(100%, 40rem);
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 2vw, 1.2rem);
+      line-height: 1.7;
+    }
+
+    .credits-author {
+      color: var(--gold-bright);
+      font-family: var(--display-font);
+      font-size: clamp(0.95rem, 2vw, 1.18rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .credits-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    /* =========================================================
+       14. EMPTY, ERROR, NOTICE, AND TOAST STATES
+       ========================================================= */
+
+    .empty-state {
+      display: grid;
+      justify-items: center;
+      gap: 0.8rem;
+      width: min(100%, 38rem);
+      margin: 3rem auto;
+      padding: 2.2rem 1.4rem;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-md);
+      background: var(--surface-1);
+      text-align: center;
+    }
+
+    .empty-state svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      color: var(--gold);
+    }
+
+    .empty-state h2 {
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: 1.25rem;
+    }
+
+    .empty-state p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .error-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 5500;
+      display: none;
+      place-items: center;
+      padding: 1rem;
+      overflow-y: auto;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(110, 56, 34, 0.12),
+          transparent 50%
+        ),
+        rgba(3, 6, 4, 0.97);
+    }
+
+    .error-gate.is-visible {
+      display: grid;
+    }
+
+    .error-card {
+      display: grid;
+      justify-items: center;
+      gap: 1rem;
+      width: min(100%, 39rem);
+      padding:
+        clamp(1.5rem, 5vw, 3.4rem);
+      border: 1px solid rgba(224, 154, 131, 0.3);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(35, 26, 22, 0.88),
+          rgba(10, 14, 11, 0.92)
+        );
+      box-shadow: var(--shadow-deep);
+      text-align: center;
+    }
+
+    .error-symbol {
+      display: grid;
+      place-items: center;
+      width: 4rem;
+      height: 4rem;
+      border: 1px solid rgba(224, 154, 131, 0.36);
+      border-radius: 50%;
+      color: var(--danger);
+      font-family: var(--display-font);
+      font-size: 1.4rem;
+    }
+
+    .error-card h2 {
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(1.35rem, 4vw, 2.1rem);
+    }
+
+    .error-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .error-detail {
+      width: 100%;
+      max-height: 8rem;
+      overflow: auto;
+      padding: 0.85rem;
+      border: 1px solid rgba(224, 154, 131, 0.13);
+      border-radius: var(--radius-xs);
+      color: rgba(243, 234, 210, 0.64);
+      background: rgba(0, 0, 0, 0.22);
+      font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Consolas,
+        monospace;
+      font-size: 0.8rem;
+      text-align: left;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .toast-region {
+      position: fixed;
+      z-index: 6000;
+      right: max(1rem, env(safe-area-inset-right));
+      bottom: max(1rem, env(safe-area-inset-bottom));
+      display: grid;
+      gap: 0.65rem;
+      width: min(calc(100% - 2rem), 23rem);
+      pointer-events: none;
+    }
+
+    .toast {
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-sm);
+      color: var(--parchment);
+      background: rgba(8, 13, 10, 0.93);
+      box-shadow: var(--shadow-deep);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      font-size: 0.98rem;
+      transform:
+        translateY(0.8rem)
+        scale(0.98);
+      opacity: 0;
+      animation: toast-in 300ms var(--ease-out) forwards;
+    }
+
+    .toast.is-leaving {
+      animation: toast-out 260ms ease forwards;
+    }
+
+    @keyframes toast-in {
+      to {
+        opacity: 1;
+        transform:
+          translateY(0)
+          scale(1);
+      }
+    }
+
+    @keyframes toast-out {
+      to {
+        opacity: 0;
+        transform:
+          translateY(0.5rem)
+          scale(0.98);
+      }
+    }
+
+    /* =========================================================
+       15. RESPONSIVE ADAPTATION
+       Uses content-driven layout behavior rather than rigid
+       desktop dimensions.
+       ========================================================= */
+
+    @media (max-width: 58rem) {
+      .app-header {
+        gap: 0.7rem;
+        padding-inline: clamp(0.75rem, 2.5vw, 1rem);
+      }
+
+      .brand-text {
+        display: none;
+      }
+
+      .brand-mark {
+        width: 2.6rem;
+        height: 2.6rem;
+        flex-basis: 2.6rem;
+      }
+
+      .nav-shell {
+        mask-image:
+          linear-gradient(
+            90deg,
+            transparent,
+            black 0.65rem,
+            black calc(100% - 0.65rem),
+            transparent
+          );
+      }
+
+      .primary-nav {
+        justify-content: flex-start;
+        padding-inline: 0.6rem;
+      }
+
+      .event-card,
+      .event-card:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+
+      .event-card:nth-child(even) .event-art {
+        order: 0;
+      }
+
+      .event-art {
+        min-height: clamp(12rem, 42vw, 19rem);
+      }
+
+      .event-art::after {
+        background:
+          linear-gradient(
+            180deg,
+            transparent,
+            rgba(8, 13, 10, 0.52)
+          );
+      }
+    }
+
+    @media (max-width: 34rem) {
+      :root {
+        --page-gutter: clamp(0.85rem, 4vw, 1.15rem);
+      }
+
+      .header-audio {
+        min-width: 42px;
+        min-height: 42px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.3rem, 13vw, 4.3rem);
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-actions .mythic-button {
+        width: 100%;
+        padding-inline: 0.75rem;
+      }
+
+      .hero-actions .mythic-button.primary,
+      .hero-actions .mythic-button.resume-button {
+        grid-column: 1 / -1;
+      }
+
+      .hero-statline {
+        display: none;
+      }
+
+      .reader-controls {
+        width: calc(100% - 1rem);
+      }
+
+      .reader-nav-label {
+        display: none;
+      }
+
+      .reader-nav-button {
+        padding-inline: 0.8rem;
+      }
+
+      .reader-progress {
+        max-width: none;
+      }
+
+      .relic-card {
+        min-height: auto;
+        grid-template-rows: auto 11rem auto;
+      }
+
+      .credits-links {
+        width: 100%;
+      }
+
+      .credits-links .mythic-button {
+        width: 100%;
+      }
+    }
+
+    @media (max-height: 42rem) and (orientation: landscape) {
+      :root {
+        --header-height: 4.25rem;
+      }
+
+      #view-home {
+        align-items: start;
+      }
+
+      .hero-sigil {
+        width: 3.4rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.2rem, 8vw, 4.5rem);
+      }
+
+      .hero-subtitle {
+        margin-top: 0.6rem;
+      }
+
+      .hero-actions {
+        margin-top: 1rem;
+      }
+
+      .hero-statline {
+        margin-top: 0.85rem;
+      }
+    }
+
+    /* =========================================================
+       16. REDUCED MOTION AND ACCESSIBILITY
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .film-grain {
+        display: none;
+      }
+    }
+
+    @media (prefers-contrast: more) {
+      :root {
+        --muted: #c2cabf;
+        --gold-border: rgba(245, 215, 110, 0.34);
+      }
+
+      .glass-card,
+      .event-card,
+      .credits-card {
+        background: rgba(5, 9, 6, 0.96);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =======================================================
+       SVG SYMBOL LIBRARY
+       ======================================================= -->
+
+  <svg
+    class="sr-only"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <symbol
+      id="icon-sigil"
+      viewBox="0 0 64 64"
+    >
+      <path
+        d="M32 5 49 55 32 45 15 55Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+      <path
+        d="m32 15 6 25-6 7-6-7Z"
+        fill="currentColor"
+        opacity=".82"
+      />
+      <circle
+        cx="32"
+        cy="55"
+        r="2.5"
+        fill="currentColor"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-home"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="m3 11 9-7 9 7v9H7v-6h10v6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-scroll"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M7 4h11a2 2 0 0 1 2 2v12H8a3 3 0 0 1-3-3V6a2 2 0 0 0-2-2h4Zm0 0v11a3 3 0 0 0 3 3"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-event"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="9"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+      />
+      <path
+        d="M12 7v5l3.5 2"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-relic"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="m12 2 7 4v8c0 4-3 6.5-7 8-4-1.5-7-4-7-8V6Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="m9 9 6 6m0-6-6 6"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-sword"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="m14 5 5-3 3 3-3 5-8 8-5-5Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="m9 15-5 5m0-4 4 4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-artifact"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="m12 2 4 6-4 14L8 8Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M8 8h8"
+        stroke="currentColor"
+        stroke-width="1.5"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-memento"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-volume"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M5 10v4h4l5 4V6l-5 4Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M17 9a4 4 0 0 1 0 6m2-9a8 8 0 0 1 0 12"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-muted"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M5 10v4h4l5 4V6l-5 4Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="m18 10 4 4m0-4-4 4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-arrow-right"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M5 12h14m-5-5 5 5-5 5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-arrow-left"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M19 12H5m5-5-5 5 5 5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-mail"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M3 5h18v14H3Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="m3 7 9 7 9-7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol
+      id="icon-external"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M14 4h6v6m0-6-9 9"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M19 13v7H4V5h7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+    </symbol>
+  </svg>
+
+  <!-- =======================================================
+       CINEMATIC BACKGROUND
+       ======================================================= -->
+
+  <div class="environment"></div>
+  <div class="environment-blur"></div>
+
+  <canvas
+    id="emberCanvas"
+    aria-hidden="true"
+  ></canvas>
+
+  <div
+    class="film-grain"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="vignette"
+    aria-hidden="true"
+  ></div>
+
+  <!-- =======================================================
+       LOADING GATE
+       ======================================================= -->
+
+  <section
+    id="loadingGate"
+    class="loading-gate"
+    aria-live="polite"
+    aria-label="Preparing The Legend of Adonis"
+  >
+    <div class="loader-content">
+      <div
+        class="loader-sigil"
+        aria-hidden="true"
+      >
+        <div class="loader-ring"></div>
+
+        <div class="crossed-blades">
+          <span class="blade"></span>
+          <span class="blade"></span>
+        </div>
+      </div>
+
+      <p class="loader-title">
+        Awakening the Chronicle
+      </p>
+
+      <p
+        id="loaderStatus"
+        class="loader-status"
+      >
+        Seeking the forgotten scrolls...
+      </p>
+
+      <div
+        class="loader-progress"
+        aria-hidden="true"
+      >
+        <div
+          id="loaderProgressFill"
+          class="loader-progress-fill"
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+       ERROR GATE
+       ======================================================= -->
+
+  <section
+    id="errorGate"
+    class="error-gate"
+    aria-live="assertive"
+    aria-label="Story loading error"
+  >
+    <div class="error-card">
+      <div
+        class="error-symbol"
+        aria-hidden="true"
+      >
+        !
+      </div>
+
+      <h2>The Chronicle Could Not Be Opened</h2>
+
+      <p id="errorMessage">
+        The remote manuscript could not be reached.
+      </p>
+
+      <pre
+        id="errorDetail"
+        class="error-detail"
+      ></pre>
+
+      <div class="hero-actions">
+        <button
+          id="retryButton"
+          class="mythic-button primary"
+          type="button"
+        >
+          Retry the Summoning
+        </button>
+
+        <button
+          id="continueShellButton"
+          class="mythic-button"
+          type="button"
+        >
+          Enter Empty Archive
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+       PERSISTENT HEADER
+       ======================================================= -->
+
+  <header class="app-header">
+    #home
+      <span
+        class="brand-mark"
+        aria-hidden="true"
+      >
+        <svg>
+          #icon-sigil</use>
+        </svg>
+      </span>
+
+      <span class="brand-text">
+        <span>The Legend</span>
+        <span>of Adonis</span>
+      </span>
+    </a>
+
+    <div class="nav-shell">
+      <nav
+        class="primary-nav"
+        aria-label="Primary navigation"
+      >
+        <button
+          class="nav-button interactive-sound is-active"
+          type="button"
+          data-route="home"
+        >
+          Home
+        </button>
+
+        <button
+          class="nav-button interactive-sound"
+          type="button"
+          data-route="chapters"
+        >
+          Chapters
+        </button>
+
+        <button
+          class="nav-button interactive-sound"
+          type="button"
+          data-route="events"
+        >
+          Events
+        </button>
+
+        <button
+          class="nav-button interactive-sound"
+          type="button"
+          data-route="relics"
+        >
+          Relics
+        </button>
+
+        <button
+          class="nav-button interactive-sound"
+          type="button"
+          data-route="credits"
+        >
+          Credits
+        </button>
+      </nav>
+    </div>
+
+    <button
+      id="headerAudioToggle"
+      class="header-audio interactive-sound"
+      type="button"
+      aria-label="Turn audio off"
+      title="Audio: On"
+    >
+      <svg aria-hidden="true">
+        #icon-volume</use>
+      </svg>
+    </button>
+  </header>
+
+  <!-- =======================================================
+       SPA VIEWS
+       ======================================================= -->
+
+  <main
+    id="appMain"
+    class="app-main"
+  >
+    <!-- HOME -->
+
+    <section
+      id="view-home"
+      class="view is-active"
+      data-view="home"
+      aria-labelledby="homeTitle"
+    >
+      <div class="view-content">
+        <article class="hero">
+          <div
+            class="hero-sigil"
+            aria-hidden="true"
+          >
+            <svg>
+              #icon-sigil</use>
+            </svg>
+          </div>
+
+          <p class="hero-kicker">
+            A Chronicle Forged in Shadow
+          </p>
+
+          <h1
+            id="homeTitle"
+            class="hero-title"
+          >
+            The Legend
+            <span class="gold-word">
+              of Adonis
+            </span>
+          </h1>
+
+          <p
+            id="homeSubtitle"
+            class="hero-subtitle"
+          >
+            A tale of sacrifice in shadows
+          </p>
+
+          <div class="ornament">
+            <span class="ornament-icon"></span>
+          </div>
+
+          <div class="hero-actions">
+            <button
+              id="resumeButton"
+              class="mythic-button primary resume-button interactive-sound"
+              type="button"
+              hidden
+            >
+              <svg aria-hidden="true">
+                #icon-scroll</use>
+              </svg>
+
+              Continue Reading
+            </button>
+
+            <button
+              id="startJourneyButton"
+              class="mythic-button primary interactive-sound"
+              type="button"
+            >
+              <svg aria-hidden="true">
+                #icon-sigil</use>
+              </svg>
+
+              Start Journey
+            </button>
+
+            <button
+              class="mythic-button interactive-sound"
+              type="button"
+              data-route="events"
+            >
+              <svg aria-hidden="true">
+                #icon-event</use>
+              </svg>
+
+              World Events
+            </button>
+
+            <button
+              class="mythic-button interactive-sound"
+              type="button"
+              data-route="relics"
+            >
+              <svg aria-hidden="true">
+                #icon-relic</use>
+              </svg>
+
+              Relics
+            </button>
+
+            <button
+              id="homeAudioToggle"
+              class="mythic-button interactive-sound"
+              type="button"
+            >
+              <svg aria-hidden="true">
+                #icon-volume</use>
+              </svg>
+
+              <span id="homeAudioText">
+                Audio: On
+              </span>
+            </button>
+          </div>
+
+          <div
+            id="heroStatline"
+            class="hero-statline"
+            aria-label="Book information"
+          ></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CHAPTERS -->
+
+    <section
+      id="view-chapters"
+      class="view"
+      data-view="chapters"
+      aria-labelledby="chaptersTitle"
+    >
+      <div class="view-content">
+        <header class="page-heading">
+          <p class="page-kicker">
+            The Unsealed Scrolls
+          </p>
+
+          <h2
+            id="chaptersTitle"
+            class="page-title"
+          >
+            Chronicles
+          </h2>
+
+          <p class="page-description">
+            Enter the fragments of a legend written across
+            sacrifice, memory, and shadow.
+          </p>
+
+          <div class="ornament">
+            <span class="ornament-icon"></span>
+          </div>
+        </header>
+
+        <div
+          id="chapterGrid"
+          class="card-grid"
+        ></div>
+
+        <div class="scroll-hint">
+          <span>Drift to reveal more</span>
+          <span class="scroll-hint-arrow"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- READER -->
+
+    <section
+      id="view-reader"
+      class="view"
+      data-view="reader"
+      aria-labelledby="readerTitle"
+    >
+      <article
+        id="readerShell"
+        class="reader-shell"
+      ></article>
+    </section>
+
+    <!-- EVENTS -->
+
+    <section
+      id="view-events"
+      class="view"
+      data-view="events"
+      aria-labelledby="eventsTitle"
+    >
+      <div class="view-content">
+        <header class="page-heading">
+          <p class="page-kicker">
+            Echoes Across the Ages
+          </p>
+
+          <h2
+            id="eventsTitle"
+            class="page-title"
+          >
+            Historical Codex
+          </h2>
+
+          <p class="page-description">
+            Trace the moments that shaped kingdoms, vows,
+            betrayals, and the destiny of Adonis.
+          </p>
+
+          <div class="ornament">
+            <span class="ornament-icon"></span>
+          </div>
+        </header>
+
+        <div
+          id="eventsList"
+          class="events-list"
+        ></div>
+
+        <div class="scroll-hint">
+          <span>Descend through history</span>
+          <span class="scroll-hint-arrow"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELICS -->
+
+    <section
+      id="view-relics"
+      class="view"
+      data-view="relics"
+      aria-labelledby="relicsTitle"
+    >
+      <div class="view-content">
+        <header class="page-heading">
+          <p class="page-kicker">
+            What the Ages Left Behind
+          </p>
+
+          <h2
+            id="relicsTitle"
+            class="page-title"
+          >
+            Relics Vault
+          </h2>
+
+          <p class="page-description">
+            Weapons, artifacts, and mementos carrying the
+            weight of forgotten hands.
+          </p>
+
+          <div class="ornament">
+            <span class="ornament-icon"></span>
+          </div>
+        </header>
+
+        <div
+          id="relicGrid"
+          class="relic-grid"
+        ></div>
+
+        <div class="scroll-hint">
+          <span>Search the vault</span>
+          <span class="scroll-hint-arrow"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDITS -->
+
+    <section
+      id="view-credits"
+      class="view"
+      data-view="credits"
+      aria-labelledby="creditsTitle"
+    >
+      <div class="view-content">
+        <article class="credits-card">
+          <div
+            class="credits-emblem"
+            aria-hidden="true"
+          >
+            <svg>
+              #icon-sigil</use>
+            </svg>
+          </div>
+
+          <p class="credits-kicker">
+            Beyond the Last Page
+          </p>
+
+          <h2
+            id="creditsTitle"
+            class="credits-title"
+          >
+            Crafted in Shadow and Gold
+          </h2>
+
+          <p class="credits-text">
+            Story, design direction, and creative authorship
+            by
+          </p>
+
+          <div
+            id="creditsAuthor"
+            class="credits-author"
+          >
+            Mayur Borgude
+          </div>
+
+          <p class="credits-text">
+            Visual engineering, interaction design, and
+            atmospheric systems shaped into a self-contained
+            reading experience for
+            <em>The Legend of Adonis</em>.
+          </p>
+
+          <div class="ornament">
+            <span class="ornament-icon"></span>
+          </div>
+
+          <div class="credits-links">
+            <a
+              class="mythic-button interactive-sound"
+              href="mailto:mayurborgude@gmail.com?subject=The Legend of Adonis Feedback">
+                #icon-mail</use>
+              </svg>
+
+              Send Feedback
+            </a>
+
+            <a
+              class="mythic-button primary interactive-sound"
+              href="https://mayborg121.github.io/poems/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Browse the Mayborg poetry website"
+            >
+              <svg aria-hidden="true">
+                #icon-external</use>
+              </svg>
+
+              Browse More Poetry
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- =======================================================
+       READER CONTROLS
+       ======================================================= -->
+
+  <nav
+    id="readerControls"
+    class="reader-controls"
+    aria-label="Chapter pagination"
+  >
+    <button
+      id="previousChapterButton"
+      class="reader-nav-button interactive-sound"
+      type="button"
+    >
+      <svg aria-hidden="true">
+        #icon-arrow-left</use>
+      </svg>
+
+      <span class="reader-nav-label">
+        Previous Scroll
+      </span>
+    </button>
+
+    <div
+      class="reader-progress"
+      aria-label="Chapter reading progress"
+    >
+      <div
+        id="readerProgressFill"
+        class="reader-progress-fill"
+      ></div>
+    </div>
+
+    <button
+      id="nextChapterButton"
+      class="reader-nav-button interactive-sound"
+      type="button"
+    >
+      <span class="reader-nav-label">
+        Next Scroll
+      </span>
+
+      <svg aria-hidden="true">
+        #icon-arrow-right</use>
+      </svg>
+    </button>
+  </nav>
+
+  <div
+    id="toastRegion"
+    class="toast-region"
+    aria-live="polite"
+    aria-atomic="true"
+  ></div>
+
+  <script>
+    "use strict";
+
+    /* =========================================================
+       1. APPLICATION CONFIGURATION
+       ========================================================= */
+
+    const CONFIG = Object.freeze({
+      contentUrl:
+        "https://raw.githubusercontent.com/Mayborg121/loa/refs/heads/main/content.json",
+
+      storageKeys: {
+        progress: "loa_reader_progress_v2",
+        audio: "loa_audio_preference_v2"
+      },
+
+      routes: new Set([
+        "home",
+        "chapters",
+        "reader",
+        "events",
+        "relics",
+        "credits"
+      ]),
+
+      imageTimeout: 12000,
+      fetchTimeout: 16000,
+      scrollSaveDelay: 180,
+      hoverSoundDelay: 68
+    });
+
+    const PLACEHOLDER_IMAGE =
+      "data:image/svg+xml;charset=UTF-8," +
+      encodeURIComponent(`
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1600 900"
+        >
+          <defs>
+            <radialGradient id="g">
+              <stop offset="0" stop-color="#33442f"/>
+              <stop offset=".48" stop-color="#111b14"/>
+              <stop offset="1" stop-color="#040705"/>
+            </radialGradient>
+
+            <linearGradient id="gold" x1="0" x2="1">
+              <stop stop-color="#725618"/>
+              <stop offset=".5" stop-color="#f5d76e"/>
+              <stop offset="1" stop-color="#725618"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="1600" height="900" fill="url(#g)"/>
+
+          <circle
+            cx="800"
+            cy="420"
+            r="210"
+            fill="none"
+            stroke="#d4af37"
+            stroke-opacity=".13"
+            stroke-width="3"
+          />
+
+          <path
+            d="M800 205 955 700 800 615 645 700Z"
+            fill="none"
+            stroke="url(#gold)"
+            stroke-opacity=".42"
+            stroke-width="8"
+          />
+
+          <path
+            d="m800 310 47 238-47 64-47-64Z"
+            fill="#d4af37"
+            fill-opacity=".25"
+          />
+
+          <text
+            x="800"
+            y="790"
+            fill="#d7cab0"
+            fill-opacity=".55"
+            font-family="Georgia, serif"
+            font-size="34"
+            text-anchor="middle"
+            letter-spacing="8"
+          >
+            THE LEGEND OF ADONIS
+          </text>
+        </svg>
+      `);
+
+    /* =========================================================
+       2. SHARED APPLICATION STATE
+       ========================================================= */
+
+    const state = {
+      data: null,
+      route: "home",
+      activeChapterId: null,
+      activeChapterIndex: -1,
+      loading: true,
+      imagePreloadComplete: false,
+      audioEnabled: readAudioPreference(),
+      readerRestorePending: false,
+      reducedMotion:
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches
+    };
+
+    const elements = {
+      body: document.body,
+
+      loadingGate:
+        document.getElementById("loadingGate"),
+
+      loaderStatus:
+        document.getElementById("loaderStatus"),
+
+      loaderProgressFill:
+        document.getElementById("loaderProgressFill"),
+
+      errorGate:
+        document.getElementById("errorGate"),
+
+      errorMessage:
+        document.getElementById("errorMessage"),
+
+      errorDetail:
+        document.getElementById("errorDetail"),
+
+      retryButton:
+        document.getElementById("retryButton"),
+
+      continueShellButton:
+        document.getElementById("continueShellButton"),
+
+      appMain:
+        document.getElementById("appMain"),
+
+      chapterGrid:
+        document.getElementById("chapterGrid"),
+
+      eventsList:
+        document.getElementById("eventsList"),
+
+      relicGrid:
+        document.getElementById("relicGrid"),
+
+      readerShell:
+        document.getElementById("readerShell"),
+
+      resumeButton:
+        document.getElementById("resumeButton"),
+
+      startJourneyButton:
+        document.getElementById("startJourneyButton"),
+
+      headerAudioToggle:
+        document.getElementById("headerAudioToggle"),
+
+      homeAudioToggle:
+        document.getElementById("homeAudioToggle"),
+
+      headerAudioIcon:
+        document.getElementById("headerAudioIcon"),
+
+      homeAudioIcon:
+        document.getElementById("homeAudioIcon"),
+
+      homeAudioText:
+        document.getElementById("homeAudioText"),
+
+      heroStatline:
+        document.getElementById("heroStatline"),
+
+      homeSubtitle:
+        document.getElementById("homeSubtitle"),
+
+      creditsAuthor:
+        document.getElementById("creditsAuthor"),
+
+      readerControls:
+        document.getElementById("readerControls"),
+
+      previousChapterButton:
+        document.getElementById("previousChapterButton"),
+
+      nextChapterButton:
+        document.getElementById("nextChapterButton"),
+
+      readerProgressFill:
+        document.getElementById("readerProgressFill"),
+
+      toastRegion:
+        document.getElementById("toastRegion"),
+
+      emberCanvas:
+        document.getElementById("emberCanvas")
+    };
+
+    /* =========================================================
+       3. SAFE STORAGE
+       ========================================================= */
+
+    function safeStorageGet(key) {
+      try {
+        return window.localStorage.getItem(key);
+      } catch (error) {
+        console.warn(
+          "Local storage could not be read.",
+          error
+        );
+
+        return null;
+      }
+    }
+
+    function safeStorageSet(key, value) {
+      try {
+        window.localStorage.setItem(key, value);
+        return true;
+      } catch (error) {
+        console.warn(
+          "Local storage could not be written.",
+          error
+        );
+
+        return false;
+      }
+    }
+
+    function readAudioPreference() {
+      const stored =
+        safeStorageGet(CONFIG.storageKeys.audio);
+
+      if (stored === null) {
+        return true;
+      }
+
+      return stored === "true";
+    }
+
+    function readProgress() {
+      const raw =
+        safeStorageGet(CONFIG.storageKeys.progress);
+
+      if (!raw) {
+        return null;
+      }
+
+      try {
+        const parsed = JSON.parse(raw);
+
+        if (
+          !parsed ||
+          !Number.isFinite(Number(parsed.chapterId))
+        ) {
+          return null;
+        }
+
+        return {
+          chapterId: Number(parsed.chapterId),
+          scrollOffset:
+            Math.max(
+              0,
+              Number(parsed.scrollOffset) || 0
+            )
+        };
+      } catch (error) {
+        console.warn(
+          "Saved reading progress was invalid.",
+          error
+        );
+
+        return null;
+      }
+    }
+
+    function saveProgress(
+      chapterId,
+      scrollOffset
+    ) {
+      if (!Number.isFinite(Number(chapterId))) {
+        return;
+      }
+
+      safeStorageSet(
+        CONFIG.storageKeys.progress,
+        JSON.stringify({
+          chapterId: Number(chapterId),
+          scrollOffset:
+            Math.max(
+              0,
+              Math.round(
+                Number(scrollOffset) || 0
+              )
+            ),
+          savedAt: Date.now()
+        })
+      );
+    }
+
+    /* =========================================================
+       4. ESCAPING, SANITIZATION, AND FORMAT HELPERS
+       ========================================================= */
+
+    function escapeHTML(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function safeText(value, fallback = "") {
+      if (
+        typeof value === "string" &&
+        value.trim()
+      ) {
+        return value.trim();
+      }
+
+      return fallback;
+    }
+
+    function safeImageUrl(value) {
+      if (
+        typeof value !== "string" ||
+        !value.trim()
+      ) {
+        return PLACEHOLDER_IMAGE;
+      }
+
+      try {
+        const url = new URL(
+          value.trim(),
+          window.location.href
+        );
+
+        if (
+          url.protocol === "https:" ||
+          url.protocol === "http:" ||
+          url.protocol === "data:"
+        ) {
+          return url.href;
+        }
+      } catch (error) {
+        console.warn(
+          "An image URL was rejected.",
+          value,
+          error
+        );
+      }
+
+      return PLACEHOLDER_IMAGE;
+    }
+
+    function normalizeIconReference(value, type) {
+      const approvedIcons = new Set([
+        "#icon-sword",
+        "#icon-artifact",
+        "#icon-memento",
+        "#icon-relic"
+      ]);
+
+      if (approvedIcons.has(value)) {
+        return value;
+      }
+
+      const normalizedType =
+        String(type ?? "").toLowerCase();
+
+      if (normalizedType.includes("weapon")) {
+        return "#icon-sword";
+      }
+
+      if (normalizedType.includes("memento")) {
+        return "#icon-memento";
+      }
+
+      if (normalizedType.includes("artifact")) {
+        return "#icon-artifact";
+      }
+
+      return "#icon-relic";
+    }
+
+    function extractRomanMarker(chapter, index) {
+      const source =
+        safeText(
+          chapter.chapter_number,
+          `Chapter ${index + 1}`
+        );
+
+      const match = source.match(
+        /\b([IVXLCDM]+)\b/i
+      );
+
+      return match
+        ? match[1].toUpperCase()
+        : String(index + 1)
+            .padStart(2, "0");
+    }
+
+    function formatChapterLabel(
+      chapter,
+      index
+    ) {
+      return safeText(
+        chapter.chapter_number,
+        `Chapter ${index + 1}`
+      );
+    }
+
+    function debounce(fn, delay) {
+      let timerId;
+
+      return (...args) => {
+        window.clearTimeout(timerId);
+
+        timerId = window.setTimeout(
+          () => fn(...args),
+          delay
+        );
+      };
+    }
+
+    function requestIdle(callback) {
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(
+          callback,
+          { timeout: 1000 }
+        );
+
+        return;
+      }
+
+      window.setTimeout(callback, 50);
+    }
+
+    /* =========================================================
+       5. DATA VALIDATION AND NORMALIZATION
+       ========================================================= */
+
+    function validateAndNormalizeData(payload) {
+      if (
+        !payload ||
+        typeof payload !== "object" ||
+        Array.isArray(payload)
+      ) {
+        throw new Error(
+          "The JSON root must be an object."
+        );
+      }
+
+      const metadata =
+        payload.book_metadata &&
+        typeof payload.book_metadata === "object"
+          ? payload.book_metadata
+          : {};
+
+      const rawChapters =
+        Array.isArray(payload.chapters)
+          ? payload.chapters
+          : [];
+
+      const rawEvents =
+        Array.isArray(payload.events)
+          ? payload.events
+          : [];
+
+      const rawRelics =
+        Array.isArray(payload.relics)
+          ? payload.relics
+          : [];
+
+      const usedChapterIds = new Set();
+
+      const chapters =
+        rawChapters
+          .filter(
+            (chapter) =>
+              chapter &&
+              typeof chapter === "object"
+          )
+          .map((chapter, index) => {
+            let id =
+              Number.isFinite(Number(chapter.id))
+                ? Number(chapter.id)
+                : index + 1;
+
+            while (usedChapterIds.has(id)) {
+              id += 1;
+            }
+
+            usedChapterIds.add(id);
+
+            const content =
+              Array.isArray(chapter.content)
+                ? chapter.content.filter(
+                    (block) =>
+                      block &&
+                      typeof block === "object"
+                  )
+                : [];
+
+            const poem =
+              chapter.poem &&
+              typeof chapter.poem === "object"
+                ? {
+                    title: safeText(
+                      chapter.poem.title,
+                      "Untitled Verse"
+                    ),
+
+                    stanzas:
+                      Array.isArray(
+                        chapter.poem.stanzas
+                      )
+                        ? chapter.poem.stanzas
+                            .map((stanza) =>
+                              safeText(
+                                stanza,
+                                ""
+                              )
+                            )
+                            .filter(Boolean)
+                        : []
+                  }
+                : null;
+
+            return {
+              id,
+
+              chapter_number:
+                safeText(
+                  chapter.chapter_number,
+                  `Chapter ${index + 1}`
+                ),
+
+              title:
+                safeText(
+                  chapter.title,
+                  `Untitled Chronicle ${index + 1}`
+                ),
+
+              summary:
+                safeText(
+                  chapter.summary,
+                  "A sealed chapter awaits within."
+                ),
+
+              cover_image:
+                safeImageUrl(
+                  chapter.cover_image
+                ),
+
+              content,
+
+              has_poem:
+                Boolean(chapter.has_poem),
+
+              poem
+            };
+          });
+
+      const events =
+        rawEvents
+          .filter(
+            (event) =>
+              event &&
+              typeof event === "object"
+          )
+          .map((event, index) => ({
+            id:
+              safeText(
+                event.id,
+                `event_${index + 1}`
+              ),
+
+            year_or_era:
+              safeText(
+                event.year_or_era,
+                "An Unrecorded Age"
+              ),
+
+            title:
+              safeText(
+                event.title,
+                `Forgotten Event ${index + 1}`
+              ),
+
+            description:
+              safeText(
+                event.description,
+                "The surviving records reveal little."
+              ),
+
+            image:
+              safeImageUrl(event.image),
+
+            related_chapter_id:
+              Number.isFinite(
+                Number(
+                  event.related_chapter_id
+                )
+              )
+                ? Number(
+                    event.related_chapter_id
+                  )
+                : null
+          }));
+
+      const relics =
+        rawRelics
+          .filter(
+            (relic) =>
+              relic &&
+              typeof relic === "object"
+          )
+          .map((relic, index) => ({
+            id:
+              safeText(
+                relic.id,
+                `relic_${index + 1}`
+              ),
+
+            name:
+              safeText(
+                relic.name,
+                `Unnamed Relic ${index + 1}`
+              ),
+
+            type:
+              safeText(
+                relic.type,
+                "Artifact"
+              ),
+
+            icon_id:
+              normalizeIconReference(
+                relic.icon_id,
+                relic.type
+              ),
+
+            image_url:
+              safeImageUrl(relic.image_url),
+
+            description:
+              safeText(
+                relic.description,
+                "Its origin remains hidden beneath the dust of ages."
+              )
+          }));
+
+      return {
+        book_metadata: {
+          title:
+            safeText(
+              metadata.title,
+              "The Legend of Adonis"
+            ),
+
+          subtitle:
+            safeText(
+              metadata.subtitle,
+              "A Tale of Sacrifice in Shadows"
+            ),
+
+          author:
+            safeText(
+              metadata.author,
+              "Mayur Borgude"
+            ),
+
+          version:
+            safeText(
+              metadata.version,
+              "1.0.0"
+            ),
+
+          total_chapters:
+            Number.isFinite(
+              Number(metadata.total_chapters)
+            )
+              ? Number(
+                  metadata.total_chapters
+                )
+              : chapters.length
+        },
+
+        chapters,
+        events,
+        relics
+      };
+    }
+
+    /* =========================================================
+       6. NETWORK AND IMAGE PRELOADING
+       ========================================================= */
+
+    async function fetchWithTimeout(
+      url,
+      timeout
+    ) {
+      const controller =
+        new AbortController();
+
+      const timeoutId =
+        window.setTimeout(
+          () => controller.abort(),
+          timeout
+        );
+
+      try {
+        const response = await fetch(
+          url,
+          {
+            method: "GET",
+            cache: "no-store",
+            mode: "cors",
+            credentials: "omit",
+            signal: controller.signal,
+            headers: {
+              Accept:
+                "application/json, text/plain;q=0.9, */*;q=0.5"
+            }
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `The story server returned HTTP ${response.status} ${response.statusText}.`
+          );
+        }
+
+        const text = await response.text();
+
+        try {
+          return JSON.parse(text);
+        } catch (error) {
+          throw new Error(
+            "The remote file was reached, but it does not contain valid JSON."
+          );
+        }
+      } catch (error) {
+        if (error.name === "AbortError") {
+          throw new Error(
+            "The story request exceeded the permitted loading window."
+          );
+        }
+
+        throw error;
+      } finally {
+        window.clearTimeout(timeoutId);
+      }
+    }
+
+    function collectImageUrls(data) {
+      const urls = new Set();
+
+      data.chapters.forEach((chapter) => {
+        urls.add(chapter.cover_image);
+
+        chapter.content.forEach((block) => {
+          if (
+            String(block.type).toLowerCase() ===
+            "image"
+          ) {
+            urls.add(
+              safeImageUrl(block.url)
+            );
+          }
+        });
+      });
+
+      data.events.forEach((event) => {
+        urls.add(event.image);
+      });
+
+      data.relics.forEach((relic) => {
+        urls.add(relic.image_url);
+      });
+
+      urls.delete(PLACEHOLDER_IMAGE);
+
+      return [...urls];
+    }
+
+    function preloadSingleImage(url) {
+      return new Promise((resolve) => {
+        const image = new Image();
+
+        const timeoutId =
+          window.setTimeout(() => {
+            image.onload = null;
+            image.onerror = null;
+
+            resolve({
+              url,
+              loaded: false,
+              reason: "timeout"
+            });
+          }, CONFIG.imageTimeout);
+
+        const settle = (
+          loaded,
+          reason = ""
+        ) => {
+          window.clearTimeout(timeoutId);
+          image.onload = null;
+          image.onerror = null;
+
+          resolve({
+            url,
+            loaded,
+            reason
+          });
+        };
+
+        image.onload = () => {
+          if (
+            typeof image.decode ===
+            "function"
+          ) {
+            image
+              .decode()
+              .catch(() => {})
+              .finally(() =>
+                settle(true)
+              );
+
+            return;
+          }
+
+          settle(true);
+        };
+
+        image.onerror = () =>
+          settle(false, "network");
+
+        image.decoding = "async";
+        image.src = url;
+      });
+    }
+
+    async function preloadImages(
+      urls,
+      onProgress
+    ) {
+      if (!urls.length) {
+        onProgress(1);
+        return [];
+      }
+
+      const results = [];
+      let completed = 0;
+
+      /*
+        Limit concurrent image requests to remain responsive on
+        mobile or slower connections.
+      */
+      const queue = [...urls];
+      const workerCount =
+        Math.min(5, queue.length);
+
+      async function worker() {
+        while (queue.length) {
+          const url = queue.shift();
+
+          if (!url) {
+            break;
+          }
+
+          const result =
+            await preloadSingleImage(url);
+
+          results.push(result);
+          completed += 1;
+
+          onProgress(
+            completed / urls.length
+          );
+        }
+      }
+
+      await Promise.all(
+        Array.from(
+          { length: workerCount },
+          () => worker()
+        )
+      );
+
+      return results;
+    }
+
+    async function loadApplicationData() {
+      state.loading = true;
+
+      setLoader(
+        "Seeking the forgotten scrolls...",
+        0.12
+      );
+
+      const raw =
+        await fetchWithTimeout(
+          CONFIG.contentUrl,
+          CONFIG.fetchTimeout
+        );
+
+      setLoader(
+        "Deciphering the manuscript...",
+        0.32
+      );
+
+      const normalized =
+        validateAndNormalizeData(raw);
+
+      state.data = normalized;
+
+      renderAllViews();
+
+      setLoader(
+        "Summoning distant visions...",
+        0.45
+      );
+
+      const imageUrls =
+        collectImageUrls(normalized);
+
+      const imageResults =
+        await preloadImages(
+          imageUrls,
+          (progress) => {
+            setLoader(
+              "Gathering the last embers...",
+              0.45 + progress * 0.5
+            );
+          }
+        );
+
+      state.imagePreloadComplete = true;
+
+      const failedImages =
+        imageResults.filter(
+          (item) => !item.loaded
+        );
+
+      if (failedImages.length) {
+        console.warn(
+          "Some remote story images could not be preloaded.",
+          failedImages
+        );
+      }
+
+      setLoader(
+        "The path is open.",
+        1
+      );
+
+      state.loading = false;
+
+      await delay(
+        state.reducedMotion
+          ? 40
+          : 420
+      );
+
+      elements.loadingGate.classList.add(
+        "is-hidden"
+      );
+
+      updateResumeAvailability();
+      applyInitialHash();
+    }
+
+    function delay(milliseconds) {
+      return new Promise((resolve) => {
+        window.setTimeout(
+          resolve,
+          milliseconds
+        );
+      });
+    }
+
+    function setLoader(message, progress) {
+      elements.loaderStatus.textContent =
+        message;
+
+      const boundedProgress =
+        Math.max(
+          0,
+          Math.min(1, progress)
+        );
+
+      elements.loaderProgressFill.style.width =
+        `${boundedProgress * 100}%`;
+    }
+
+    /* =========================================================
+       7. RENDERING
+       ========================================================= */
+
+    function renderAllViews() {
+      if (!state.data) {
+        return;
+      }
+
+      renderMetadata();
+      renderChapters();
+      renderEvents();
+      renderRelics();
+      updateAudioInterface();
+    }
+
+    function renderMetadata() {
+      const metadata =
+        state.data.book_metadata;
+
+      document.title =
+        metadata.title;
+
+      elements.homeSubtitle.textContent =
+        metadata.subtitle;
+
+      elements.creditsAuthor.textContent =
+        metadata.author;
+
+      elements.heroStatline.replaceChildren();
+
+      const statItems = [
+        `${metadata.total_chapters} Chronicles`,
+        `By ${metadata.author}`,
+        `Archive ${metadata.version}`
+      ];
+
+      statItems.forEach((item) => {
+        const span =
+          document.createElement("span");
+
+        span.textContent = item;
+
+        elements.heroStatline.append(span);
+      });
+    }
+
+    function renderChapters() {
+      const chapters =
+        state.data.chapters;
+
+      elements.chapterGrid.replaceChildren();
+
+      if (!chapters.length) {
+        elements.chapterGrid.append(
+          buildEmptyState(
+            "No Scrolls Were Found",
+            "The remote archive does not currently contain any chapters.",
+            "#icon-scroll"
+          )
+        );
+
+        return;
+      }
+
+      const fragment =
+        document.createDocumentFragment();
+
+      chapters.forEach(
+        (chapter, index) => {
+          const article =
+            document.createElement(
+              "article"
+            );
+
+          article.className =
+            "chapter-card glass-card";
+
+          const button =
+            document.createElement("button");
+
+          button.type = "button";
+          button.className =
+            "chapter-button interactive-sound";
+
+          button.dataset.chapterId =
+            String(chapter.id);
+
+          button.setAttribute(
+            "aria-label",
+            `Read ${formatChapterLabel(
+              chapter,
+              index
+            )}: ${chapter.title}`
+          );
+
+          const imageWrap =
+            document.createElement("div");
+
+          imageWrap.className =
+            "chapter-image";
+
+          const image =
+            createStoryImage(
+              chapter.cover_image,
+              `${chapter.title} cover art`
+            );
+
+          const marker =
+            document.createElement("div");
+
+          marker.className =
+            "chapter-marker";
+
+          marker.textContent =
+            extractRomanMarker(
+              chapter,
+              index
+            );
+
+          imageWrap.append(
+            image,
+            marker
+          );
+
+          const body =
+            document.createElement("div");
+
+          body.className =
+            "chapter-body";
+
+          const label =
+            document.createElement("span");
+
+          label.className =
+            "chapter-label";
+
+          label.textContent =
+            formatChapterLabel(
+              chapter,
+              index
+            );
+
+          const title =
+            document.createElement("h3");
+
+          title.className =
+            "chapter-card-title";
+
+          title.textContent =
+            chapter.title;
+
+          const summary =
+            document.createElement("p");
+
+          summary.className =
+            "chapter-summary";
+
+          summary.textContent =
+            chapter.summary;
+
+          const openRow =
+            document.createElement("span");
+
+          openRow.className =
+            "chapter-open-row";
+
+          openRow.innerHTML = `
+            Open the scroll
+            <svg aria-hidden="true">
+              <use href="#icon-arrow-right"></use>
+            </svg>
+          `;
+
+          body.append(
+            label,
+            title,
+            summary,
+            openRow
+          );
+
+          button.append(
+            imageWrap,
+            body
+          );
+
+          article.append(button);
+          fragment.append(article);
+        }
+      );
+
+      elements.chapterGrid.append(
+        fragment
+      );
+    }
+
+    function renderEvents() {
+      const events =
+        state.data.events;
+
+      elements.eventsList.replaceChildren();
+
+      if (!events.length) {
+        elements.eventsList.append(
+          buildEmptyState(
+            "The Codex Is Silent",
+            "No historical events are recorded in the current archive.",
+            "#icon-event"
+          )
+        );
+
+        return;
+      }
+
+      const fragment =
+        document.createDocumentFragment();
+
+      events.forEach((event) => {
+        const article =
+          document.createElement(
+            "article"
+          );
+
+        article.className =
+          "event-card";
+
+        const art =
+          document.createElement("div");
+
+        art.className =
+          "event-art";
+
+        art.append(
+          createStoryImage(
+            event.image,
+            `${event.title} artwork`
+          )
+        );
+
+        const content =
+          document.createElement("div");
+
+        content.className =
+          "event-content";
+
+        const era =
+          document.createElement("p");
+
+        era.className =
+          "event-era";
+
+        era.textContent =
+          event.year_or_era;
+
+        const title =
+          document.createElement("h3");
+
+        title.className =
+          "event-title";
+
+        title.textContent =
+          event.title;
+
+        const description =
+          document.createElement("p");
+
+        description.className =
+          "event-description";
+
+        description.textContent =
+          event.description;
+
+        content.append(
+          era,
+          title,
+          description
+        );
+
+        const relatedChapter =
+          getChapterById(
+            event.related_chapter_id
+          );
+
+        if (relatedChapter) {
+          const action =
+            document.createElement(
+              "button"
+            );
+
+          action.type = "button";
+          action.className =
+            "mythic-button event-action interactive-sound";
+
+          action.dataset.chapterId =
+            String(relatedChapter.id);
+
+          action.innerHTML = `
+            <svg aria-hidden="true">
+              <use href="#icon-scroll"></use>
+            </svg>
+            Read Related Chapter
+          `;
+
+          content.append(action);
+        }
+
+        article.append(art, content);
+        fragment.append(article);
+      });
+
+      elements.eventsList.append(
+        fragment
+      );
+    }
+
+    function renderRelics() {
+      const relics =
+        state.data.relics;
+
+      elements.relicGrid.replaceChildren();
+
+      if (!relics.length) {
+        elements.relicGrid.append(
+          buildEmptyState(
+            "The Vault Is Empty",
+            "No relics have yet been placed within the archive.",
+            "#icon-relic"
+          )
+        );
+
+        return;
+      }
+
+      const fragment =
+        document.createDocumentFragment();
+
+      relics.forEach((relic) => {
+        const article =
+          document.createElement(
+            "article"
+          );
+
+        article.className =
+          "relic-card glass-card";
+
+        const header =
+          document.createElement("div");
+
+        header.className =
+          "relic-header";
+
+        const aura =
+          document.createElement("div");
+
+        aura.className =
+          "relic-aura";
+
+        aura.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+        aura.innerHTML = `
+          <svg>
+            <use href="${escapeHTML(
+              relic.icon_id
+            )}"></use>
+          </svg>
+        `;
+
+        const badge =
+          document.createElement("span");
+
+        badge.className =
+          "relic-badge";
+
+        badge.textContent =
+          relic.type;
+
+        header.append(aura, badge);
+
+        const imageWrap =
+          document.createElement("div");
+
+        imageWrap.className =
+          "relic-image";
+
+        imageWrap.append(
+          createStoryImage(
+            relic.image_url,
+            relic.name
+          )
+        );
+
+        const copy =
+          document.createElement("div");
+
+        copy.className =
+          "relic-copy";
+
+        const title =
+          document.createElement("h3");
+
+        title.className =
+          "relic-title";
+
+        title.textContent =
+          relic.name;
+
+        const description =
+          document.createElement("p");
+
+        description.className =
+          "relic-description";
+
+        description.textContent =
+          relic.description;
+
+        copy.append(
+          title,
+          description
+        );
+
+        article.append(
+          header,
+          imageWrap,
+          copy
+        );
+
+        fragment.append(article);
+      });
+
+      elements.relicGrid.append(
+        fragment
+      );
+    }
+
+    function renderReader(
+      chapterId,
+      restoreOffset = 0
+    ) {
+      const chapter =
+        getChapterById(chapterId);
+
+      if (!chapter) {
+        showToast(
+          "That scroll could not be found."
+        );
+
+        navigate("chapters");
+        return;
+      }
+
+      const index =
+        state.data.chapters.findIndex(
+          (item) =>
+            item.id === chapter.id
+        );
+
+      state.activeChapterId =
+        chapter.id;
+
+      state.activeChapterIndex =
+        index;
+
+      elements.readerShell.replaceChildren();
+
+      const banner =
+        document.createElement("header");
+
+      banner.className =
+        "reader-banner";
+
+      const media =
+        document.createElement("div");
+
+      media.className =
+        "reader-banner-media";
+
+      media.append(
+        createStoryImage(
+          chapter.cover_image,
+          `${chapter.title} chapter banner`
+        )
+      );
+
+      const heading =
+        document.createElement("div");
+
+      heading.className =
+        "reader-heading";
+
+      const number =
+        document.createElement("div");
+
+      number.className =
+        "reader-chapter-number";
+
+      number.textContent =
+        formatChapterLabel(
+          chapter,
+          index
+        );
+
+      const title =
+        document.createElement("h2");
+
+      title.id = "readerTitle";
+      title.className =
+        "reader-title";
+
+      title.textContent =
+        chapter.title;
+
+      const summary =
+        document.createElement("p");
+
+      summary.className =
+        "reader-summary";
+
+      summary.textContent =
+        chapter.summary;
+
+      heading.append(
+        number,
+        title,
+        summary
+      );
+
+      banner.append(media, heading);
+
+      const manuscript =
+        document.createElement("div");
+
+      manuscript.className =
+        "manuscript";
+
+      const content =
+        document.createElement("div");
+
+      content.className =
+        "manuscript-content";
+
+      let firstParagraphFound = false;
+
+      chapter.content.forEach(
+        (block) => {
+          const type =
+            String(
+              block.type ?? ""
+            )
+              .trim()
+              .toLowerCase();
+
+          if (type === "paragraph") {
+            const text =
+              safeText(block.text, "");
+
+            if (!text) {
+              return;
+            }
+
+            const paragraph =
+              document.createElement("p");
+
+            paragraph.className =
+              "prose-paragraph";
+
+            if (!firstParagraphFound) {
+              paragraph.classList.add(
+                "first-paragraph"
+              );
+
+              firstParagraphFound = true;
+            }
+
+            paragraph.textContent =
+              text;
+
+            content.append(paragraph);
+            return;
+          }
+
+          if (type === "image") {
+            const figure =
+              document.createElement(
+                "figure"
+              );
+
+            figure.className =
+              "inline-figure";
+
+            const frame =
+              document.createElement("div");
+
+            frame.className =
+              "inline-figure-frame";
+
+            frame.append(
+              createStoryImage(
+                safeImageUrl(block.url),
+                safeText(
+                  block.caption,
+                  "An illustration from the chronicle"
+                )
+              )
+            );
+
+            figure.append(frame);
+
+            const captionText =
+              safeText(
+                block.caption,
+                ""
+              );
+
+            if (captionText) {
+              const caption =
+                document.createElement(
+                  "figcaption"
+                );
+
+              caption.textContent =
+                captionText;
+
+              figure.append(caption);
+            }
+
+            content.append(figure);
+          }
+        }
+      );
+
+      if (
+        chapter.has_poem &&
+        chapter.poem &&
+        chapter.poem.stanzas.length
+      ) {
+        content.append(
+          buildPoem(chapter.poem)
+        );
+      }
+
+      if (!content.children.length) {
+        content.append(
+          buildEmptyState(
+            "This Scroll Is Unwritten",
+            "The chapter exists, but no readable content was found within it.",
+            "#icon-scroll"
+          )
+        );
+      }
+
+      manuscript.append(content);
+
+      elements.readerShell.append(
+        banner,
+        manuscript
+      );
+
+      updateReaderControls();
+
+      const readerView =
+        getViewElement("reader");
+
+      /*
+        Rendering alters the document height. Restore only after
+        the browser has completed layout.
+      */
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+          readerView.scrollTop =
+            Math.max(0, restoreOffset);
+
+          updateReaderProgress();
+          saveProgress(
+            chapter.id,
+            readerView.scrollTop
+          );
+        });
+      });
+    }
+
+    function buildPoem(poem) {
+      const block =
+        document.createElement("section");
+
+      block.className =
+        "poem-block";
+
+      block.setAttribute(
+        "aria-label",
+        poem.title
+      );
+
+      const title =
+        document.createElement("h3");
+
+      title.className =
+        "poem-title";
+
+      title.textContent =
+        poem.title;
+
+      block.append(title);
+
+      poem.stanzas.forEach((stanza) => {
+        const stanzaElement =
+          document.createElement("p");
+
+        stanzaElement.className =
+          "poem-stanza";
+
+        stanzaElement.textContent =
+          stanza;
+
+        block.append(stanzaElement);
+      });
+
+      return block;
+    }
+
+    function buildEmptyState(
+      title,
+      message,
+      iconId
+    ) {
+      const stateElement =
+        document.createElement("div");
+
+      stateElement.className =
+        "empty-state";
+
+      stateElement.innerHTML = `
+        <svg aria-hidden="true">
+          <use href="${escapeHTML(
+            iconId
+          )}"></use>
+        </svg>
+
+        <h2>${escapeHTML(title)}</h2>
+
+        <p>${escapeHTML(message)}</p>
+      `;
+
+      return stateElement;
+    }
+
+    function createStoryImage(
+      src,
+      alt
+    ) {
+      const image =
+        document.createElement("img");
+
+      image.src =
+        safeImageUrl(src);
+
+      image.alt =
+        safeText(
+          alt,
+          "Story artwork"
+        );
+
+      image.decoding = "async";
+      image.loading = "eager";
+
+      image.addEventListener(
+        "error",
+        () => {
+          if (
+            image.src !== PLACEHOLDER_IMAGE
+          ) {
+            image.src =
+              PLACEHOLDER_IMAGE;
+          }
+        },
+        { once: true }
+      );
+
+      return image;
+    }
+
+    /* =========================================================
+       8. ROUTER
+       ========================================================= */
+
+    function navigate(
+      route,
+      options = {}
+    ) {
+      const requestedRoute =
+        CONFIG.routes.has(route)
+          ? route
+          : "home";
+
+      if (
+        requestedRoute === "reader" &&
+        !state.activeChapterId &&
+        state.data?.chapters?.length
+      ) {
+        renderReader(
+          state.data.chapters[0].id,
+          0
+        );
+      }
+
+      if (
+        state.route === "reader" &&
+        requestedRoute !== "reader"
+      ) {
+        persistCurrentReaderPosition();
+      }
+
+      state.route =
+        requestedRoute;
+
+      document
+        .querySelectorAll(".view")
+        .forEach((view) => {
+          const isActive =
+            view.dataset.view ===
+            requestedRoute;
+
+          view.classList.toggle(
+            "is-active",
+            isActive
+          );
+
+          view.setAttribute(
+            "aria-hidden",
+            String(!isActive)
+          );
+        });
+
+      document
+        .querySelectorAll(
+          ".nav-button[data-route]"
+        )
+        .forEach((button) => {
+          const navRoute =
+            button.dataset.route;
+
+          const activeRoute =
+            requestedRoute === "reader"
+              ? "chapters"
+              : requestedRoute;
+
+          button.classList.toggle(
+            "is-active",
+            navRoute === activeRoute
+          );
+
+          if (
+            navRoute === activeRoute
+          ) {
+            button.setAttribute(
+              "aria-current",
+              "page"
+            );
+          } else {
+            button.removeAttribute(
+              "aria-current"
+            );
+          }
+        });
+
+      elements.body.classList.toggle(
+        "is-deep-view",
+        requestedRoute !== "home"
+      );
+
+      elements.body.classList.toggle(
+        "reader-open",
+        requestedRoute === "reader"
+      );
+
+      const activeView =
+        getViewElement(
+          requestedRoute
+        );
+
+      if (
+        activeView &&
+        !options.preserveScroll &&
+        requestedRoute !== "reader"
+      ) {
+        activeView.scrollTo({
+          top: 0,
+          behavior:
+            state.reducedMotion
+              ? "auto"
+              : "smooth"
+        });
+      }
+
+      const hash =
+        requestedRoute === "reader" &&
+        state.activeChapterId
+          ? `#reader/${state.activeChapterId}`
+          : `#${requestedRoute}`;
+
+      if (
+        options.replaceHistory
+      ) {
+        history.replaceState(
+          {
+            route:
+              requestedRoute
+          },
+          "",
+          hash
+        );
+      } else if (
+        window.location.hash !== hash
+      ) {
+        history.pushState(
+          {
+            route:
+              requestedRoute
+          },
+          "",
+          hash
+        );
+      }
+
+      updateScrollHints();
+    }
+
+    function applyInitialHash() {
+      const hash =
+        window.location.hash
+          .replace(/^#/, "")
+          .trim();
+
+      if (!hash) {
+        navigate(
+          "home",
+          {
+            replaceHistory: true
+          }
+        );
+
+        return;
+      }
+
+      const [
+        route,
+        chapterIdValue
+      ] = hash.split("/");
+
+      if (
+        route === "reader" &&
+        chapterIdValue
+      ) {
+        const chapterId =
+          Number(chapterIdValue);
+
+        const chapter =
+          getChapterById(chapterId);
+
+        if (chapter) {
+          const saved =
+            readProgress();
+
+          const offset =
+            saved &&
+            saved.chapterId ===
+              chapter.id
+              ? saved.scrollOffset
+              : 0;
+
+          renderReader(
+            chapter.id,
+            offset
+          );
+
+          navigate(
+            "reader",
+            {
+              replaceHistory: true,
+              preserveScroll: true
+            }
+          );
+
+          return;
+        }
+      }
+
+      navigate(
+        CONFIG.routes.has(route)
+          ? route
+          : "home",
+        {
+          replaceHistory: true
+        }
+      );
+    }
+
+    function getViewElement(route) {
+      return document.querySelector(
+        `.view[data-view="${route}"]`
+      );
+    }
+
+    function getChapterById(id) {
+      if (!state.data) {
+        return null;
+      }
+
+      const numericId =
+        Number(id);
+
+      return (
+        state.data.chapters.find(
+          (chapter) =>
+            chapter.id === numericId
+        ) ?? null
+      );
+    }
+
+    function openChapter(
+      chapterId,
+      restoreOffset = 0
+    ) {
+      const chapter =
+        getChapterById(chapterId);
+
+      if (!chapter) {
+        showToast(
+          "The requested scroll is unavailable."
+        );
+
+        return;
+      }
+
+      audioEngine.playSelect();
+
+      renderReader(
+        chapter.id,
+        restoreOffset
+      );
+
+      navigate(
+        "reader",
+        {
+          preserveScroll: true
+        }
+      );
+    }
+
+    function updateReaderControls() {
+      const total =
+        state.data?.chapters?.length ?? 0;
+
+      elements.previousChapterButton.disabled =
+        state.activeChapterIndex <= 0;
+
+      elements.nextChapterButton.disabled =
+        state.activeChapterIndex < 0 ||
+        state.activeChapterIndex >=
+          total - 1;
+    }
+
+    function openAdjacentChapter(direction) {
+      if (!state.data) {
+        return;
+      }
+
+      const targetIndex =
+        state.activeChapterIndex +
+        direction;
+
+      const chapter =
+        state.data.chapters[
+          targetIndex
+        ];
+
+      if (!chapter) {
+        showToast(
+          direction < 0
+            ? "This is the first known scroll."
+            : "You have reached the final known scroll."
+        );
+
+        return;
+      }
+
+      openChapter(chapter.id, 0);
+    }
+
+    /* =========================================================
+       9. READING PROGRESS
+       ========================================================= */
+
+    const persistReaderDebounced =
+      debounce(
+        persistCurrentReaderPosition,
+        CONFIG.scrollSaveDelay
+      );
+
+    function persistCurrentReaderPosition() {
+      if (
+        state.route !== "reader" ||
+        !state.activeChapterId
+      ) {
+        return;
+      }
+
+      const readerView =
+        getViewElement("reader");
+
+      saveProgress(
+        state.activeChapterId,
+        readerView.scrollTop
+      );
+    }
+
+    function updateReaderProgress() {
+      const readerView =
+        getViewElement("reader");
+
+      if (!readerView) {
+        return;
+      }
+
+      const scrollableDistance =
+        readerView.scrollHeight -
+        readerView.clientHeight;
+
+      const progress =
+        scrollableDistance > 0
+          ? readerView.scrollTop /
+            scrollableDistance
+          : 1;
+
+      elements.readerProgressFill.style.width =
+        `${
+          Math.max(
+            0,
+            Math.min(1, progress)
+          ) * 100
+        }%`;
+    }
+
+    function updateResumeAvailability() {
+      const progress =
+        readProgress();
+
+      const chapter =
+        progress
+          ? getChapterById(
+              progress.chapterId
+            )
+          : null;
+
+      elements.resumeButton.hidden =
+        !chapter;
+
+      if (chapter) {
+        elements.resumeButton.setAttribute(
+          "aria-label",
+          `Continue reading ${chapter.title}`
+        );
+      }
+    }
+
+    /* =========================================================
+       10. PROCEDURAL WEB AUDIO ENGINE
+       ========================================================= */
+
+    class MythologyAudioEngine {
+      constructor() {
+        this.context = null;
+        this.masterGain = null;
+        this.ambientGain = null;
+        this.sfxGain = null;
+
+        this.droneNodes = [];
+        this.initialized = false;
+        this.unlocked = false;
+        this.enabled =
+          state.audioEnabled;
+
+        this.lastHoverTime = 0;
+      }
+
+      get AudioContextClass() {
+        return (
+          window.AudioContext ||
+          window.webkitAudioContext ||
+          null
+        );
+      }
+
+      initialize() {
+        if (
+          this.initialized ||
+          !this.AudioContextClass
+        ) {
+          return;
+        }
+
+        this.context =
+          new this.AudioContextClass();
+
+        this.masterGain =
+          this.context.createGain();
+
+        this.ambientGain =
+          this.context.createGain();
+
+        this.sfxGain =
+          this.context.createGain();
+
+        this.masterGain.gain.value =
+          this.enabled
+            ? 0.78
+            : 0.0001;
+
+        this.ambientGain.gain.value =
+          0.0001;
+
+        this.sfxGain.gain.value =
+          0.62;
+
+        this.ambientGain.connect(
+          this.masterGain
+        );
+
+        this.sfxGain.connect(
+          this.masterGain
+        );
+
+        this.masterGain.connect(
+          this.context.destination
+        );
+
+        this.createAmbientDrone();
+
+        this.initialized = true;
+      }
+
+      async unlock() {
+        if (!this.enabled) {
+          return;
+        }
+
+        this.initialize();
+
+        if (!this.context) {
+          return;
+        }
+
+        if (
+          this.context.state ===
+          "suspended"
+        ) {
+          try {
+            await this.context.resume();
+          } catch (error) {
+            console.warn(
+              "Audio context could not resume.",
+              error
+            );
+
+            return;
+          }
+        }
+
+        this.unlocked = true;
+        this.fadeAmbient(true);
+      }
+
+      createAmbientDrone() {
+        if (
+          !this.context ||
+          !this.ambientGain
+        ) {
+          return;
+        }
+
+        const now =
+          this.context.currentTime;
+
+        const lowpass =
+          this.context.createBiquadFilter();
+
+        lowpass.type = "lowpass";
+        lowpass.frequency.value = 165;
+        lowpass.Q.value = 0.7;
+
+        const bodyGain =
+          this.context.createGain();
+
+        bodyGain.gain.value = 0.24;
+
+        const droneA =
+          this.context.createOscillator();
+
+        const droneB =
+          this.context.createOscillator();
+
+        droneA.type = "sawtooth";
+        droneB.type = "triangle";
+
+        droneA.frequency.value = 43.65;
+        droneB.frequency.value = 65.28;
+
+        droneA.detune.value = -7;
+        droneB.detune.value = 5;
+
+        droneA.connect(bodyGain);
+        droneB.connect(bodyGain);
+
+        bodyGain.connect(lowpass);
+        lowpass.connect(
+          this.ambientGain
+        );
+
+        const lfo =
+          this.context.createOscillator();
+
+        const lfoFilterGain =
+          this.context.createGain();
+
+        const lfoVolumeGain =
+          this.context.createGain();
+
+        lfo.type = "sine";
+        lfo.frequency.value = 0.075;
+
+        lfoFilterGain.gain.value = 38;
+        lfoVolumeGain.gain.value = 0.055;
+
+        lfo.connect(lfoFilterGain);
+        lfo.connect(lfoVolumeGain);
+
+        lfoFilterGain.connect(
+          lowpass.frequency
+        );
+
+        lfoVolumeGain.connect(
+          bodyGain.gain
+        );
+
+        /*
+          A very quiet sublayer adds low resonance without using
+          an external audio sample.
+        */
+        const sub =
+          this.context.createOscillator();
+
+        const subGain =
+          this.context.createGain();
+
+        sub.type = "sine";
+        sub.frequency.value = 32.7;
+        subGain.gain.value = 0.045;
+
+        sub.connect(subGain);
+        subGain.connect(lowpass);
+
+        droneA.start(now);
+        droneB.start(now);
+        sub.start(now);
+        lfo.start(now);
+
+        this.droneNodes.push(
+          droneA,
+          droneB,
+          sub,
+          lfo,
+          bodyGain,
+          subGain,
+          lowpass,
+          lfoFilterGain,
+          lfoVolumeGain
+        );
+      }
+
+      fadeAmbient(shouldRise) {
+        if (
+          !this.context ||
+          !this.ambientGain
+        ) {
+          return;
+        }
+
+        const now =
+          this.context.currentTime;
+
+        const target =
+          shouldRise &&
+          this.enabled
+            ? 0.11
+            : 0.0001;
+
+        this.ambientGain.gain.cancelScheduledValues(
+          now
+        );
+
+        this.ambientGain.gain.setTargetAtTime(
+          target,
+          now,
+          shouldRise
+            ? 1.35
+            : 0.2
+        );
+      }
+
+      async setEnabled(enabled) {
+        this.enabled =
+          Boolean(enabled);
+
+        state.audioEnabled =
+          this.enabled;
+
+        safeStorageSet(
+          CONFIG.storageKeys.audio,
+          String(this.enabled)
+        );
+
+        updateAudioInterface();
+
+        if (this.enabled) {
+          await this.unlock();
+
+          if (
+            this.context &&
+            this.masterGain
+          ) {
+            const now =
+              this.context.currentTime;
+
+            this.masterGain.gain.cancelScheduledValues(
+              now
+            );
+
+            this.masterGain.gain.setTargetAtTime(
+              0.78,
+              now,
+              0.08
+            );
+
+            this.fadeAmbient(true);
+            this.playSelect();
+          }
+
+          showToast("Audio awakened.");
+        } else {
+          if (
+            this.context &&
+            this.masterGain
+          ) {
+            const now =
+              this.context.currentTime;
+
+            this.fadeAmbient(false);
+
+            this.masterGain.gain.cancelScheduledValues(
+              now
+            );
+
+            this.masterGain.gain.setTargetAtTime(
+              0.0001,
+              now,
+              0.06
+            );
+          }
+
+          showToast("Audio silenced.");
+        }
+      }
+
+      toggle() {
+        return this.setEnabled(
+          !this.enabled
+        );
+      }
+
+      playHover() {
+        if (
+          !this.enabled ||
+          !this.context ||
+          !this.unlocked ||
+          !this.sfxGain
+        ) {
+          return;
+        }
+
+        const nowMs =
+          performance.now();
+
+        if (
+          nowMs - this.lastHoverTime <
+          CONFIG.hoverSoundDelay
+        ) {
+          return;
+        }
+
+        this.lastHoverTime = nowMs;
+
+        const now =
+          this.context.currentTime;
+
+        const gain =
+          this.context.createGain();
+
+        const filter =
+          this.context.createBiquadFilter();
+
+        const sine =
+          this.context.createOscillator();
+
+        const triangle =
+          this.context.createOscillator();
+
+        sine.type = "sine";
+        triangle.type = "triangle";
+
+        sine.frequency.setValueAtTime(
+          870,
+          now
+        );
+
+        sine.frequency.exponentialRampToValueAtTime(
+          1160,
+          now + 0.12
+        );
+
+        triangle.frequency.setValueAtTime(
+          1305,
+          now
+        );
+
+        triangle.detune.value = 6;
+
+        filter.type = "highpass";
+        filter.frequency.value = 540;
+
+        gain.gain.setValueAtTime(
+          0.0001,
+          now
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+          0.028,
+          now + 0.009
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+          0.0001,
+          now + 0.145
+        );
+
+        sine.connect(gain);
+        triangle.connect(gain);
+        gain.connect(filter);
+        filter.connect(this.sfxGain);
+
+        sine.start(now);
+        triangle.start(now);
+
+        sine.stop(now + 0.16);
+        triangle.stop(now + 0.16);
+      }
+
+      playSelect() {
+        if (
+          !this.enabled ||
+          !this.context ||
+          !this.unlocked ||
+          !this.sfxGain
+        ) {
+          return;
+        }
+
+        const now =
+          this.context.currentTime;
+
+        const frequencies = [
+          146.83,
+          220.9,
+          294.45,
+          440.8
+        ];
+
+        frequencies.forEach(
+          (frequency, index) => {
+            const oscillator =
+              this.context.createOscillator();
+
+            const gain =
+              this.context.createGain();
+
+            const filter =
+              this.context.createBiquadFilter();
+
+            oscillator.type =
+              index === 0
+                ? "sine"
+                : index === 1
+                  ? "triangle"
+                  : "sine";
+
+            oscillator.frequency.setValueAtTime(
+              frequency,
+              now
+            );
+
+            oscillator.detune.setValueAtTime(
+              index % 2 === 0
+                ? -5 + index
+                : 7 - index,
+              now
+            );
+
+            filter.type = "bandpass";
+            filter.frequency.value =
+              frequency * 1.35;
+
+            filter.Q.value =
+              2.1 + index * 0.45;
+
+            const peak =
+              0.07 /
+              (1 + index * 0.52);
+
+            gain.gain.setValueAtTime(
+              0.0001,
+              now
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+              peak,
+              now + 0.012 + index * 0.004
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+              0.0001,
+              now + 0.85 + index * 0.17
+            );
+
+            oscillator.connect(filter);
+            filter.connect(gain);
+            gain.connect(this.sfxGain);
+
+            oscillator.start(
+              now + index * 0.009
+            );
+
+            oscillator.stop(
+              now + 1.55
+            );
+          }
+        );
+      }
+    }
+
+    const audioEngine =
+      new MythologyAudioEngine();
+
+    function updateAudioInterface() {
+      const enabled =
+        state.audioEnabled;
+
+      elements.headerAudioToggle.classList.toggle(
+        "is-muted",
+        !enabled
+      );
+
+      elements.headerAudioToggle.setAttribute(
+        "aria-label",
+        enabled
+          ? "Turn audio off"
+          : "Turn audio on"
+      );
+
+      elements.headerAudioToggle.title =
+        enabled
+          ? "Audio: On"
+          : "Audio: Off";
+
+      elements.headerAudioIcon.setAttribute(
+        "href",
+        enabled
+          ? "#icon-volume"
+          : "#icon-muted"
+      );
+
+      elements.homeAudioIcon.setAttribute(
+        "href",
+        enabled
+          ? "#icon-volume"
+          : "#icon-muted"
+      );
+
+      elements.homeAudioText.textContent =
+        enabled
+          ? "Audio: On"
+          : "Audio: Off";
+    }
+
+    /* =========================================================
+       11. PROCEDURAL EMBER FIREFLIES
+       ========================================================= */
+
+    class EmberField {
+      constructor(canvas) {
+        this.canvas = canvas;
+
+        this.context =
+          canvas.getContext(
+            "2d",
+            {
+              alpha: true,
+              desynchronized: true
+            }
+          );
+
+        this.width = 0;
+        this.height = 0;
+        this.pixelRatio = 1;
+        this.particles = [];
+        this.animationFrame = null;
+        this.lastTime = 0;
+
+        this.pointer = {
+          x: 0,
+          y: 0,
+          strength: 0
+        };
+
+        this.isVisible = true;
+
+        this.handleResize =
+          debounce(
+            () => this.resize(),
+            120
+          );
+
+        this.animate =
+          this.animate.bind(this);
+      }
+
+      start() {
+        if (!this.context) {
+          return;
+        }
+
+        this.resize();
+
+        window.addEventListener(
+          "resize",
+          this.handleResize,
+          { passive: true }
+        );
+
+        window.addEventListener(
+          "pointermove",
+          (event) => {
+            if (
+              event.pointerType ===
+              "touch"
+            ) {
+              return;
+            }
+
+            this.pointer.x =
+              event.clientX;
+
+            this.pointer.y =
+              event.clientY;
+
+            this.pointer.strength =
+              1;
+          },
+          { passive: true }
+        );
+
+        window.addEventListener(
+          "pointerleave",
+          () => {
+            this.pointer.strength = 0;
+          },
+          { passive: true }
+        );
+
+        document.addEventListener(
+          "visibilitychange",
+          () => {
+            this.isVisible =
+              !document.hidden;
+
+            if (this.isVisible) {
+              this.lastTime =
+                performance.now();
+
+              if (
+                !this.animationFrame
+              ) {
+                this.animationFrame =
+                  requestAnimationFrame(
+                    this.animate
+                  );
+              }
+            }
+          }
+        );
+
+        this.animationFrame =
+          requestAnimationFrame(
+            this.animate
+          );
+      }
+
+      resize() {
+        const rect =
+          this.canvas.getBoundingClientRect();
+
+        this.width =
+          Math.max(
+            1,
+            rect.width
+          );
+
+        this.height =
+          Math.max(
+            1,
+            rect.height
+          );
+
+        this.pixelRatio =
+          Math.min(
+            window.devicePixelRatio || 1,
+            2
+          );
+
+        this.canvas.width =
+          Math.floor(
+            this.width *
+            this.pixelRatio
+          );
+
+        this.canvas.height =
+          Math.floor(
+            this.height *
+            this.pixelRatio
+          );
+
+        this.context.setTransform(
+          this.pixelRatio,
+          0,
+          0,
+          this.pixelRatio,
+          0,
+          0
+        );
+
+        this.reseed();
+      }
+
+      reseed() {
+        const area =
+          this.width *
+          this.height;
+
+        const desiredCount =
+          Math.max(
+            24,
+            Math.min(
+              72,
+              Math.round(
+                area / 26000
+              )
+            )
+          );
+
+        this.particles =
+          Array.from(
+            {
+              length:
+                desiredCount
+            },
+            () =>
+              this.createParticle(
+                true
+              )
+          );
+      }
+
+      createParticle(randomY = false) {
+        const depth =
+          Math.random();
+
+        return {
+          x:
+            Math.random() *
+            this.width,
+
+          y:
+            randomY
+              ? Math.random() *
+                this.height
+              : this.height +
+                Math.random() * 30,
+
+          radius:
+            2 +
+            Math.random() * 2,
+
+          depth,
+
+          speed:
+            5 +
+            depth * 14 +
+            Math.random() * 7,
+
+          opacity:
+            0.15 +
+            depth * 0.48 +
+            Math.random() * 0.16,
+
+          phase:
+            Math.random() *
+            Math.PI *
+            2,
+
+          wobble:
+            7 +
+            Math.random() * 18,
+
+          frequency:
+            0.45 +
+            Math.random() * 0.9,
+
+          pulse:
+            0.6 +
+            Math.random() * 1.5
+        };
+      }
+
+      drawParticle(
+        particle,
+        elapsed
+      ) {
+        const ctx =
+          this.context;
+
+        const wobbleX =
+          Math.sin(
+            elapsed *
+              particle.frequency +
+            particle.phase
+          ) *
+          particle.wobble;
+
+        let influenceX = 0;
+        let influenceY = 0;
+
+        if (
+          this.pointer.strength > 0
+        ) {
+          const dx =
+            particle.x -
+            this.pointer.x;
+
+          const dy =
+            particle.y -
+            this.pointer.y;
+
+          const distance =
+            Math.hypot(dx, dy);
+
+          if (
+            distance > 0 &&
+            distance < 180
+          ) {
+            const force =
+              (1 - distance / 180) *
+              particle.depth *
+              9;
+
+            influenceX =
+              (dx / distance) *
+              force;
+
+            influenceY =
+              (dy / distance) *
+              force;
+          }
+        }
+
+        const x =
+          particle.x +
+          wobbleX +
+          influenceX;
+
+        const y =
+          particle.y +
+          influenceY;
+
+        const pulse =
+          0.72 +
+          Math.sin(
+            elapsed *
+              particle.pulse +
+            particle.phase
+          ) *
+            0.2;
+
+        const alpha =
+          Math.max(
+            0.04,
+            particle.opacity *
+            pulse
+          );
+
+        const radius =
+          particle.radius *
+          (0.74 +
+            particle.depth * 0.26);
+
+        const glow =
+          ctx.createRadialGradient(
+            x,
+            y,
+            0,
+            x,
+            y,
+            radius * 4.5
+          );
+
+        glow.addColorStop(
+          0,
+          `rgba(255, 242, 164, ${alpha})`
+        );
+
+        glow.addColorStop(
+          0.22,
+          `rgba(245, 215, 110, ${alpha * 0.9})`
+        );
+
+        glow.addColorStop(
+          0.58,
+          `rgba(212, 175, 55, ${alpha * 0.24})`
+        );
+
+        glow.addColorStop(
+          1,
+          "rgba(212, 175, 55, 0)"
+        );
+
+        ctx.beginPath();
+        ctx.fillStyle = glow;
+        ctx.arc(
+          x,
+          y,
+          radius * 4.5,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle =
+          `rgba(255, 247, 193, ${Math.min(
+            0.98,
+            alpha * 1.2
+          )})`;
+
+        ctx.arc(
+          x,
+          y,
+          Math.max(
+            0.75,
+            radius * 0.48
+          ),
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fill();
+      }
+
+      animate(time) {
+        this.animationFrame = null;
+
+        if (!this.isVisible) {
+          return;
+        }
+
+        const delta =
+          Math.min(
+            0.05,
+            Math.max(
+              0.001,
+              (time -
+                (this.lastTime ||
+                  time)) /
+                1000
+            )
+          );
+
+        this.lastTime = time;
+
+        this.context.clearRect(
+          0,
+          0,
+          this.width,
+          this.height
+        );
+
+        const elapsed =
+          time / 1000;
+
+        this.pointer.strength *=
+          0.985;
+
+        this.particles.forEach(
+          (particle, index) => {
+            particle.y -=
+              particle.speed *
+              delta;
+
+            particle.x +=
+              Math.sin(
+                elapsed * 0.33 +
+                particle.phase
+              ) *
+              delta *
+              (1.5 +
+                particle.depth * 2);
+
+            if (
+              particle.y < -35 ||
+              particle.x < -80 ||
+              particle.x >
+                this.width + 80
+            ) {
+              this.particles[index] =
+                this.createParticle(
+                  false
+                );
+
+              return;
+            }
+
+            this.drawParticle(
+              particle,
+              elapsed
+            );
+          }
+        );
+
+        this.animationFrame =
+          requestAnimationFrame(
+            this.animate
+          );
+      }
+    }
+
+    const emberField =
+      new EmberField(
+        elements.emberCanvas
+      );
+
+    /* =========================================================
+       12. UI NOTIFICATIONS AND SCROLL HINTS
+       ========================================================= */
+
+    function showToast(
+      message,
+      duration = 2300
+    ) {
+      const toast =
+        document.createElement("div");
+
+      toast.className = "toast";
+      toast.textContent = message;
+
+      elements.toastRegion.append(
+        toast
+      );
+
+      window.setTimeout(() => {
+        toast.classList.add(
+          "is-leaving"
+        );
+
+        window.setTimeout(
+          () => toast.remove(),
+          280
+        );
+      }, duration);
+    }
+
+    function updateScrollHints() {
+      document
+        .querySelectorAll(
+          ".view.is-active .scroll-hint"
+        )
+        .forEach((hint) => {
+          const view =
+            hint.closest(".view");
+
+          if (!view) {
+            return;
+          }
+
+          const canScroll =
+            view.scrollHeight >
+            view.clientHeight + 12;
+
+          const isNearTop =
+            view.scrollTop < 24;
+
+          hint.classList.toggle(
+            "is-hidden",
+            !canScroll ||
+              !isNearTop
+          );
+        });
+    }
+
+    /* =========================================================
+       13. ERROR HANDLING
+       ========================================================= */
+
+    function showLoadError(error) {
+      state.loading = false;
+
+      elements.loadingGate.classList.add(
+        "is-hidden"
+      );
+
+      elements.errorGate.classList.add(
+        "is-visible"
+      );
+
+      const isFileProtocol =
+        window.location.protocol ===
+        "file:";
+
+      elements.errorMessage.textContent =
+        isFileProtocol
+          ? "The page is running directly from the file system. Some browsers block remote JSON requests in this mode. Publish it through GitHub Pages or open it from a local HTTP server."
+          : "The story data could not be retrieved or validated. Verify that content.json is public, valid JSON, and follows the required schema.";
+
+      elements.errorDetail.textContent =
+        `${error?.name || "Error"}: ${
+          error?.message ||
+          "An unknown loading error occurred."
+        }\n\nSource: ${CONFIG.contentUrl}`;
+    }
+
+    function hideLoadError() {
+      elements.errorGate.classList.remove(
+        "is-visible"
+      );
+
+      elements.loadingGate.classList.remove(
+        "is-hidden"
+      );
+
+      elements.loaderProgressFill.style.width =
+        "12%";
+    }
+
+    function enterEmptyShell() {
+      state.data =
+        validateAndNormalizeData({
+          book_metadata: {
+            title:
+              "The Legend of Adonis",
+            subtitle:
+              "A Tale of Sacrifice in Shadows",
+            author:
+              "Mayur Borgude",
+            version:
+              "Unavailable",
+            total_chapters: 0
+          },
+          chapters: [],
+          events: [],
+          relics: []
+        });
+
+      renderAllViews();
+
+      elements.errorGate.classList.remove(
+        "is-visible"
+      );
+
+      navigate(
+        "home",
+        {
+          replaceHistory: true
+        }
+      );
+
+      showToast(
+        "Entered the empty archive."
+      );
+    }
+
+    /* =========================================================
+       14. EVENT DELEGATION
+       ========================================================= */
+
+    function handleRouteInteraction(
+      target
+    ) {
+      const routeElement =
+        target.closest(
+          "[data-route]"
+        );
+
+      if (!routeElement) {
+        return false;
+      }
+
+      const route =
+        routeElement.dataset.route;
+
+      if (!CONFIG.routes.has(route)) {
+        return false;
+      }
+
+      audioEngine.playSelect();
+      navigate(route);
+
+      return true;
+    }
+
+    function handleChapterInteraction(
+      target
+    ) {
+      const chapterElement =
+        target.closest(
+          "[data-chapter-id]"
+        );
+
+      if (!chapterElement) {
+        return false;
+      }
+
+      const chapterId =
+        Number(
+          chapterElement.dataset.chapterId
+        );
+
+      if (
+        !Number.isFinite(chapterId)
+      ) {
+        return false;
+      }
+
+      openChapter(chapterId, 0);
+
+      return true;
+    }
+
+    document.addEventListener(
+      "click",
+      async (event) => {
+        await audioEngine.unlock();
+
+        const target =
+          event.target instanceof Element
+            ? event.target
+            : null;
+
+        if (!target) {
+          return;
+        }
+
+        if (
+          handleChapterInteraction(
+            target
+          )
+        ) {
+          return;
+        }
+
+        handleRouteInteraction(target);
+      }
+    );
+
+    document.addEventListener(
+      "pointerover",
+      (event) => {
+        if (
+          event.pointerType === "touch"
+        ) {
+          return;
+        }
+
+        const target =
+          event.target instanceof Element
+            ? event.target.closest(
+                ".interactive-sound"
+              )
+            : null;
+
+        if (!target) {
+          return;
+        }
+
+        const related =
+          event.relatedTarget;
+
+        if (
+          related instanceof Node &&
+          target.contains(related)
+        ) {
+          return;
+        }
+
+        audioEngine.playHover();
+      },
+      { passive: true }
+    );
+
+    /*
+      AudioContext must be resumed from a real user gesture.
+    */
+    const unlockAudioOnce = async () => {
+      await audioEngine.unlock();
+    };
+
+    document.addEventListener(
+      "touchstart",
+      unlockAudioOnce,
+      {
+        passive: true,
+        once: true
+      }
+    );
+
+    document.addEventListener(
+      "keydown",
+      unlockAudioOnce,
+      { once: true }
+    );
+
+    /* =========================================================
+       15. DIRECT CONTROLS
+       ========================================================= */
+
+    elements.headerAudioToggle.addEventListener(
+      "click",
+      (event) => {
+        event.stopPropagation();
+        audioEngine.toggle();
+      }
+    );
+
+    elements.homeAudioToggle.addEventListener(
+      "click",
+      (event) => {
+        event.stopPropagation();
+        audioEngine.toggle();
+      }
+    );
+
+    elements.startJourneyButton.addEventListener(
+      "click",
+      (event) => {
+        event.stopPropagation();
+
+        if (
+          !state.data?.chapters?.length
+        ) {
+          showToast(
+            "No chapters are currently available."
+          );
+
+          navigate("chapters");
+          return;
+        }
+
+        openChapter(
+          state.data.chapters[0].id,
+          0
+        );
+      }
+    );
+
+    elements.resumeButton.addEventListener(
+      "click",
+      (event) => {
+        event.stopPropagation();
+
+        const progress =
+          readProgress();
+
+        if (!progress) {
+          return;
+        }
+
+        const chapter =
+          getChapterById(
+            progress.chapterId
+          );
+
+        if (!chapter) {
+          updateResumeAvailability();
+          return;
+        }
+
+        openChapter(
+          chapter.id,
+          progress.scrollOffset
+        );
+      }
+    );
+
+    elements.previousChapterButton.addEventListener(
+      "click",
+      () => {
+        openAdjacentChapter(-1);
+      }
+    );
+
+    elements.nextChapterButton.addEventListener(
+      "click",
+      () => {
+        openAdjacentChapter(1);
+      }
+    );
+
+    elements.retryButton.addEventListener(
+      "click",
+      async () => {
+        hideLoadError();
+
+        try {
+          await loadApplicationData();
+        } catch (error) {
+          showLoadError(error);
+        }
+      }
+    );
+
+    elements.continueShellButton.addEventListener(
+      "click",
+      enterEmptyShell
+    );
+
+    const readerView =
+      getViewElement("reader");
+
+    readerView.addEventListener(
+      "scroll",
+      () => {
+        updateReaderProgress();
+        persistReaderDebounced();
+      },
+      { passive: true }
+    );
+
+    document
+      .querySelectorAll(".view")
+      .forEach((view) => {
+        view.addEventListener(
+          "scroll",
+          updateScrollHints,
+          { passive: true }
+        );
+      });
+
+    window.addEventListener(
+      "hashchange",
+      () => {
+        if (
+          state.loading ||
+          !state.data
+        ) {
+          return;
+        }
+
+        applyInitialHash();
+      }
+    );
+
+    window.addEventListener(
+      "beforeunload",
+      persistCurrentReaderPosition
+    );
+
+    window.addEventListener(
+      "resize",
+      debounce(() => {
+        updateReaderProgress();
+        updateScrollHints();
+      }, 130),
+      { passive: true }
+    );
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (
+          state.route !== "reader"
+        ) {
+          return;
+        }
+
+        const tag =
+          document.activeElement?.tagName;
+
+        if (
+          tag === "INPUT" ||
+          tag === "TEXTAREA" ||
+          tag === "SELECT"
+        ) {
+          return;
+        }
+
+        if (
+          event.key === "ArrowLeft"
+        ) {
+          openAdjacentChapter(-1);
+        }
+
+        if (
+          event.key === "ArrowRight"
+        ) {
+          openAdjacentChapter(1);
+        }
+      }
+    );
+
+    /* =========================================================
+       16. BOOTSTRAP
+       ========================================================= */
+
+    async function initializeApp() {
+      emberField.start();
+      updateAudioInterface();
+
+      document
+        .querySelectorAll(".view")
+        .forEach((view) => {
+          view.setAttribute(
+            "aria-hidden",
+            String(
+              !view.classList.contains(
+                "is-active"
+              )
+            )
+          );
+        });
+
+      try {
+        await loadApplicationData();
+      } catch (error) {
+        console.error(
+          "The Legend of Adonis failed to initialize.",
+          error
+        );
+
+        showLoadError(error);
+      }
+
+      requestIdle(() => {
+        updateScrollHints();
+      });
+    }
+
+    initializeApp();
+  </script>
+</body>
+</html>
