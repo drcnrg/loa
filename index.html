@@ -4354,107 +4354,148 @@
     }
 
     async function loadApplicationData() {
-      state.loading = true;
+  state.loading = true;
+  state.imagePreloadComplete = false;
 
-      setLoader(
-        "Seeking the forgotten scrolls...",
-        0.12
-      );
+  /*
+    Reset the loading interface whenever this function runs,
+    including retry attempts.
+  */
+  elements.loadingGate.classList.remove("is-hidden");
+  elements.errorGate.classList.remove("is-visible");
 
-      const raw =
-        await fetchWithTimeout(
-          CONFIG.contentUrl,
-          CONFIG.fetchTimeout
-        );
+  setLoader(
+    "Seeking the forgotten scrolls...",
+    0.18
+  );
 
-      setLoader(
-        "Deciphering the manuscript...",
-        0.32
-      );
+  try {
+    /*
+      Only the JSON request controls the loading screen.
 
-      const normalized =
-        validateAndNormalizeData(raw);
+      Images no longer block the application from opening.
+      This prevents a slow, broken, or unreachable image URL
+      from keeping the page stuck on the loading screen.
+    */
+    const raw = await fetchWithTimeout(
+      CONFIG.contentUrl,
+      CONFIG.fetchTimeout
+    );
 
-      state.data = normalized;
+    setLoader(
+      "Deciphering the manuscript...",
+      0.62
+    );
 
-      renderAllViews();
+    const normalized =
+      validateAndNormalizeData(raw);
 
-      setLoader(
-        "Summoning distant visions...",
-        0.45
-      );
+    state.data = normalized;
 
-      const imageUrls =
-        collectImageUrls(normalized);
+    setLoader(
+      "Opening the chronicle...",
+      0.85
+    );
 
-      const imageResults =
-        await preloadImages(
-          imageUrls,
-          (progress) => {
-            setLoader(
-              "Gathering the last embers...",
-              0.45 + progress * 0.5
-            );
-          }
-        );
+    /*
+      Render as soon as valid JSON has been received.
+    */
+    renderAllViews();
+    updateResumeAvailability();
 
-      state.imagePreloadComplete = true;
+    setLoader(
+      "The path is open.",
+      1
+    );
 
-      const failedImages =
-        imageResults.filter(
-          (item) => !item.loaded
-        );
+    state.loading = false;
 
-      if (failedImages.length) {
+    /*
+      Use only two animation frames instead of waiting for
+      images or using a fixed loading delay.
+    */
+    await new Promise((resolve) => {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(resolve);
+      });
+    });
+
+    /*
+      Hide the loading screen immediately after rendering.
+    */
+    elements.loadingGate.classList.add(
+      "is-hidden"
+    );
+
+    applyInitialHash();
+
+    /*
+      Preload remote images silently after the application
+      is already visible.
+
+      Image failures are logged only. They never reopen or
+      block the loading screen.
+    */
+    requestIdle(async () => {
+      try {
+        const imageUrls =
+          collectImageUrls(normalized);
+
+        if (!imageUrls.length) {
+          state.imagePreloadComplete = true;
+          return;
+        }
+
+        const imageResults =
+          await preloadImages(
+            imageUrls,
+            () => {
+              /*
+                Intentionally empty.
+
+                Image loading must not affect the visible
+                JSON loading screen.
+              */
+            }
+          );
+
+        state.imagePreloadComplete = true;
+
+        const failedImages =
+          imageResults.filter(
+            (item) => !item.loaded
+          );
+
+        if (failedImages.length) {
+          console.warn(
+            "Some remote story images could not be preloaded.",
+            failedImages
+          );
+        }
+      } catch (imagePreloadError) {
+        /*
+          Image preloading is non-critical.
+          Keep the rendered application available.
+        */
+        state.imagePreloadComplete = true;
+
         console.warn(
-          "Some remote story images could not be preloaded.",
-          failedImages
+          "Background image preloading was skipped.",
+          imagePreloadError
         );
       }
+    });
+  } catch (error) {
+    state.loading = false;
+    state.imagePreloadComplete = false;
 
-      setLoader(
-        "The path is open.",
-        1
-      );
-
-      state.loading = false;
-
-      await delay(
-        state.reducedMotion
-          ? 40
-          : 420
-      );
-
-      elements.loadingGate.classList.add(
-        "is-hidden"
-      );
-
-      updateResumeAvailability();
-      applyInitialHash();
-    }
-
-    function delay(milliseconds) {
-      return new Promise((resolve) => {
-        window.setTimeout(
-          resolve,
-          milliseconds
-        );
-      });
-    }
-
-    function setLoader(message, progress) {
-      elements.loaderStatus.textContent =
-        message;
-
-      const boundedProgress =
-        Math.max(
-          0,
-          Math.min(1, progress)
-        );
-
-      elements.loaderProgressFill.style.width =
-        `${boundedProgress * 100}%`;
-    }
+    /*
+      Only JSON retrieval or JSON validation errors reach
+      the application's existing error screen.
+    */
+    throw error;
+  }
+}
 
     /* =========================================================
        7. RENDERING
