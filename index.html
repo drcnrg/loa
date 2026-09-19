@@ -1,92 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1, viewport-fit=cover"
-  />
+  >
 
-  <meta
-    name="theme-color"
-    content="#040705"
-  />
+  <meta name="theme-color" content="#040705">
+  <meta name="color-scheme" content="dark">
 
   <meta
     name="description"
-    content="The Legend of Adonis. A cinematic dark-fantasy reading experience by Mayur Borgude."
-  />
+    content="The Legend of Adonis, a cinematic dark-fantasy reading experience by Mayur Borgude."
+  >
 
-  <meta
-    name="author"
-    content="Mayur Borgude"
-  />
-
-  <meta
-    name="color-scheme"
-    content="dark"
-  />
+  <meta name="author" content="Mayur Borgude">
 
   <title>The Legend of Adonis</title>
 
-  <!--
-    The favicon is entirely self-contained.
-    No external image file is required.
-  -->
-  data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23f5d76e'/%3E%3Cstop offset='1' stop-color='%23936d18'/%3E%3C/linearGradient%3E%3Cfilter id='s'%3E%3CfeDropShadow dx='0' dy='0' stdDeviation='5' flood-color='%23d4af37' flood-opacity='.7'/%3E%3C/filter%3E%3C/defs%3E%3Crect width='128' height='128' rx='28' fill='%23040705'/%3E%3Cpath d='M64 15 98 106 64 88 30 106Z' fill='none' stroke='url(%23g)' stroke-width='7' stroke-linejoin='round' filter='url(%23s)'/%3E%3Cpath d='m64 32 11 45-11 11-11-11Z' fill='url(%23g)'/%3E%3Ccircle cx='64' cy='102' r='5' fill='%23f5d76e'/%3E%3C/svg%3E
+  data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23fff0a6'/%3E%3Cstop offset='.48' stop-color='%23d4af37'/%3E%3Cstop offset='1' stop-color='%23785d1c'/%3E%3C/linearGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='3' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='128' height='128' rx='27' fill='%23040705'/%3E%3Ccircle cx='64' cy='64' r='47' fill='none' stroke='%23d4af37' stroke-opacity='.25' stroke-width='2'/%3E%3Cpath d='M64 16 98 107 64 88 30 107Z' fill='none' stroke='url(%23g)' stroke-width='7' stroke-linejoin='round' filter='url(%23glow)'/%3E%3Cpath d='m64 31 11 44-11 13-11-13Z' fill='url(%23g)'/%3E%3Ccircle cx='64' cy='103' r='4' fill='%23f5d76e'/%3E%3C/svg%3E
 
-  <!--
-    Font loading was specifically requested.
-    These are the only visual network resources other than story images.
-    The fallback font stacks keep the experience usable if Google Fonts
-    cannot be reached.
-  -->
   https://fonts.googleapis.com
+
   https://fonts.gstatic.com
 
   https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap
 
   <style>
-    /* =========================================================
-       1. DESIGN TOKENS
-       ========================================================= */
-
     :root {
       --abyss: #040705;
-      --abyss-soft: #07100b;
-      --abyss-green: #0b1510;
+      --abyss-deep: #020403;
+      --abyss-green: #07100b;
+      --moss-dark: #0c120e;
+      --moss: #101a13;
 
-      --surface-1: rgba(12, 18, 14, 0.66);
-      --surface-2: rgba(17, 27, 20, 0.78);
-      --surface-3: rgba(22, 32, 24, 0.88);
-      --surface-solid: #101812;
+      --surface-low: rgba(12, 18, 14, 0.65);
+      --surface-mid: rgba(17, 26, 20, 0.74);
+      --surface-high: rgba(22, 32, 24, 0.82);
 
       --gold: #d4af37;
       --gold-bright: #f5d76e;
-      --gold-soft: #c9ad5a;
+      --gold-pale: #fff0a3;
       --gold-deep: #785d1c;
 
       --ivory: #f3ead2;
       --parchment: #d7cab0;
-      --muted: #9eaa9e;
-      --danger: #e09a83;
+      --muted: #9da89d;
+      --danger: #e69b82;
 
-      --gold-border: rgba(212, 175, 55, 0.16);
+      --gold-border: rgba(212, 175, 55, 0.15);
       --gold-border-strong: rgba(245, 215, 110, 0.42);
-      --white-border: rgba(255, 255, 255, 0.06);
+      --white-border: rgba(255, 255, 255, 0.055);
 
-      --shadow-deep:
-        0 30px 80px rgba(0, 0, 0, 0.58),
-        0 8px 24px rgba(0, 0, 0, 0.32);
-
-      --shadow-gold:
-        0 0 0 1px rgba(212, 175, 55, 0.08),
-        0 16px 55px rgba(0, 0, 0, 0.46),
-        0 0 42px rgba(212, 175, 55, 0.07);
-
-      --header-height: clamp(4.75rem, 9dvh, 6rem);
-      --page-gutter: clamp(1rem, 3.5vw, 3.75rem);
+      --header-height: clamp(4.5rem, 9dvh, 5.8rem);
+      --page-gutter: clamp(0.9rem, 3.6vw, 3.7rem);
+      --reading-width: 70ch;
 
       --display-font:
         "Cinzel Decorative",
@@ -100,23 +70,22 @@
         Georgia,
         serif;
 
-      --ease-out:
-        cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
 
-      --ease-soft:
-        cubic-bezier(0.22, 0.61, 0.36, 1);
+      --radius-small: 0.8rem;
+      --radius-medium: 1.35rem;
+      --radius-large: 1.9rem;
 
-      --radius-xs: 0.65rem;
-      --radius-sm: 1rem;
-      --radius-md: 1.45rem;
-      --radius-lg: 2rem;
+      --shadow-deep:
+        0 30px 90px rgba(0, 0, 0, 0.58),
+        0 8px 26px rgba(0, 0, 0, 0.34);
 
-      --reading-width: 70ch;
+      --shadow-gold:
+        0 0 0 1px rgba(212, 175, 55, 0.055),
+        0 20px 65px rgba(0, 0, 0, 0.45),
+        0 0 44px rgba(212, 175, 55, 0.055);
     }
-
-    /* =========================================================
-       2. NORMALIZATION AND PAGE SHELL
-       ========================================================= */
 
     *,
     *::before,
@@ -129,54 +98,45 @@
       height: 100%;
       overflow: hidden;
       background: var(--abyss);
-      scroll-behavior: smooth;
       scrollbar-width: none;
     }
 
-    html::-webkit-scrollbar {
+    html::-webkit-scrollbar,
+    *::-webkit-scrollbar {
       display: none;
       width: 0;
       height: 0;
     }
 
+    * {
+      scrollbar-width: none;
+    }
+
     body {
-      position: relative;
       width: 100%;
       height: 100%;
       min-height: 100dvh;
       margin: 0;
       overflow: hidden;
       color: var(--ivory);
-      background:
-        radial-gradient(
-          circle at 50% -10%,
-          rgba(108, 83, 26, 0.14),
-          transparent 38%
-        ),
-        linear-gradient(
-          160deg,
-          #020403 0%,
-          var(--abyss) 48%,
-          #07100b 100%
-        );
+      background: var(--abyss);
       font-family: var(--body-font);
-      font-size: clamp(1rem, 1.1vw, 1.16rem);
-      line-height: 1.6;
+      font-size: clamp(1rem, 1.25vw, 1.18rem);
+      line-height: 1.65;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
     }
 
+    body,
     button,
-    a,
-    input {
-      font: inherit;
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
     button,
     a {
-      -webkit-tap-highlight-color: transparent;
+      font: inherit;
     }
 
     button {
@@ -186,6 +146,10 @@
     img {
       display: block;
       max-width: 100%;
+    }
+
+    [hidden] {
+      display: none !important;
     }
 
     ::selection {
@@ -210,81 +174,65 @@
       border: 0 !important;
     }
 
-    /* Hide every scrollbar while preserving scrolling. */
-    * {
-      scrollbar-width: none;
-    }
-
-    *::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-      display: none;
-    }
-
-    /* =========================================================
-       3. CINEMATIC ENVIRONMENT
-       ========================================================= */
-
     .environment {
       position: fixed;
       inset: 0;
-      z-index: -10;
+      z-index: -20;
       overflow: hidden;
       pointer-events: none;
       background:
         radial-gradient(
-          ellipse at 50% 12%,
-          rgba(174, 130, 38, 0.13),
+          ellipse at 50% -5%,
+          rgba(179, 135, 38, 0.16),
           transparent 38%
         ),
         radial-gradient(
-          circle at 14% 70%,
-          rgba(20, 77, 45, 0.13),
+          circle at 10% 75%,
+          rgba(24, 79, 48, 0.13),
           transparent 34%
         ),
         radial-gradient(
-          circle at 88% 72%,
-          rgba(86, 51, 19, 0.09),
-          transparent 30%
+          circle at 91% 67%,
+          rgba(93, 53, 17, 0.1),
+          transparent 31%
         ),
         linear-gradient(
-          135deg,
+          136deg,
           #020403 0%,
           #08110c 47%,
           #030604 100%
         );
-      transform: scale(1.03);
+      transform: scale(1.035);
     }
 
     .environment::before {
       content: "";
       position: absolute;
-      inset: -7%;
+      inset: -8%;
       background:
         repeating-linear-gradient(
           116deg,
-          transparent 0 82px,
-          rgba(206, 170, 67, 0.013) 83px 84px,
-          transparent 85px 170px
+          transparent 0 83px,
+          rgba(212, 175, 55, 0.014) 84px 85px,
+          transparent 86px 171px
         ),
         radial-gradient(
           ellipse at 50% 52%,
-          transparent 0 24%,
-          rgba(0, 0, 0, 0.18) 56%,
-          rgba(0, 0, 0, 0.78) 100%
+          transparent 0 23%,
+          rgba(0, 0, 0, 0.17) 58%,
+          rgba(0, 0, 0, 0.82) 100%
         );
-      opacity: 0.92;
     }
 
     .environment::after {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: 0.17;
+      opacity: 0.14;
       background-image:
         linear-gradient(
           90deg,
-          rgba(255, 255, 255, 0.025) 1px,
+          rgba(255, 255, 255, 0.027) 1px,
           transparent 1px
         ),
         linear-gradient(
@@ -296,26 +244,26 @@
         radial-gradient(
           circle at center,
           black,
-          transparent 78%
+          transparent 80%
         );
     }
 
     .environment-blur {
       position: fixed;
       inset: -2rem;
-      z-index: -9;
+      z-index: -18;
       pointer-events: none;
       opacity: 0;
-      backdrop-filter: blur(0);
-      -webkit-backdrop-filter: blur(0);
       background:
         linear-gradient(
-          rgba(2, 5, 3, 0.08),
-          rgba(2, 5, 3, 0.28)
+          rgba(2, 5, 3, 0.05),
+          rgba(2, 5, 3, 0.32)
         );
+      backdrop-filter: blur(0);
+      -webkit-backdrop-filter: blur(0);
       transition:
-        opacity 900ms var(--ease-soft),
-        backdrop-filter 900ms var(--ease-soft);
+        opacity 850ms var(--ease-soft),
+        backdrop-filter 850ms var(--ease-soft);
     }
 
     body.is-deep-view .environment-blur {
@@ -324,38 +272,37 @@
       -webkit-backdrop-filter: blur(18px);
     }
 
-    #emberCanvas {
+    #particleCanvas {
       position: fixed;
       inset: 0;
-      z-index: -5;
+      z-index: -12;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      opacity: 0.92;
-    }
-
-    .vignette {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      pointer-events: none;
-      box-shadow:
-        inset 0 0 clamp(5rem, 15vw, 14rem) rgba(0, 0, 0, 0.72),
-        inset 0 -6rem 8rem rgba(0, 0, 0, 0.25);
     }
 
     .film-grain {
       position: fixed;
       inset: -40%;
-      z-index: 998;
+      z-index: 2000;
       pointer-events: none;
       opacity: 0.022;
       background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
-      animation: grain 650ms steps(2) infinite;
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.83' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+      animation: grain-shift 700ms steps(2) infinite;
     }
 
-    @keyframes grain {
+    .screen-vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 2001;
+      pointer-events: none;
+      box-shadow:
+        inset 0 0 clamp(5rem, 16vw, 15rem) rgba(0, 0, 0, 0.72),
+        inset 0 -7rem 9rem rgba(0, 0, 0, 0.26);
+    }
+
+    @keyframes grain-shift {
       0% {
         transform: translate3d(-2%, 1%, 0);
       }
@@ -377,30 +324,26 @@
       }
     }
 
-    /* =========================================================
-       4. LOADING EXPERIENCE
-       ========================================================= */
-
     .loading-gate {
       position: fixed;
       inset: 0;
-      z-index: 5000;
+      z-index: 10000;
       display: grid;
       place-items: center;
-      padding: 1.5rem;
+      padding: 1.4rem;
       overflow: hidden;
       background:
         radial-gradient(
           circle at center,
-          rgba(69, 54, 19, 0.2),
-          transparent 28%
+          rgba(212, 175, 55, 0.095),
+          transparent 27%
         ),
         #020403;
       opacity: 1;
       visibility: visible;
       transition:
-        opacity 700ms var(--ease-soft),
-        visibility 700ms;
+        opacity 380ms var(--ease-soft),
+        visibility 380ms;
     }
 
     .loading-gate.is-hidden {
@@ -412,63 +355,63 @@
     .loader-content {
       display: grid;
       justify-items: center;
-      gap: 1.4rem;
+      gap: 1.25rem;
       width: min(90vw, 28rem);
       text-align: center;
     }
 
     .loader-sigil {
       position: relative;
-      width: 7.5rem;
-      aspect-ratio: 1;
       display: grid;
       place-items: center;
+      width: 7.4rem;
+      aspect-ratio: 1;
     }
 
     .loader-ring {
       position: absolute;
       inset: 0;
-      border: 1px solid rgba(212, 175, 55, 0.22);
+      border: 1px solid rgba(212, 175, 55, 0.2);
       border-top-color: var(--gold-bright);
       border-radius: 50%;
       box-shadow:
-        0 0 32px rgba(212, 175, 55, 0.12),
-        inset 0 0 24px rgba(212, 175, 55, 0.05);
-      animation: revolve 2.5s linear infinite;
+        0 0 34px rgba(212, 175, 55, 0.11),
+        inset 0 0 25px rgba(212, 175, 55, 0.04);
+      animation: spin 2.4s linear infinite;
     }
 
     .loader-ring::before,
     .loader-ring::after {
       content: "";
       position: absolute;
-      inset: 0.65rem;
+      inset: 0.64rem;
       border: 1px solid rgba(212, 175, 55, 0.14);
       border-bottom-color: rgba(245, 215, 110, 0.72);
       border-radius: 50%;
-      animation: revolve 1.75s linear infinite reverse;
+      animation: spin 1.7s linear infinite reverse;
     }
 
     .loader-ring::after {
-      inset: 1.45rem;
+      inset: 1.42rem;
       border-style: dashed;
-      animation-duration: 4s;
+      animation-duration: 3.8s;
       animation-direction: normal;
     }
 
-    .crossed-blades {
+    .loader-blades {
       position: relative;
       width: 3.2rem;
       height: 3.2rem;
       filter:
-        drop-shadow(0 0 12px rgba(245, 215, 110, 0.44));
+        drop-shadow(0 0 12px rgba(245, 215, 110, 0.42));
     }
 
-    .blade {
+    .loader-blade {
       position: absolute;
       left: 50%;
       top: 0;
       width: 0.18rem;
-      height: 3.15rem;
+      height: 3.2rem;
       border-radius: 100% 100% 18% 18%;
       background:
         linear-gradient(
@@ -480,31 +423,31 @@
       transform-origin: center 76%;
     }
 
-    .blade::after {
+    .loader-blade::after {
       content: "";
       position: absolute;
       left: 50%;
       bottom: 0.65rem;
-      width: 1.15rem;
+      width: 1.12rem;
       height: 0.14rem;
       border-radius: 999px;
       background: var(--gold-bright);
       transform: translateX(-50%);
     }
 
-    .blade:first-child {
+    .loader-blade:first-child {
       transform:
         translateX(-50%)
         rotate(42deg);
     }
 
-    .blade:last-child {
+    .loader-blade:last-child {
       transform:
         translateX(-50%)
         rotate(-42deg);
     }
 
-    .loader-title {
+    .loader-heading {
       margin: 0;
       color: var(--gold-bright);
       font-family: var(--display-font);
@@ -515,11 +458,11 @@
     }
 
     .loader-status {
-      min-height: 1.75rem;
+      min-height: 1.7rem;
       margin: 0;
       color: var(--muted);
       font-size: 1rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
     }
 
     .loader-progress {
@@ -542,40 +485,121 @@
           var(--gold)
         );
       box-shadow:
-        0 0 14px rgba(245, 215, 110, 0.6);
-      transition:
-        width 350ms var(--ease-out);
+        0 0 14px rgba(245, 215, 110, 0.62);
+      transition: width 220ms var(--ease-out);
     }
 
-    @keyframes revolve {
+    @keyframes spin {
       to {
         transform: rotate(360deg);
       }
     }
 
-    /* =========================================================
-       5. GLOBAL HEADER
-       ========================================================= */
+    .error-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 11000;
+      display: none;
+      place-items: center;
+      padding: 1rem;
+      overflow-y: auto;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(115, 54, 34, 0.12),
+          transparent 52%
+        ),
+        rgba(3, 6, 4, 0.98);
+    }
+
+    .error-gate.is-visible {
+      display: grid;
+    }
+
+    .error-card {
+      display: grid;
+      justify-items: center;
+      gap: 1rem;
+      width: min(100%, 42rem);
+      padding:
+        clamp(1.5rem, 5vw, 3.5rem);
+      border: 1px solid rgba(230, 155, 130, 0.3);
+      border-radius: var(--radius-large);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(35, 26, 22, 0.9),
+          rgba(9, 14, 10, 0.94)
+        );
+      box-shadow: var(--shadow-deep);
+      text-align: center;
+    }
+
+    .error-icon {
+      display: grid;
+      place-items: center;
+      width: 4rem;
+      height: 4rem;
+      border: 1px solid rgba(230, 155, 130, 0.34);
+      border-radius: 50%;
+      color: var(--danger);
+      font-family: var(--display-font);
+      font-size: 1.45rem;
+    }
+
+    .error-card h2 {
+      margin: 0;
+      color: var(--ivory);
+      font-family: var(--display-font);
+      font-size: clamp(1.4rem, 4vw, 2.1rem);
+    }
+
+    .error-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .error-detail {
+      width: 100%;
+      max-height: 9rem;
+      margin: 0;
+      overflow: auto;
+      padding: 0.85rem;
+      border: 1px solid rgba(230, 155, 130, 0.14);
+      border-radius: var(--radius-small);
+      color: rgba(243, 234, 210, 0.65);
+      background: rgba(0, 0, 0, 0.22);
+      font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Consolas,
+        monospace;
+      font-size: 0.78rem;
+      text-align: left;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
 
     .app-header {
       position: fixed;
       top: max(0px, env(safe-area-inset-top));
       left: 0;
       right: 0;
-      z-index: 1000;
+      z-index: 3000;
       display: flex;
       align-items: center;
-      gap: clamp(0.8rem, 2.3vw, 2.25rem);
+      gap: clamp(0.7rem, 2.3vw, 2.2rem);
       min-height: var(--header-height);
       padding:
-        0.65rem
+        0.62rem
         var(--page-gutter);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.075);
       background:
         linear-gradient(
           180deg,
-          rgba(3, 7, 4, 0.88),
-          rgba(3, 7, 4, 0.48)
+          rgba(3, 7, 4, 0.9),
+          rgba(3, 7, 4, 0.5)
         );
       backdrop-filter: blur(18px) saturate(1.15);
       -webkit-backdrop-filter: blur(18px) saturate(1.15);
@@ -588,7 +612,7 @@
       z-index: 2;
       display: inline-flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.82rem;
       flex: 0 0 auto;
       min-width: 0;
       color: inherit;
@@ -597,7 +621,6 @@
     }
 
     .brand-mark {
-      position: relative;
       display: grid;
       place-items: center;
       width: 2.75rem;
@@ -605,6 +628,7 @@
       flex: 0 0 2.75rem;
       border: 1px solid var(--gold-border-strong);
       border-radius: 50%;
+      color: var(--gold-bright);
       background:
         radial-gradient(
           circle,
@@ -619,14 +643,12 @@
     .brand-mark svg {
       width: 1.45rem;
       height: 1.45rem;
-      color: var(--gold-bright);
       filter:
         drop-shadow(0 0 8px rgba(245, 215, 110, 0.38));
     }
 
     .brand-text {
       display: grid;
-      gap: 0.01rem;
       min-width: max-content;
       font-family: var(--display-font);
       line-height: 1.02;
@@ -636,12 +658,12 @@
 
     .brand-text span:first-child {
       color: var(--parchment);
-      font-size: clamp(0.57rem, 0.9vw, 0.74rem);
+      font-size: clamp(0.56rem, 0.9vw, 0.72rem);
     }
 
     .brand-text span:last-child {
       color: var(--gold-bright);
-      font-size: clamp(0.75rem, 1.1vw, 0.98rem);
+      font-size: clamp(0.74rem, 1.1vw, 0.98rem);
       font-weight: 700;
     }
 
@@ -656,17 +678,12 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: clamp(0.12rem, 0.8vw, 0.45rem);
+      gap: clamp(0.1rem, 0.75vw, 0.45rem);
       width: 100%;
       min-width: 0;
       overflow-x: auto;
       overscroll-behavior-inline: contain;
       scroll-snap-type: x proximity;
-      scrollbar-width: none;
-    }
-
-    .primary-nav::-webkit-scrollbar {
-      display: none;
     }
 
     .nav-button {
@@ -676,23 +693,23 @@
       min-width: max-content;
       min-height: 44px;
       padding:
-        0.65rem
-        clamp(0.65rem, 1.35vw, 1.1rem);
+        0.64rem
+        clamp(0.62rem, 1.3vw, 1.05rem);
       border: 0;
       border-radius: 999px;
-      color: rgba(243, 234, 210, 0.7);
+      color: rgba(243, 234, 210, 0.69);
       background: transparent;
       font-family: var(--display-font);
-      font-size: clamp(0.57rem, 0.8vw, 0.75rem);
+      font-size: clamp(0.56rem, 0.8vw, 0.73rem);
       font-weight: 700;
       letter-spacing: 0.105em;
       text-transform: uppercase;
       scroll-snap-align: center;
       cursor: pointer;
       transition:
-        color 260ms ease,
-        background 260ms ease,
-        transform 260ms var(--ease-out);
+        color 250ms ease,
+        background 250ms ease,
+        transform 250ms var(--ease-out);
     }
 
     .nav-button::after {
@@ -700,8 +717,9 @@
       position: absolute;
       left: 22%;
       right: 22%;
-      bottom: 0.42rem;
+      bottom: 0.4rem;
       height: 1px;
+      opacity: 0;
       background:
         linear-gradient(
           90deg,
@@ -709,11 +727,10 @@
           var(--gold-bright),
           transparent
         );
-      opacity: 0;
       transform: scaleX(0.2);
       transition:
-        opacity 250ms ease,
-        transform 300ms var(--ease-out);
+        opacity 240ms ease,
+        transform 280ms var(--ease-out);
     }
 
     .nav-button:hover,
@@ -729,7 +746,7 @@
       transform: scaleX(1);
     }
 
-    .header-audio {
+    .audio-toggle {
       display: inline-grid;
       place-items: center;
       flex: 0 0 auto;
@@ -743,34 +760,31 @@
         linear-gradient(
           145deg,
           rgba(212, 175, 55, 0.09),
-          rgba(4, 7, 5, 0.72)
+          rgba(4, 7, 5, 0.74)
         );
       cursor: pointer;
       transition:
-        border-color 250ms ease,
-        box-shadow 250ms ease,
-        transform 250ms var(--ease-out);
+        color 240ms ease,
+        border-color 240ms ease,
+        box-shadow 240ms ease,
+        transform 240ms var(--ease-out);
     }
 
-    .header-audio:hover {
+    .audio-toggle:hover {
       border-color: var(--gold-border-strong);
       box-shadow:
-        0 0 22px rgba(212, 175, 55, 0.12);
+        0 0 24px rgba(212, 175, 55, 0.13);
       transform: translateY(-2px);
     }
 
-    .header-audio svg {
-      width: 1.15rem;
-      height: 1.15rem;
-    }
-
-    .header-audio.is-muted {
+    .audio-toggle.is-muted {
       color: var(--muted);
     }
 
-    /* =========================================================
-       6. SPA VIEW SYSTEM
-       ========================================================= */
+    .audio-toggle svg {
+      width: 1.15rem;
+      height: 1.15rem;
+    }
 
     .app-main {
       position: fixed;
@@ -792,24 +806,18 @@
       overflow-y: auto;
       overscroll-behavior: contain;
       padding:
-        clamp(1.25rem, 4vw, 3rem)
+        clamp(1.2rem, 4vw, 3rem)
         var(--page-gutter)
-        max(2.5rem, env(safe-area-inset-bottom));
+        max(2.7rem, env(safe-area-inset-bottom));
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: translateY(1.25rem) scale(0.995);
+      transform: translateY(1.2rem) scale(0.995);
       transition:
-        opacity 480ms var(--ease-soft),
-        transform 520ms var(--ease-out),
-        visibility 480ms;
-      scrollbar-width: none;
+        opacity 470ms var(--ease-soft),
+        transform 510ms var(--ease-out),
+        visibility 470ms;
       -webkit-overflow-scrolling: touch;
-    }
-
-    .view::-webkit-scrollbar {
-      display: none;
-      width: 0;
     }
 
     .view.is-active {
@@ -828,7 +836,7 @@
     .page-heading {
       display: grid;
       gap: 0.65rem;
-      margin-bottom: clamp(1.6rem, 4vw, 3.5rem);
+      margin-bottom: clamp(1.7rem, 4vw, 3.5rem);
       text-align: center;
     }
 
@@ -836,9 +844,9 @@
       margin: 0;
       color: var(--gold);
       font-family: var(--display-font);
-      font-size: clamp(0.62rem, 1.2vw, 0.78rem);
+      font-size: clamp(0.61rem, 1.2vw, 0.77rem);
       font-weight: 700;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.31em;
       text-transform: uppercase;
     }
 
@@ -846,17 +854,17 @@
       margin: 0;
       color: var(--ivory);
       font-family: var(--display-font);
-      font-size: clamp(1.7rem, 5vw, 3.8rem);
+      font-size: clamp(1.75rem, 5vw, 3.8rem);
       line-height: 1.12;
       text-shadow:
         0 8px 30px rgba(0, 0, 0, 0.75);
     }
 
     .page-description {
-      width: min(100%, 49rem);
+      width: min(100%, 50rem);
       margin: 0 auto;
       color: var(--muted);
-      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      font-size: clamp(1rem, 1.8vw, 1.19rem);
     }
 
     .ornament {
@@ -865,7 +873,7 @@
       justify-content: center;
       gap: 0.75rem;
       width: min(100%, 17rem);
-      margin: 0.35rem auto 0;
+      margin: 0.32rem auto 0;
       color: var(--gold);
     }
 
@@ -874,13 +882,13 @@
       content: "";
       width: 4rem;
       height: 1px;
+      opacity: 0.44;
       background:
         linear-gradient(
           90deg,
           transparent,
           currentColor
         );
-      opacity: 0.44;
     }
 
     .ornament::after {
@@ -892,28 +900,28 @@
         );
     }
 
-    .ornament-icon {
+    .ornament-gem {
       width: 0.48rem;
       height: 0.48rem;
       border: 1px solid currentColor;
-      transform: rotate(45deg);
       box-shadow:
-        0 0 10px rgba(212, 175, 55, 0.24);
+        0 0 10px rgba(212, 175, 55, 0.25);
+      transform: rotate(45deg);
     }
 
     .scroll-hint {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.7rem;
-      margin-top: 1.7rem;
-      color: rgba(215, 202, 176, 0.58);
+      gap: 0.72rem;
+      margin-top: 1.8rem;
+      color: rgba(215, 202, 176, 0.55);
       font-family: var(--display-font);
-      font-size: 0.62rem;
-      letter-spacing: 0.19em;
+      font-size: 0.61rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       pointer-events: none;
-      transition: opacity 250ms ease;
+      transition: opacity 240ms ease;
     }
 
     .scroll-hint.is-hidden {
@@ -921,39 +929,35 @@
     }
 
     .scroll-hint-arrow {
-      width: 0.55rem;
-      height: 0.55rem;
+      width: 0.54rem;
+      height: 0.54rem;
       border-right: 1px solid var(--gold);
       border-bottom: 1px solid var(--gold);
       transform: rotate(45deg);
-      animation: hint-bob 1.7s ease-in-out infinite;
+      animation: hint-motion 1.7s ease-in-out infinite;
     }
 
-    @keyframes hint-bob {
+    @keyframes hint-motion {
       0%,
       100% {
+        opacity: 0.4;
         transform:
           translateY(-2px)
           rotate(45deg);
-        opacity: 0.42;
       }
 
       50% {
+        opacity: 1;
         transform:
           translateY(4px)
           rotate(45deg);
-        opacity: 1;
       }
     }
-
-    /* =========================================================
-       7. HOME
-       ========================================================= */
 
     #view-home {
       display: grid;
       align-items: center;
-      padding-top: clamp(1.35rem, 5dvh, 4.5rem);
+      padding-top: clamp(1.2rem, 5dvh, 4.4rem);
     }
 
     #view-home .view-content {
@@ -966,7 +970,7 @@
       position: relative;
       display: grid;
       justify-items: center;
-      width: min(100%, 72rem);
+      width: min(100%, 73rem);
       text-align: center;
       isolation: isolate;
     }
@@ -987,12 +991,11 @@
           rgba(212, 175, 55, 0.09),
           transparent 64%
         );
-      filter: blur(0.2px);
+      box-shadow:
+        0 0 85px rgba(212, 175, 55, 0.045);
       transform:
         translate(-50%, -50%)
         rotate(-5deg);
-      box-shadow:
-        0 0 80px rgba(212, 175, 55, 0.04);
     }
 
     .hero-sigil {
@@ -1007,11 +1010,11 @@
       background:
         radial-gradient(
           circle,
-          rgba(245, 215, 110, 0.12),
+          rgba(245, 215, 110, 0.13),
           transparent 65%
         );
       box-shadow:
-        0 0 55px rgba(212, 175, 55, 0.11);
+        0 0 58px rgba(212, 175, 55, 0.12);
       animation: sigil-breathe 4.5s ease-in-out infinite;
     }
 
@@ -1038,10 +1041,10 @@
     }
 
     .hero-kicker {
-      margin: 0 0 0.8rem;
+      margin: 0 0 0.82rem;
       color: var(--gold);
       font-family: var(--display-font);
-      font-size: clamp(0.63rem, 1.5vw, 0.84rem);
+      font-size: clamp(0.62rem, 1.5vw, 0.83rem);
       font-weight: 700;
       letter-spacing: clamp(0.2em, 0.9vw, 0.42em);
       text-transform: uppercase;
@@ -1062,7 +1065,8 @@
         0 12px 42px rgba(0, 0, 0, 0.86);
     }
 
-    .hero-title .gold-word {
+    .hero-title-accent {
+      display: block;
       color: var(--gold-bright);
       background:
         linear-gradient(
@@ -1095,7 +1099,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.75rem;
-      width: min(100%, 52rem);
+      width: min(100%, 53rem);
       margin-top: clamp(1.5rem, 4dvh, 2.8rem);
     }
 
@@ -1104,7 +1108,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.65rem;
+      gap: 0.64rem;
       min-height: 48px;
       overflow: hidden;
       padding:
@@ -1117,24 +1121,24 @@
         linear-gradient(
           145deg,
           rgba(212, 175, 55, 0.075),
-          rgba(10, 16, 12, 0.66)
+          rgba(10, 16, 12, 0.68)
         );
       box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.025);
       font-family: var(--display-font);
-      font-size: clamp(0.64rem, 1vw, 0.77rem);
+      font-size: clamp(0.63rem, 1vw, 0.76rem);
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.095em;
       line-height: 1.25;
       text-decoration: none;
       text-transform: uppercase;
       cursor: pointer;
       transition:
-        color 260ms ease,
-        border-color 260ms ease,
-        background 260ms ease,
-        transform 260ms var(--ease-out),
-        box-shadow 260ms ease;
+        color 250ms ease,
+        border-color 250ms ease,
+        background 250ms ease,
+        transform 250ms var(--ease-out),
+        box-shadow 250ms ease;
     }
 
     .mythic-button::before {
@@ -1149,26 +1153,25 @@
           transparent 74%
         );
       transform: translateX(-120%);
-      transition: transform 600ms var(--ease-out);
+      transition: transform 580ms var(--ease-out);
     }
 
     .mythic-button:hover::before {
       transform: translateX(120%);
     }
 
-    .mythic-button:hover,
-    .mythic-button:active {
+    .mythic-button:hover {
       color: var(--gold-bright);
       border-color: var(--gold-border-strong);
       background:
         linear-gradient(
           145deg,
           rgba(212, 175, 55, 0.13),
-          rgba(10, 16, 12, 0.78)
+          rgba(10, 16, 12, 0.79)
         );
       box-shadow:
         0 10px 32px rgba(0, 0, 0, 0.3),
-        0 0 26px rgba(212, 175, 55, 0.08);
+        0 0 27px rgba(212, 175, 55, 0.09);
       transform: translateY(-2px);
     }
 
@@ -1184,7 +1187,7 @@
       background:
         linear-gradient(
           135deg,
-          #f7df80,
+          #f8df80,
           #d3ab35 58%,
           #a88021
         );
@@ -1203,8 +1206,8 @@
           #b68b24
         );
       box-shadow:
-        0 14px 40px rgba(0, 0, 0, 0.46),
-        0 0 42px rgba(245, 215, 110, 0.24);
+        0 14px 42px rgba(0, 0, 0, 0.46),
+        0 0 44px rgba(245, 215, 110, 0.23);
     }
 
     .mythic-button svg {
@@ -1219,7 +1222,7 @@
       justify-content: center;
       gap: 0.65rem 1.7rem;
       margin-top: clamp(1.4rem, 3.4dvh, 2.2rem);
-      color: rgba(215, 202, 176, 0.58);
+      color: rgba(215, 202, 176, 0.56);
       font-size: 0.88rem;
       font-style: italic;
     }
@@ -1231,17 +1234,63 @@
     .hero-statline span + span::before {
       content: "◆";
       position: absolute;
-      left: -1.02rem;
+      left: -1.04rem;
       color: rgba(212, 175, 55, 0.38);
-      font-size: 0.43rem;
+      font-size: 0.42rem;
       transform: translateY(0.38rem);
     }
 
-    /* =========================================================
-       8. GENERAL CARDS
-       ========================================================= */
+    .glass-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-medium);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(22, 32, 24, 0.76),
+          rgba(8, 13, 10, 0.73)
+        );
+      box-shadow: var(--shadow-gold);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition:
+        transform 330ms var(--ease-out),
+        border-color 330ms ease,
+        box-shadow 330ms ease;
+    }
 
-    .card-grid {
+    .glass-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          130deg,
+          rgba(245, 215, 110, 0.09),
+          transparent 35%
+        );
+      transition: opacity 280ms ease;
+    }
+
+    .glass-card:hover,
+    .glass-card:focus-within {
+      border-color: rgba(245, 215, 110, 0.34);
+      box-shadow:
+        0 28px 72px rgba(0, 0, 0, 0.49),
+        0 0 37px rgba(212, 175, 55, 0.08);
+      transform: translateY(-5px);
+    }
+
+    .glass-card:hover::after,
+    .glass-card:focus-within::after {
+      opacity: 1;
+    }
+
+    .chapter-grid {
       display: grid;
       grid-template-columns:
         repeat(
@@ -1251,62 +1300,8 @@
       gap: clamp(1rem, 2vw, 1.5rem);
     }
 
-    .glass-card {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--gold-border);
-      border-radius: var(--radius-md);
-      background:
-        linear-gradient(
-          145deg,
-          rgba(22, 32, 24, 0.76),
-          rgba(8, 13, 10, 0.72)
-        );
-      box-shadow: var(--shadow-gold);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      transition:
-        transform 340ms var(--ease-out),
-        border-color 340ms ease,
-        box-shadow 340ms ease;
-    }
-
-    .glass-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background:
-        linear-gradient(
-          130deg,
-          rgba(245, 215, 110, 0.09),
-          transparent 35%
-        );
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 300ms ease;
-    }
-
-    .glass-card:hover,
-    .glass-card:focus-within {
-      border-color: rgba(245, 215, 110, 0.34);
-      box-shadow:
-        0 28px 70px rgba(0, 0, 0, 0.48),
-        0 0 36px rgba(212, 175, 55, 0.08);
-      transform: translateY(-5px);
-    }
-
-    .glass-card:hover::after,
-    .glass-card:focus-within::after {
-      opacity: 1;
-    }
-
-    /* =========================================================
-       9. CHRONICLES
-       ========================================================= */
-
     .chapter-card {
-      min-height: 19rem;
+      min-height: 20rem;
     }
 
     .chapter-button {
@@ -1327,12 +1322,12 @@
 
     .chapter-image {
       position: relative;
-      min-height: 8.5rem;
+      min-height: 9rem;
       overflow: hidden;
       background:
         radial-gradient(
           circle at center,
-          rgba(212, 175, 55, 0.16),
+          rgba(212, 175, 55, 0.15),
           transparent 60%
         ),
         #0a110c;
@@ -1341,25 +1336,29 @@
     .chapter-image img {
       width: 100%;
       height: 100%;
-      min-height: 8.5rem;
+      min-height: 9rem;
       object-fit: cover;
-      opacity: 0.68;
+      opacity: 0;
       filter:
-        saturate(0.72)
+        saturate(0.74)
         contrast(1.08)
-        brightness(0.68);
+        brightness(0.69);
       transition:
+        opacity 500ms ease,
         transform 800ms var(--ease-out),
-        filter 450ms ease,
-        opacity 450ms ease;
+        filter 450ms ease;
     }
 
-    .chapter-card:hover .chapter-image img {
-      opacity: 0.88;
+    .chapter-image img.is-loaded {
+      opacity: 0.69;
+    }
+
+    .chapter-card:hover .chapter-image img.is-loaded {
+      opacity: 0.9;
       filter:
-        saturate(0.9)
+        saturate(0.92)
         contrast(1.08)
-        brightness(0.78);
+        brightness(0.8);
       transform: scale(1.055);
     }
 
@@ -1380,13 +1379,13 @@
       position: absolute;
       z-index: 2;
       left: 1rem;
-      bottom: 0.7rem;
+      bottom: 0.72rem;
       color: var(--gold-bright);
       font-family: var(--display-font);
-      font-size: clamp(1.4rem, 3vw, 2.3rem);
+      font-size: clamp(1.4rem, 3vw, 2.35rem);
       font-weight: 700;
       text-shadow:
-        0 4px 18px rgba(0, 0, 0, 0.82);
+        0 4px 18px rgba(0, 0, 0, 0.84);
     }
 
     .chapter-body {
@@ -1399,7 +1398,7 @@
     .chapter-label {
       color: var(--gold);
       font-family: var(--display-font);
-      font-size: 0.64rem;
+      font-size: 0.63rem;
       letter-spacing: 0.19em;
       text-transform: uppercase;
     }
@@ -1423,39 +1422,32 @@
       -webkit-line-clamp: 3;
     }
 
-    .chapter-open-row {
+    .chapter-open {
       display: flex;
       align-items: center;
-      gap: 0.55rem;
-      margin-top: 0.2rem;
+      gap: 0.54rem;
+      margin-top: 0.18rem;
       color: var(--gold-bright);
       font-family: var(--display-font);
-      font-size: 0.65rem;
+      font-size: 0.63rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .chapter-open-row svg {
+    .chapter-open svg {
       width: 0.9rem;
-      transition: transform 280ms var(--ease-out);
+      transition: transform 270ms var(--ease-out);
     }
 
-    .chapter-card:hover .chapter-open-row svg {
+    .chapter-card:hover .chapter-open svg {
       transform: translateX(0.3rem);
     }
-
-    /* =========================================================
-       10. READER
-       ========================================================= */
 
     #view-reader {
       padding:
         0
         0
-        calc(
-          6rem +
-          env(safe-area-inset-bottom)
-        );
+        calc(6rem + env(safe-area-inset-bottom));
     }
 
     .reader-shell {
@@ -1493,11 +1485,16 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.62;
+      opacity: 0;
       filter:
         saturate(0.75)
         brightness(0.58)
         contrast(1.14);
+      transition: opacity 600ms ease;
+    }
+
+    .reader-banner-media img.is-loaded {
+      opacity: 0.63;
     }
 
     .reader-banner::before {
@@ -1538,7 +1535,7 @@
     .reader-chapter-number {
       color: var(--gold-bright);
       font-family: var(--display-font);
-      font-size: clamp(0.67rem, 1.3vw, 0.84rem);
+      font-size: clamp(0.66rem, 1.3vw, 0.83rem);
       font-weight: 700;
       letter-spacing: 0.26em;
       text-transform: uppercase;
@@ -1615,10 +1612,17 @@
 
     .inline-figure-frame {
       position: relative;
+      min-height: 10rem;
       overflow: hidden;
       border: 1px solid var(--gold-border);
-      border-radius: var(--radius-md);
-      background: #080d09;
+      border-radius: var(--radius-medium);
+      background:
+        radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.1),
+          transparent 65%
+        ),
+        #080d09;
       box-shadow: var(--shadow-deep);
     }
 
@@ -1626,18 +1630,15 @@
       width: 100%;
       max-height: min(67dvh, 42rem);
       object-fit: cover;
+      opacity: 0;
       filter:
         saturate(0.84)
         contrast(1.06);
+      transition: opacity 500ms ease;
     }
 
-    .inline-figure-frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(245, 215, 110, 0.1);
-      border-radius: inherit;
-      pointer-events: none;
+    .inline-figure-frame img.is-loaded {
+      opacity: 1;
     }
 
     .inline-figure figcaption {
@@ -1657,10 +1658,8 @@
       padding:
         clamp(2rem, 6vw, 4.25rem)
         clamp(1.2rem, 6vw, 4.5rem);
-      border:
-        1px solid
-        rgba(212, 175, 55, 0.2);
-      border-radius: var(--radius-md);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: var(--radius-medium);
       background:
         radial-gradient(
           circle at top,
@@ -1679,20 +1678,19 @@
       content: "◆";
       position: absolute;
       left: 50%;
+      padding: 0 1.15rem;
       color: var(--gold);
-      font-size: 0.72rem;
       background: var(--abyss);
+      font-size: 0.72rem;
       transform: translateX(-50%);
     }
 
     .poem-block::before {
       top: -0.7rem;
-      padding: 0 1.15rem;
     }
 
     .poem-block::after {
       bottom: -0.7rem;
-      padding: 0 1.15rem;
     }
 
     .poem-title {
@@ -1721,7 +1719,7 @@
 
     .reader-controls {
       position: fixed;
-      z-index: 900;
+      z-index: 2800;
       left: 50%;
       bottom:
         max(
@@ -1732,15 +1730,11 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.6rem;
-      width: min(
-        calc(100% - 1.5rem),
-        42rem
-      );
+      width: min(calc(100% - 1.5rem), 42rem);
       padding: 0.5rem;
       border: 1px solid var(--gold-border);
       border-radius: 999px;
-      background:
-        rgba(7, 12, 8, 0.88);
+      background: rgba(7, 12, 8, 0.89);
       box-shadow:
         0 16px 50px rgba(0, 0, 0, 0.66);
       backdrop-filter: blur(20px);
@@ -1767,7 +1761,7 @@
       color: var(--parchment);
       background: transparent;
       font-family: var(--display-font);
-      font-size: clamp(0.58rem, 1.2vw, 0.7rem);
+      font-size: clamp(0.57rem, 1.2vw, 0.69rem);
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -1800,7 +1794,7 @@
       max-width: 7rem;
       height: 2px;
       overflow: hidden;
-      border-radius: 99px;
+      border-radius: 999px;
       background: rgba(245, 215, 110, 0.12);
     }
 
@@ -1811,12 +1805,8 @@
       background: var(--gold-bright);
       box-shadow:
         0 0 9px rgba(245, 215, 110, 0.62);
-      transition: width 100ms linear;
+      transition: width 90ms linear;
     }
-
-    /* =========================================================
-       11. HISTORICAL EVENTS
-       ========================================================= */
 
     .events-list {
       display: grid;
@@ -1832,9 +1822,21 @@
       min-height: clamp(20rem, 43vw, 31rem);
       overflow: hidden;
       border: 1px solid var(--gold-border);
-      border-radius: var(--radius-lg);
-      background: rgba(8, 13, 10, 0.7);
+      border-radius: var(--radius-large);
+      background: rgba(8, 13, 10, 0.71);
       box-shadow: var(--shadow-deep);
+      transition:
+        border-color 330ms ease,
+        box-shadow 330ms ease,
+        transform 330ms var(--ease-out);
+    }
+
+    .event-card:hover {
+      border-color: rgba(245, 215, 110, 0.32);
+      box-shadow:
+        0 32px 85px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(212, 175, 55, 0.07);
+      transform: translateY(-4px);
     }
 
     .event-card:nth-child(even) {
@@ -1864,19 +1866,25 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.78;
+      opacity: 0;
       filter:
         saturate(0.72)
         contrast(1.14)
         brightness(0.72);
       transition:
+        opacity 500ms ease,
         transform 900ms var(--ease-out),
         filter 500ms ease;
     }
 
-    .event-card:hover .event-art img {
+    .event-art img.is-loaded {
+      opacity: 0.79;
+    }
+
+    .event-card:hover .event-art img.is-loaded {
+      opacity: 0.92;
       filter:
-        saturate(0.9)
+        saturate(0.92)
         contrast(1.1)
         brightness(0.82);
       transform: scale(1.045);
@@ -1909,7 +1917,7 @@
         linear-gradient(
           150deg,
           rgba(22, 32, 24, 0.82),
-          rgba(9, 14, 10, 0.83)
+          rgba(9, 14, 10, 0.84)
         );
     }
 
@@ -1917,7 +1925,7 @@
       margin: 0;
       color: var(--gold);
       font-family: var(--display-font);
-      font-size: 0.7rem;
+      font-size: 0.69rem;
       font-weight: 700;
       letter-spacing: 0.24em;
       text-transform: uppercase;
@@ -1943,10 +1951,6 @@
       justify-self: start;
       margin-top: 0.35rem;
     }
-
-    /* =========================================================
-       12. RELICS VAULT
-       ========================================================= */
 
     .relic-grid {
       display: grid;
@@ -2002,7 +2006,7 @@
       inset: -0.45rem;
       border: 1px solid rgba(212, 175, 55, 0.11);
       border-radius: inherit;
-      animation: aura-pulse 3s ease-in-out infinite;
+      animation: relic-pulse 3s ease-in-out infinite;
     }
 
     .relic-aura svg {
@@ -2010,7 +2014,7 @@
       height: 1.7rem;
       filter:
         drop-shadow(0 0 8px rgba(245, 215, 110, 0.45));
-      transition: transform 380ms var(--ease-out);
+      transition: transform 370ms var(--ease-out);
     }
 
     .relic-card:hover .relic-aura svg {
@@ -2019,7 +2023,7 @@
         rotate(-3deg);
     }
 
-    @keyframes aura-pulse {
+    @keyframes relic-pulse {
       0%,
       100% {
         opacity: 0.28;
@@ -2039,7 +2043,7 @@
       color: var(--gold);
       background: rgba(212, 175, 55, 0.055);
       font-family: var(--display-font);
-      font-size: 0.58rem;
+      font-size: 0.57rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -2050,7 +2054,7 @@
       z-index: 1;
       overflow: hidden;
       border: 1px solid rgba(212, 175, 55, 0.1);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-small);
       background:
         radial-gradient(
           circle,
@@ -2064,19 +2068,23 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.74;
+      opacity: 0;
       filter:
         saturate(0.72)
         contrast(1.08)
         brightness(0.7);
       transition:
-        opacity 400ms ease,
+        opacity 500ms ease,
         filter 400ms ease,
         transform 700ms var(--ease-out);
     }
 
-    .relic-card:hover .relic-image img {
-      opacity: 0.92;
+    .relic-image img.is-loaded {
+      opacity: 0.75;
+    }
+
+    .relic-card:hover .relic-image img.is-loaded {
+      opacity: 0.93;
       filter:
         saturate(0.92)
         contrast(1.08)
@@ -2108,10 +2116,6 @@
       line-height: 1.62;
     }
 
-    /* =========================================================
-       13. CREDITS
-       ========================================================= */
-
     #view-credits {
       display: grid;
       align-items: center;
@@ -2127,13 +2131,13 @@
       display: grid;
       justify-items: center;
       gap: 1rem;
-      width: min(100%, 47rem);
+      width: min(100%, 48rem);
       padding:
         clamp(2rem, 6vw, 5rem)
         clamp(1.2rem, 6vw, 4rem);
       overflow: hidden;
       border: 1px solid var(--gold-border);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-large);
       background:
         radial-gradient(
           circle at top,
@@ -2142,8 +2146,8 @@
         ),
         linear-gradient(
           145deg,
-          rgba(22, 32, 24, 0.78),
-          rgba(7, 12, 8, 0.72)
+          rgba(22, 32, 24, 0.79),
+          rgba(7, 12, 8, 0.73)
         );
       box-shadow: var(--shadow-deep);
       backdrop-filter: blur(20px);
@@ -2158,9 +2162,9 @@
       aspect-ratio: 1;
       border: 1px solid rgba(212, 175, 55, 0.07);
       border-radius: 50%;
-      transform: translateY(-58%);
       box-shadow:
         0 0 70px rgba(212, 175, 55, 0.06);
+      transform: translateY(-58%);
     }
 
     .credits-emblem {
@@ -2187,16 +2191,6 @@
       height: 2.6rem;
     }
 
-    .credits-kicker {
-      margin: 0;
-      color: var(--gold);
-      font-family: var(--display-font);
-      font-size: 0.67rem;
-      font-weight: 700;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-    }
-
     .credits-title {
       margin: 0;
       color: var(--ivory);
@@ -2205,7 +2199,7 @@
       line-height: 1.18;
     }
 
-    .credits-text {
+    .credits-copy {
       width: min(100%, 40rem);
       margin: 0;
       color: var(--muted);
@@ -2229,20 +2223,16 @@
       margin-top: 0.5rem;
     }
 
-    /* =========================================================
-       14. EMPTY, ERROR, NOTICE, AND TOAST STATES
-       ========================================================= */
-
     .empty-state {
       display: grid;
       justify-items: center;
       gap: 0.8rem;
-      width: min(100%, 38rem);
+      width: min(100%, 39rem);
       margin: 3rem auto;
-      padding: 2.2rem 1.4rem;
+      padding: 2.3rem 1.4rem;
       border: 1px solid var(--gold-border);
-      border-radius: var(--radius-md);
-      background: var(--surface-1);
+      border-radius: var(--radius-medium);
+      background: var(--surface-low);
       text-align: center;
     }
 
@@ -2252,7 +2242,7 @@
       color: var(--gold);
     }
 
-    .empty-state h2 {
+    .empty-state h3 {
       margin: 0;
       color: var(--ivory);
       font-family: var(--display-font);
@@ -2264,94 +2254,45 @@
       color: var(--muted);
     }
 
-    .error-gate {
+    .data-notice {
       position: fixed;
-      inset: 0;
-      z-index: 5500;
-      display: none;
-      place-items: center;
-      padding: 1rem;
-      overflow-y: auto;
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(110, 56, 34, 0.12),
-          transparent 50%
-        ),
-        rgba(3, 6, 4, 0.97);
-    }
-
-    .error-gate.is-visible {
-      display: grid;
-    }
-
-    .error-card {
-      display: grid;
-      justify-items: center;
-      gap: 1rem;
-      width: min(100%, 39rem);
-      padding:
-        clamp(1.5rem, 5vw, 3.4rem);
-      border: 1px solid rgba(224, 154, 131, 0.3);
-      border-radius: var(--radius-lg);
-      background:
-        linear-gradient(
-          145deg,
-          rgba(35, 26, 22, 0.88),
-          rgba(10, 14, 11, 0.92)
-        );
-      box-shadow: var(--shadow-deep);
+      z-index: 5000;
+      left: 50%;
+      top: calc(
+        max(0px, env(safe-area-inset-top)) +
+        var(--header-height) +
+        0.75rem
+      );
+      width: min(calc(100% - 2rem), 42rem);
+      padding: 0.7rem 1rem;
+      border: 1px solid var(--gold-border);
+      border-radius: 999px;
+      color: var(--parchment);
+      background: rgba(8, 13, 10, 0.91);
+      box-shadow:
+        0 12px 38px rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      font-size: 0.92rem;
       text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transform:
+        translate(-50%, -0.7rem);
+      transition:
+        opacity 280ms ease,
+        transform 280ms var(--ease-out);
     }
 
-    .error-symbol {
-      display: grid;
-      place-items: center;
-      width: 4rem;
-      height: 4rem;
-      border: 1px solid rgba(224, 154, 131, 0.36);
-      border-radius: 50%;
-      color: var(--danger);
-      font-family: var(--display-font);
-      font-size: 1.4rem;
-    }
-
-    .error-card h2 {
-      margin: 0;
-      color: var(--ivory);
-      font-family: var(--display-font);
-      font-size: clamp(1.35rem, 4vw, 2.1rem);
-    }
-
-    .error-card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .error-detail {
-      width: 100%;
-      max-height: 8rem;
-      overflow: auto;
-      padding: 0.85rem;
-      border: 1px solid rgba(224, 154, 131, 0.13);
-      border-radius: var(--radius-xs);
-      color: rgba(243, 234, 210, 0.64);
-      background: rgba(0, 0, 0, 0.22);
-      font-family:
-        ui-monospace,
-        SFMono-Regular,
-        Menlo,
-        Consolas,
-        monospace;
-      font-size: 0.8rem;
-      text-align: left;
-      white-space: pre-wrap;
-      word-break: break-word;
+    .data-notice.is-visible {
+      opacity: 1;
+      transform:
+        translate(-50%, 0);
     }
 
     .toast-region {
       position: fixed;
-      z-index: 6000;
+      z-index: 12000;
       right: max(1rem, env(safe-area-inset-right));
       bottom: max(1rem, env(safe-area-inset-bottom));
       display: grid;
@@ -2363,25 +2304,24 @@
     .toast {
       padding: 0.85rem 1rem;
       border: 1px solid var(--gold-border);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-small);
       color: var(--parchment);
-      background: rgba(8, 13, 10, 0.93);
+      background: rgba(8, 13, 10, 0.94);
       box-shadow: var(--shadow-deep);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      font-size: 0.98rem;
+      opacity: 0;
       transform:
         translateY(0.8rem)
         scale(0.98);
-      opacity: 0;
-      animation: toast-in 300ms var(--ease-out) forwards;
+      animation: toast-enter 300ms var(--ease-out) forwards;
     }
 
     .toast.is-leaving {
-      animation: toast-out 260ms ease forwards;
+      animation: toast-leave 250ms ease forwards;
     }
 
-    @keyframes toast-in {
+    @keyframes toast-enter {
       to {
         opacity: 1;
         transform:
@@ -2390,7 +2330,7 @@
       }
     }
 
-    @keyframes toast-out {
+    @keyframes toast-leave {
       to {
         opacity: 0;
         transform:
@@ -2399,16 +2339,10 @@
       }
     }
 
-    /* =========================================================
-       15. RESPONSIVE ADAPTATION
-       Uses content-driven layout behavior rather than rigid
-       desktop dimensions.
-       ========================================================= */
-
     @media (max-width: 58rem) {
       .app-header {
-        gap: 0.7rem;
-        padding-inline: clamp(0.75rem, 2.5vw, 1rem);
+        gap: 0.68rem;
+        padding-inline: clamp(0.72rem, 2.5vw, 1rem);
       }
 
       .brand-text {
@@ -2416,9 +2350,9 @@
       }
 
       .brand-mark {
-        width: 2.6rem;
-        height: 2.6rem;
-        flex-basis: 2.6rem;
+        width: 2.58rem;
+        height: 2.58rem;
+        flex-basis: 2.58rem;
       }
 
       .nav-shell {
@@ -2426,8 +2360,8 @@
           linear-gradient(
             90deg,
             transparent,
-            black 0.65rem,
-            black calc(100% - 0.65rem),
+            black 0.6rem,
+            black calc(100% - 0.6rem),
             transparent
           );
       }
@@ -2462,12 +2396,7 @@
 
     @media (max-width: 34rem) {
       :root {
-        --page-gutter: clamp(0.85rem, 4vw, 1.15rem);
-      }
-
-      .header-audio {
-        min-width: 42px;
-        min-height: 42px;
+        --page-gutter: clamp(0.85rem, 4vw, 1.1rem);
       }
 
       .hero-title {
@@ -2481,11 +2410,11 @@
 
       .hero-actions .mythic-button {
         width: 100%;
-        padding-inline: 0.75rem;
+        padding-inline: 0.72rem;
       }
 
-      .hero-actions .mythic-button.primary,
-      .hero-actions .mythic-button.resume-button {
+      .hero-actions .primary,
+      .hero-actions .resume-button {
         grid-column: 1 / -1;
       }
 
@@ -2514,18 +2443,19 @@
         grid-template-rows: auto 11rem auto;
       }
 
-      .credits-links {
+      .credits-links,
+      .credits-links .mythic-button {
         width: 100%;
       }
 
-      .credits-links .mythic-button {
-        width: 100%;
+      .data-notice {
+        border-radius: var(--radius-small);
       }
     }
 
     @media (max-height: 42rem) and (orientation: landscape) {
       :root {
-        --header-height: 4.25rem;
+        --header-height: 4.2rem;
       }
 
       #view-home {
@@ -2554,9 +2484,15 @@
       }
     }
 
-    /* =========================================================
-       16. REDUCED MOTION AND ACCESSIBILITY
-       ========================================================= */
+    @media (hover: none) {
+      .glass-card:active,
+      .event-card:active {
+        border-color: var(--gold-border-strong);
+        transform:
+          translateY(-2px)
+          scale(0.992);
+      }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       *,
@@ -2575,7 +2511,7 @@
 
     @media (prefers-contrast: more) {
       :root {
-        --muted: #c2cabf;
+        --muted: #c3cbc0;
         --gold-border: rgba(245, 215, 110, 0.34);
       }
 
@@ -2589,19 +2525,12 @@
 </head>
 
 <body>
-  <!-- =======================================================
-       SVG SYMBOL LIBRARY
-       ======================================================= -->
-
   <svg
     class="sr-only"
     aria-hidden="true"
     focusable="false"
   >
-    <symbol
-      id="icon-sigil"
-      viewBox="0 0 64 64"
-    >
+    <symbol id="icon-sigil" viewBox="0 0 64 64">
       <path
         d="M32 5 49 55 32 45 15 55Z"
         fill="none"
@@ -2622,23 +2551,7 @@
       />
     </symbol>
 
-    <symbol
-      id="icon-home"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="m3 11 9-7 9 7v9H7v-6h10v6"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.5"
-        stroke-linejoin="round"
-      />
-    </symbol>
-
-    <symbol
-      id="icon-scroll"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-scroll" viewBox="0 0 24 24">
       <path
         d="M7 4h11a2 2 0 0 1 2 2v12H8a3 3 0 0 1-3-3V6a2 2 0 0 0-2-2h4Zm0 0v11a3 3 0 0 0 3 3"
         fill="none"
@@ -2648,10 +2561,7 @@
       />
     </symbol>
 
-    <symbol
-      id="icon-event"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-event" viewBox="0 0 24 24">
       <circle
         cx="12"
         cy="12"
@@ -2669,10 +2579,7 @@
       />
     </symbol>
 
-    <symbol
-      id="icon-relic"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-relic" viewBox="0 0 24 24">
       <path
         d="m12 2 7 4v8c0 4-3 6.5-7 8-4-1.5-7-4-7-8V6Z"
         fill="none"
@@ -2682,16 +2589,14 @@
       />
       <path
         d="m9 9 6 6m0-6-6 6"
+        fill="none"
         stroke="currentColor"
         stroke-width="1.5"
         stroke-linecap="round"
       />
     </symbol>
 
-    <symbol
-      id="icon-sword"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-sword" viewBox="0 0 24 24">
       <path
         d="m14 5 5-3 3 3-3 5-8 8-5-5Z"
         fill="none"
@@ -2708,10 +2613,7 @@
       />
     </symbol>
 
-    <symbol
-      id="icon-artifact"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-artifact" viewBox="0 0 24 24">
       <path
         d="m12 2 4 6-4 14L8 8Z"
         fill="none"
@@ -2721,15 +2623,13 @@
       />
       <path
         d="M8 8h8"
+        fill="none"
         stroke="currentColor"
         stroke-width="1.5"
       />
     </symbol>
 
-    <symbol
-      id="icon-memento"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-memento" viewBox="0 0 24 24">
       <path
         d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11Z"
         fill="none"
@@ -2739,10 +2639,74 @@
       />
     </symbol>
 
-    <symbol
-      id="icon-volume"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-potion" viewBox="0 0 24 24">
+      <path
+        d="M9 3h6M10 3v5l-5 8a3.2 3.2 0 0 0 2.7 5h8.6a3.2 3.2 0 0 0 2.7-5l-5-8V3"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M7.5 15h9"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+      />
+    </symbol>
+
+    <symbol id="icon-flower" viewBox="0 0 24 24">
+      <path
+        d="M12 12c-4-1-5-5-2.5-6.5C11 4.5 12 6 12 8c0-2 1-3.5 2.5-2.5C17 7 16 11 12 12Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+      />
+      <path
+        d="M12 12c1-4 5-5 6.5-2.5C19.5 11 18 12 16 12c2 0 3.5 1 2.5 2.5C17 17 13 16 12 12Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+      />
+      <path
+        d="M12 12c4 1 5 5 2.5 6.5C13 19.5 12 18 12 16c0 2-1 3.5-2.5 2.5C7 17 8 13 12 12Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+      />
+      <path
+        d="M12 12c-1 4-5 5-6.5 2.5C4.5 13 6 12 8 12c-2 0-3.5-1-2.5-2.5C7 7 11 8 12 12Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+      />
+      <circle
+        cx="12"
+        cy="12"
+        r="1.5"
+        fill="currentColor"
+      />
+    </symbol>
+
+    <symbol id="icon-crystal" viewBox="0 0 24 24">
+      <path
+        d="m12 2 6 6-3 13H9L6 8Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="m6 8 6 4 6-4M12 2v10M9 21l3-9 3 9"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol id="icon-volume" viewBox="0 0 24 24">
       <path
         d="M5 10v4h4l5 4V6l-5 4Z"
         fill="none"
@@ -2759,10 +2723,7 @@
       />
     </symbol>
 
-    <symbol
-      id="icon-muted"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-muted" viewBox="0 0 24 24">
       <path
         d="M5 10v4h4l5 4V6l-5 4Z"
         fill="none"
@@ -2779,10 +2740,7 @@
       />
     </symbol>
 
-    <symbol
-      id="icon-arrow-right"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24">
       <path
         d="M5 12h14m-5-5 5 5-5 5"
         fill="none"
@@ -2793,10 +2751,7 @@
       />
     </symbol>
 
-    <symbol
-      id="icon-arrow-left"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
       <path
         d="M19 12H5m5-5-5 5 5 5"
         fill="none"
@@ -2807,10 +2762,7 @@
       />
     </symbol>
 
-    <symbol
-      id="icon-mail"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-mail" viewBox="0 0 24 24">
       <path
         d="M3 5h18v14H3Z"
         fill="none"
@@ -2827,10 +2779,7 @@
       />
     </symbol>
 
-    <symbol
-      id="icon-external"
-      viewBox="0 0 24 24"
-    >
+    <symbol id="icon-external" viewBox="0 0 24 24">
       <path
         d="M14 4h6v6m0-6-9 9"
         fill="none"
@@ -2847,54 +2796,53 @@
         stroke-linejoin="round"
       />
     </symbol>
-  </svg>
 
-  <!-- =======================================================
-       CINEMATIC BACKGROUND
-       ======================================================= -->
+    <symbol id="icon-empty" viewBox="0 0 24 24">
+      <path
+        d="M5 4h14v16H5Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M8 8h8M8 12h6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </symbol>
+  </svg>
 
   <div class="environment"></div>
   <div class="environment-blur"></div>
 
   <canvas
-    id="emberCanvas"
+    id="particleCanvas"
     aria-hidden="true"
   ></canvas>
 
-  <div
-    class="film-grain"
-    aria-hidden="true"
-  ></div>
-
-  <div
-    class="vignette"
-    aria-hidden="true"
-  ></div>
-
-  <!-- =======================================================
-       LOADING GATE
-       ======================================================= -->
+  <div class="film-grain" aria-hidden="true"></div>
+  <div class="screen-vignette" aria-hidden="true"></div>
 
   <section
     id="loadingGate"
     class="loading-gate"
     aria-live="polite"
-    aria-label="Preparing The Legend of Adonis"
+    aria-label="Loading The Legend of Adonis"
   >
     <div class="loader-content">
-      <div
-        class="loader-sigil"
-        aria-hidden="true"
-      >
+      <div class="loader-sigil" aria-hidden="true">
         <div class="loader-ring"></div>
 
-        <div class="crossed-blades">
-          <span class="blade"></span>
-          <span class="blade"></span>
+        <div class="loader-blades">
+          <span class="loader-blade"></span>
+          <span class="loader-blade"></span>
         </div>
       </div>
 
-      <p class="loader-title">
+      <p class="loader-heading">
         Awakening the Chronicle
       </p>
 
@@ -2917,10 +2865,6 @@
     </div>
   </section>
 
-  <!-- =======================================================
-       ERROR GATE
-       ======================================================= -->
-
   <section
     id="errorGate"
     class="error-gate"
@@ -2928,10 +2872,7 @@
     aria-label="Story loading error"
   >
     <div class="error-card">
-      <div
-        class="error-symbol"
-        aria-hidden="true"
-      >
+      <div class="error-icon" aria-hidden="true">
         !
       </div>
 
@@ -2946,36 +2887,28 @@
         class="error-detail"
       ></pre>
 
-      <div class="hero-actions">
-        <button
-          id="retryButton"
-          class="mythic-button primary"
-          type="button"
-        >
-          Retry the Summoning
-        </button>
-
-        <button
-          id="continueShellButton"
-          class="mythic-button"
-          type="button"
-        >
-          Enter Empty Archive
-        </button>
-      </div>
+      <button
+        id="retryButton"
+        class="mythic-button primary sound-interactive"
+        type="button"
+      >
+        Retry the Summoning
+      </button>
     </div>
   </section>
 
-  <!-- =======================================================
-       PERSISTENT HEADER
-       ======================================================= -->
+  <div
+    id="dataNotice"
+    class="data-notice"
+    role="status"
+  >
+    The malformed image links in the remote manuscript were
+    repaired automatically.
+  </div>
 
   <header class="app-header">
     #home
-      <span
-        class="brand-mark"
-        aria-hidden="true"
-      >
+      <span class="brand-mark" aria-hidden="true">
         <svg>
           #icon-sigil</use>
         </svg>
@@ -2993,7 +2926,7 @@
         aria-label="Primary navigation"
       >
         <button
-          class="nav-button interactive-sound is-active"
+          class="nav-button sound-interactive is-active"
           type="button"
           data-route="home"
         >
@@ -3001,7 +2934,7 @@
         </button>
 
         <button
-          class="nav-button interactive-sound"
+          class="nav-button sound-interactive"
           type="button"
           data-route="chapters"
         >
@@ -3009,7 +2942,7 @@
         </button>
 
         <button
-          class="nav-button interactive-sound"
+          class="nav-button sound-interactive"
           type="button"
           data-route="events"
         >
@@ -3017,7 +2950,7 @@
         </button>
 
         <button
-          class="nav-button interactive-sound"
+          class="nav-button sound-interactive"
           type="button"
           data-route="relics"
         >
@@ -3025,7 +2958,7 @@
         </button>
 
         <button
-          class="nav-button interactive-sound"
+          class="nav-button sound-interactive"
           type="button"
           data-route="credits"
         >
@@ -3036,9 +2969,9 @@
 
     <button
       id="headerAudioToggle"
-      class="header-audio interactive-sound"
+      class="audio-toggle sound-interactive"
       type="button"
-      aria-label="Turn audio off"
+      aria-label="Turn interface audio off"
       title="Audio: On"
     >
       <svg aria-hidden="true">
@@ -3047,16 +2980,7 @@
     </button>
   </header>
 
-  <!-- =======================================================
-       SPA VIEWS
-       ======================================================= -->
-
-  <main
-    id="appMain"
-    class="app-main"
-  >
-    <!-- HOME -->
-
+  <main class="app-main">
     <section
       id="view-home"
       class="view is-active"
@@ -3065,10 +2989,7 @@
     >
       <div class="view-content">
         <article class="hero">
-          <div
-            class="hero-sigil"
-            aria-hidden="true"
-          >
+          <div class="hero-sigil" aria-hidden="true">
             <svg>
               #icon-sigil</use>
             </svg>
@@ -3078,12 +2999,9 @@
             A Chronicle Forged in Shadow
           </p>
 
-          <h1
-            id="homeTitle"
-            class="hero-title"
-          >
+          <h1 id="homeTitle" class="hero-title">
             The Legend
-            <span class="gold-word">
+            <span class="hero-title-accent">
               of Adonis
             </span>
           </h1>
@@ -3092,17 +3010,17 @@
             id="homeSubtitle"
             class="hero-subtitle"
           >
-            A tale of sacrifice in shadows
+            A Tale of Fate &amp; Shadows
           </p>
 
-          <div class="ornament">
-            <span class="ornament-icon"></span>
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament-gem"></span>
           </div>
 
           <div class="hero-actions">
             <button
               id="resumeButton"
-              class="mythic-button primary resume-button interactive-sound"
+              class="mythic-button primary resume-button sound-interactive"
               type="button"
               hidden
             >
@@ -3115,7 +3033,7 @@
 
             <button
               id="startJourneyButton"
-              class="mythic-button primary interactive-sound"
+              class="mythic-button primary sound-interactive"
               type="button"
             >
               <svg aria-hidden="true">
@@ -3126,7 +3044,7 @@
             </button>
 
             <button
-              class="mythic-button interactive-sound"
+              class="mythic-button sound-interactive"
               type="button"
               data-route="events"
             >
@@ -3138,7 +3056,7 @@
             </button>
 
             <button
-              class="mythic-button interactive-sound"
+              class="mythic-button sound-interactive"
               type="button"
               data-route="relics"
             >
@@ -3151,7 +3069,7 @@
 
             <button
               id="homeAudioToggle"
-              class="mythic-button interactive-sound"
+              class="mythic-button sound-interactive"
               type="button"
             >
               <svg aria-hidden="true">
@@ -3173,13 +3091,12 @@
       </div>
     </section>
 
-    <!-- CHAPTERS -->
-
     <section
       id="view-chapters"
       class="view"
       data-view="chapters"
       aria-labelledby="chaptersTitle"
+      aria-hidden="true"
     >
       <div class="view-content">
         <header class="page-heading">
@@ -3195,18 +3112,19 @@
           </h2>
 
           <p class="page-description">
-            Enter the fragments of a legend written across
-            sacrifice, memory, and shadow.
+            Follow Adonis through Norge, the mourning sea,
+            Faroe Island, the Forest of the Dead, and the
+            singing chambers of Sönghellir.
           </p>
 
-          <div class="ornament">
-            <span class="ornament-icon"></span>
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament-gem"></span>
           </div>
         </header>
 
         <div
           id="chapterGrid"
-          class="card-grid"
+          class="chapter-grid"
         ></div>
 
         <div class="scroll-hint">
@@ -3216,13 +3134,12 @@
       </div>
     </section>
 
-    <!-- READER -->
-
     <section
       id="view-reader"
       class="view"
       data-view="reader"
       aria-labelledby="readerTitle"
+      aria-hidden="true"
     >
       <article
         id="readerShell"
@@ -3230,13 +3147,12 @@
       ></article>
     </section>
 
-    <!-- EVENTS -->
-
     <section
       id="view-events"
       class="view"
       data-view="events"
       aria-labelledby="eventsTitle"
+      aria-hidden="true"
     >
       <div class="view-content">
         <header class="page-heading">
@@ -3252,12 +3168,12 @@
           </h2>
 
           <p class="page-description">
-            Trace the moments that shaped kingdoms, vows,
-            betrayals, and the destiny of Adonis.
+            Explore the eras, catastrophes, sanctuaries, and
+            legendary creations preserved within the archive.
           </p>
 
-          <div class="ornament">
-            <span class="ornament-icon"></span>
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament-gem"></span>
           </div>
         </header>
 
@@ -3273,13 +3189,12 @@
       </div>
     </section>
 
-    <!-- RELICS -->
-
     <section
       id="view-relics"
       class="view"
       data-view="relics"
       aria-labelledby="relicsTitle"
+      aria-hidden="true"
     >
       <div class="view-content">
         <header class="page-heading">
@@ -3291,16 +3206,16 @@
             id="relicsTitle"
             class="page-title"
           >
-            Relics Vault
+            Relics
           </h2>
 
           <p class="page-description">
-            Weapons, artifacts, and mementos carrying the
-            weight of forgotten hands.
+            Sacred vessels, fallen blades, ancient maps, and
+            keepsakes carrying the weight of sacrifice.
           </p>
 
-          <div class="ornament">
-            <span class="ornament-icon"></span>
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament-gem"></span>
           </div>
         </header>
 
@@ -3316,13 +3231,12 @@
       </div>
     </section>
 
-    <!-- CREDITS -->
-
     <section
       id="view-credits"
       class="view"
       data-view="credits"
       aria-labelledby="creditsTitle"
+      aria-hidden="true"
     >
       <div class="view-content">
         <article class="credits-card">
@@ -3335,7 +3249,7 @@
             </svg>
           </div>
 
-          <p class="credits-kicker">
+          <p class="page-kicker">
             Beyond the Last Page
           </p>
 
@@ -3346,9 +3260,8 @@
             Crafted in Shadow and Gold
           </h2>
 
-          <p class="credits-text">
-            Story, design direction, and creative authorship
-            by
+          <p class="credits-copy">
+            Story, vision, and creative authorship by
           </p>
 
           <div
@@ -3358,20 +3271,20 @@
             Mayur Borgude
           </div>
 
-          <p class="credits-text">
-            Visual engineering, interaction design, and
-            atmospheric systems shaped into a self-contained
-            reading experience for
-            <em>The Legend of Adonis</em>.
+          <p class="credits-copy">
+            A cinematic manuscript experience shaped through
+            atmospheric visual design, procedural interaction
+            audio, living particles, and responsive reading
+            systems.
           </p>
 
-          <div class="ornament">
-            <span class="ornament-icon"></span>
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament-gem"></span>
           </div>
 
           <div class="credits-links">
             <a
-              class="mythic-button interactive-sound"
+              class="mythic-button sound-interactive"
               href="mailto:mayurborgude@gmail.com?subject=The Legend of Adonis Feedback">
                 #icon-mail</use>
               </svg>
@@ -3380,7 +3293,7 @@
             </a>
 
             <a
-              class="mythic-button primary interactive-sound"
+              class="mythic-button primary sound-interactive"
               href="https://mayborg121.github.io/poems/"
               target="_blank"
               rel="noopener noreferrer"
@@ -3398,18 +3311,13 @@
     </section>
   </main>
 
-  <!-- =======================================================
-       READER CONTROLS
-       ======================================================= -->
-
   <nav
-    id="readerControls"
     class="reader-controls"
     aria-label="Chapter pagination"
   >
     <button
       id="previousChapterButton"
-      class="reader-nav-button interactive-sound"
+      class="reader-nav-button sound-interactive"
       type="button"
     >
       <svg aria-hidden="true">
@@ -3433,7 +3341,7 @@
 
     <button
       id="nextChapterButton"
-      class="reader-nav-button interactive-sound"
+      class="reader-nav-button sound-interactive"
       type="button"
     >
       <span class="reader-nav-label">
@@ -3456,18 +3364,16 @@
   <script>
     "use strict";
 
-    /* =========================================================
-       1. APPLICATION CONFIGURATION
-       ========================================================= */
-
     const CONFIG = Object.freeze({
-      contentUrl:
+      contentURL:
         "https://raw.githubusercontent.com/Mayborg121/loa/refs/heads/main/content.json",
 
-      storageKeys: {
-        progress: "loa_reader_progress_v2",
-        audio: "loa_audio_preference_v2"
-      },
+      requestTimeout: 14000,
+
+      storage: Object.freeze({
+        progress: "loa-reading-progress-v5",
+        audio: "loa-interface-audio-v5"
+      }),
 
       routes: new Set([
         "home",
@@ -3476,12 +3382,7 @@
         "events",
         "relics",
         "credits"
-      ]),
-
-      imageTimeout: 12000,
-      fetchTimeout: 16000,
-      scrollSaveDelay: 180,
-      hoverSoundDelay: 68
+      ])
     });
 
     const PLACEHOLDER_IMAGE =
@@ -3492,7 +3393,7 @@
           viewBox="0 0 1600 900"
         >
           <defs>
-            <radialGradient id="g">
+            <radialGradient id="background">
               <stop offset="0" stop-color="#33442f"/>
               <stop offset=".48" stop-color="#111b14"/>
               <stop offset="1" stop-color="#040705"/>
@@ -3505,7 +3406,11 @@
             </linearGradient>
           </defs>
 
-          <rect width="1600" height="900" fill="url(#g)"/>
+          <rect
+            width="1600"
+            height="900"
+            fill="url(#background)"
+          />
 
           <circle
             cx="800"
@@ -3546,126 +3451,113 @@
         </svg>
       `);
 
-    /* =========================================================
-       2. SHARED APPLICATION STATE
-       ========================================================= */
+    function byId(id) {
+      return document.getElementById(id);
+    }
+
+    const elements = {
+      loadingGate:
+        byId("loadingGate"),
+
+      loaderStatus:
+        byId("loaderStatus"),
+
+      loaderProgressFill:
+        byId("loaderProgressFill"),
+
+      errorGate:
+        byId("errorGate"),
+
+      errorMessage:
+        byId("errorMessage"),
+
+      errorDetail:
+        byId("errorDetail"),
+
+      retryButton:
+        byId("retryButton"),
+
+      dataNotice:
+        byId("dataNotice"),
+
+      chapterGrid:
+        byId("chapterGrid"),
+
+      eventsList:
+        byId("eventsList"),
+
+      relicGrid:
+        byId("relicGrid"),
+
+      readerShell:
+        byId("readerShell"),
+
+      resumeButton:
+        byId("resumeButton"),
+
+      startJourneyButton:
+        byId("startJourneyButton"),
+
+      headerAudioToggle:
+        byId("headerAudioToggle"),
+
+      homeAudioToggle:
+        byId("homeAudioToggle"),
+
+      headerAudioIcon:
+        byId("headerAudioIcon"),
+
+      homeAudioIcon:
+        byId("homeAudioIcon"),
+
+      homeAudioText:
+        byId("homeAudioText"),
+
+      heroStatline:
+        byId("heroStatline"),
+
+      homeSubtitle:
+        byId("homeSubtitle"),
+
+      creditsAuthor:
+        byId("creditsAuthor"),
+
+      previousChapterButton:
+        byId("previousChapterButton"),
+
+      nextChapterButton:
+        byId("nextChapterButton"),
+
+      readerProgressFill:
+        byId("readerProgressFill"),
+
+      toastRegion:
+        byId("toastRegion"),
+
+      particleCanvas:
+        byId("particleCanvas")
+    };
 
     const state = {
       data: null,
       route: "home",
       activeChapterId: null,
       activeChapterIndex: -1,
-      loading: true,
-      imagePreloadComplete: false,
+      isLoading: true,
+      repairedRemoteData: false,
       audioEnabled: readAudioPreference(),
-      readerRestorePending: false,
       reducedMotion:
-        window.matchMedia(
+        matchMedia(
           "(prefers-reduced-motion: reduce)"
         ).matches
     };
 
-    const elements = {
-      body: document.body,
-
-      loadingGate:
-        document.getElementById("loadingGate"),
-
-      loaderStatus:
-        document.getElementById("loaderStatus"),
-
-      loaderProgressFill:
-        document.getElementById("loaderProgressFill"),
-
-      errorGate:
-        document.getElementById("errorGate"),
-
-      errorMessage:
-        document.getElementById("errorMessage"),
-
-      errorDetail:
-        document.getElementById("errorDetail"),
-
-      retryButton:
-        document.getElementById("retryButton"),
-
-      continueShellButton:
-        document.getElementById("continueShellButton"),
-
-      appMain:
-        document.getElementById("appMain"),
-
-      chapterGrid:
-        document.getElementById("chapterGrid"),
-
-      eventsList:
-        document.getElementById("eventsList"),
-
-      relicGrid:
-        document.getElementById("relicGrid"),
-
-      readerShell:
-        document.getElementById("readerShell"),
-
-      resumeButton:
-        document.getElementById("resumeButton"),
-
-      startJourneyButton:
-        document.getElementById("startJourneyButton"),
-
-      headerAudioToggle:
-        document.getElementById("headerAudioToggle"),
-
-      homeAudioToggle:
-        document.getElementById("homeAudioToggle"),
-
-      headerAudioIcon:
-        document.getElementById("headerAudioIcon"),
-
-      homeAudioIcon:
-        document.getElementById("homeAudioIcon"),
-
-      homeAudioText:
-        document.getElementById("homeAudioText"),
-
-      heroStatline:
-        document.getElementById("heroStatline"),
-
-      homeSubtitle:
-        document.getElementById("homeSubtitle"),
-
-      creditsAuthor:
-        document.getElementById("creditsAuthor"),
-
-      readerControls:
-        document.getElementById("readerControls"),
-
-      previousChapterButton:
-        document.getElementById("previousChapterButton"),
-
-      nextChapterButton:
-        document.getElementById("nextChapterButton"),
-
-      readerProgressFill:
-        document.getElementById("readerProgressFill"),
-
-      toastRegion:
-        document.getElementById("toastRegion"),
-
-      emberCanvas:
-        document.getElementById("emberCanvas")
-    };
-
-    /* =========================================================
-       3. SAFE STORAGE
-       ========================================================= */
-
     function safeStorageGet(key) {
       try {
-        return window.localStorage.getItem(key);
+        return localStorage.getItem(key);
       } catch (error) {
         console.warn(
-          "Local storage could not be read.",
+          "Local storage is unavailable.",
           error
         );
 
@@ -3675,11 +3567,11 @@
 
     function safeStorageSet(key, value) {
       try {
-        window.localStorage.setItem(key, value);
+        localStorage.setItem(key, value);
         return true;
       } catch (error) {
         console.warn(
-          "Local storage could not be written.",
+          "Local storage could not be updated.",
           error
         );
 
@@ -3689,35 +3581,42 @@
 
     function readAudioPreference() {
       const stored =
-        safeStorageGet(CONFIG.storageKeys.audio);
+        safeStorageGet(
+          CONFIG.storage.audio
+        );
 
-      if (stored === null) {
-        return true;
-      }
-
-      return stored === "true";
+      return stored === null
+        ? true
+        : stored === "true";
     }
 
     function readProgress() {
       const raw =
-        safeStorageGet(CONFIG.storageKeys.progress);
+        safeStorageGet(
+          CONFIG.storage.progress
+        );
 
       if (!raw) {
         return null;
       }
 
       try {
-        const parsed = JSON.parse(raw);
+        const parsed =
+          JSON.parse(raw);
 
         if (
           !parsed ||
-          !Number.isFinite(Number(parsed.chapterId))
+          !Number.isFinite(
+            Number(parsed.chapterId)
+          )
         ) {
           return null;
         }
 
         return {
-          chapterId: Number(parsed.chapterId),
+          chapterId:
+            Number(parsed.chapterId),
+
           scrollOffset:
             Math.max(
               0,
@@ -3738,14 +3637,20 @@
       chapterId,
       scrollOffset
     ) {
-      if (!Number.isFinite(Number(chapterId))) {
+      if (
+        !Number.isFinite(
+          Number(chapterId)
+        )
+      ) {
         return;
       }
 
       safeStorageSet(
-        CONFIG.storageKeys.progress,
+        CONFIG.storage.progress,
         JSON.stringify({
-          chapterId: Number(chapterId),
+          chapterId:
+            Number(chapterId),
+
           scrollOffset:
             Math.max(
               0,
@@ -3753,25 +3658,17 @@
                 Number(scrollOffset) || 0
               )
             ),
-          savedAt: Date.now()
+
+          savedAt:
+            Date.now()
         })
       );
     }
 
-    /* =========================================================
-       4. ESCAPING, SANITIZATION, AND FORMAT HELPERS
-       ========================================================= */
-
-    function escapeHTML(value) {
-      return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    function safeText(value, fallback = "") {
+    function safeText(
+      value,
+      fallback = ""
+    ) {
       if (
         typeof value === "string" &&
         value.trim()
@@ -3782,7 +3679,54 @@
       return fallback;
     }
 
-    function safeImageUrl(value) {
+    function decodeEntities(value) {
+      if (
+        typeof value !== "string"
+      ) {
+        return "";
+      }
+
+      const textarea =
+        document.createElement(
+          "textarea"
+        );
+
+      textarea.innerHTML = value;
+
+      return textarea.value;
+    }
+
+    function extractURLFromMalformedValue(
+      value
+    ) {
+      if (
+        typeof value !== "string"
+      ) {
+        return "";
+      }
+
+      const decoded =
+        decodeEntities(value)
+          .replaceAll(
+            "\\/",
+            "/"
+          )
+          .trim();
+
+      const directMatch =
+        decoded.match(
+          /https?:\/\/[^\s"'<>]+/i
+        );
+
+      if (directMatch) {
+        return directMatch[0]
+          .replace(/[),]+$/, "");
+      }
+
+      return "";
+    }
+
+    function safeImageURL(value) {
       if (
         typeof value !== "string" ||
         !value.trim()
@@ -3790,11 +3734,17 @@
         return PLACEHOLDER_IMAGE;
       }
 
+      const extracted =
+        extractURLFromMalformedValue(
+          value
+        ) || value.trim();
+
       try {
-        const url = new URL(
-          value.trim(),
-          window.location.href
-        );
+        const url =
+          new URL(
+            extracted,
+            location.href
+          );
 
         if (
           url.protocol === "https:" ||
@@ -3805,107 +3755,238 @@
         }
       } catch (error) {
         console.warn(
-          "An image URL was rejected.",
-          value,
-          error
+          "Rejected invalid image URL.",
+          value
         );
       }
 
       return PLACEHOLDER_IMAGE;
     }
 
-    function normalizeIconReference(value, type) {
-      const approvedIcons = new Set([
-        "#icon-sword",
-        "#icon-artifact",
-        "#icon-memento",
-        "#icon-relic"
-      ]);
+    function debounce(
+      callback,
+      delay
+    ) {
+      let timeoutId = null;
 
-      if (approvedIcons.has(value)) {
-        return value;
+      return (...args) => {
+        clearTimeout(timeoutId);
+
+        timeoutId =
+          setTimeout(
+            () => callback(...args),
+            delay
+          );
+      };
+    }
+
+    function nextFrame() {
+      return new Promise((resolve) => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(resolve);
+        });
+      });
+    }
+
+    function requestIdle(callback) {
+      if (
+        "requestIdleCallback" in window
+      ) {
+        requestIdleCallback(
+          callback,
+          {
+            timeout: 1200
+          }
+        );
+
+        return;
       }
 
-      const normalizedType =
-        String(type ?? "").toLowerCase();
+      setTimeout(callback, 40);
+    }
 
-      if (normalizedType.includes("weapon")) {
+    function normalizeIcon(
+      iconReference,
+      relicType
+    ) {
+      const permitted =
+        new Set([
+          "#icon-sword",
+          "#icon-artifact",
+          "#icon-memento",
+          "#icon-relic",
+          "#icon-potion",
+          "#icon-flower",
+          "#icon-scroll",
+          "#icon-crystal"
+        ]);
+
+      if (
+        permitted.has(iconReference)
+      ) {
+        return iconReference;
+      }
+
+      const type =
+        String(relicType || "")
+          .toLowerCase();
+
+      if (type.includes("weapon")) {
         return "#icon-sword";
       }
 
-      if (normalizedType.includes("memento")) {
+      if (type.includes("memento")) {
         return "#icon-memento";
       }
 
-      if (normalizedType.includes("artifact")) {
+      if (type.includes("document")) {
+        return "#icon-scroll";
+      }
+
+      if (type.includes("material")) {
+        return "#icon-crystal";
+      }
+
+      if (type.includes("artifact")) {
         return "#icon-artifact";
       }
 
       return "#icon-relic";
     }
 
-    function extractRomanMarker(chapter, index) {
-      const source =
-        safeText(
-          chapter.chapter_number,
-          `Chapter ${index + 1}`
-        );
+    /*
+      The remote file currently contains values similar to:
 
-      const match = source.match(
-        /\b([IVXLCDM]+)\b/i
-      );
+      "cover_image": "<a href="...">URL",</a>
 
-      return match
-        ? match[1].toUpperCase()
-        : String(index + 1)
-            .padStart(2, "0");
-    }
+      That is not valid JSON because the quotes inside the
+      anchor element terminate the JSON string.
 
-    function formatChapterLabel(
-      chapter,
-      index
+      This repair function replaces the entire malformed anchor
+      value with its visible URL before JSON.parse is attempted.
+    */
+    function repairMalformedAnchorValues(
+      sourceText
     ) {
-      return safeText(
-        chapter.chapter_number,
-        `Chapter ${index + 1}`
-      );
+      let repaired =
+        sourceText
+          .replace(/^\uFEFF/, "")
+          .trim();
+
+      /*
+        Handles the exact anchor structure shown in the remote
+        data, including the quote and comma before </a>.
+      */
+      repaired =
+        repaired.replace(
+          /"<a\b[\s\S]*?>(https?:\/\/[^<"]+)"?,?\s*<\/a>/gi,
+          (completeMatch, visibleURL) => {
+            const cleanURL =
+              decodeEntities(
+                visibleURL
+              )
+                .trim()
+                .replace(/[),]+$/, "");
+
+            return JSON.stringify(
+              cleanURL
+            );
+          }
+        );
+
+      /*
+        Handles anchors whose text includes encoded quote or
+        comma fragments such as &quot;,.
+      */
+      repaired =
+        repaired.replace(
+          /"<a\b[\s\S]*?>(https?:\/\/[^<]+)<\/a>/gi,
+          (completeMatch, visibleText) => {
+            const url =
+              extractURLFromMalformedValue(
+                visibleText
+              );
+
+            return JSON.stringify(
+              url ||
+              PLACEHOLDER_IMAGE
+            );
+          }
+        );
+
+      /*
+        Removes trailing commas before object or array endings.
+        This is not required by your shown data in every location,
+        but it safely handles common hand-edited JSON mistakes.
+      */
+      repaired =
+        repaired.replace(
+          /,\s*([}\]])/g,
+          "$1"
+        );
+
+      return repaired;
     }
 
-    function debounce(fn, delay) {
-      let timerId;
-
-      return (...args) => {
-        window.clearTimeout(timerId);
-
-        timerId = window.setTimeout(
-          () => fn(...args),
-          delay
+    function parseRemoteStoryText(text) {
+      if (
+        typeof text !== "string" ||
+        !text.trim()
+      ) {
+        throw new Error(
+          "The remote content file is empty."
         );
-      };
-    }
-
-    function requestIdle(callback) {
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(
-          callback,
-          { timeout: 1000 }
-        );
-
-        return;
       }
 
-      window.setTimeout(callback, 50);
+      try {
+        state.repairedRemoteData =
+          false;
+
+        return JSON.parse(
+          text.replace(/^\uFEFF/, "")
+        );
+      } catch (strictError) {
+        const repaired =
+          repairMalformedAnchorValues(
+            text
+          );
+
+        try {
+          const parsed =
+            JSON.parse(repaired);
+
+          state.repairedRemoteData =
+            true;
+
+          console.warn(
+            "The remote content file contained malformed anchor-wrapped URL values. They were repaired at runtime.",
+            strictError
+          );
+
+          return parsed;
+        } catch (repairError) {
+          const strictMessage =
+            strictError?.message ||
+            "Strict parsing failed.";
+
+          const repairMessage =
+            repairError?.message ||
+            "Repair parsing failed.";
+
+          throw new Error(
+            "The remote file could not be parsed. " +
+            `Strict parser: ${strictMessage} ` +
+            `Repair parser: ${repairMessage}`
+          );
+        }
+      }
     }
 
-    /* =========================================================
-       5. DATA VALIDATION AND NORMALIZATION
-       ========================================================= */
-
-    function validateAndNormalizeData(payload) {
+    function normalizeData(raw) {
       if (
-        !payload ||
-        typeof payload !== "object" ||
-        Array.isArray(payload)
+        !raw ||
+        typeof raw !== "object" ||
+        Array.isArray(raw)
       ) {
         throw new Error(
           "The JSON root must be an object."
@@ -3913,204 +3994,227 @@
       }
 
       const metadata =
-        payload.book_metadata &&
-        typeof payload.book_metadata === "object"
-          ? payload.book_metadata
+        raw.book_metadata &&
+        typeof raw.book_metadata === "object"
+          ? raw.book_metadata
           : {};
 
-      const rawChapters =
-        Array.isArray(payload.chapters)
-          ? payload.chapters
+      const chapterSource =
+        Array.isArray(raw.chapters)
+          ? raw.chapters
           : [];
 
-      const rawEvents =
-        Array.isArray(payload.events)
-          ? payload.events
-          : [];
-
-      const rawRelics =
-        Array.isArray(payload.relics)
-          ? payload.relics
-          : [];
-
-      const usedChapterIds = new Set();
+      const usedChapterIds =
+        new Set();
 
       const chapters =
-        rawChapters
+        chapterSource
           .filter(
             (chapter) =>
               chapter &&
               typeof chapter === "object"
           )
-          .map((chapter, index) => {
-            let id =
-              Number.isFinite(Number(chapter.id))
-                ? Number(chapter.id)
-                : index + 1;
+          .map(
+            (chapter, index) => {
+              let id =
+                Number.isFinite(
+                  Number(chapter.id)
+                )
+                  ? Number(chapter.id)
+                  : index + 1;
 
-            while (usedChapterIds.has(id)) {
-              id += 1;
-            }
+              while (
+                usedChapterIds.has(id)
+              ) {
+                id += 1;
+              }
 
-            usedChapterIds.add(id);
+              usedChapterIds.add(id);
 
-            const content =
-              Array.isArray(chapter.content)
-                ? chapter.content.filter(
-                    (block) =>
-                      block &&
-                      typeof block === "object"
-                  )
-                : [];
+              const content =
+                Array.isArray(
+                  chapter.content
+                )
+                  ? chapter.content.filter(
+                      (block) =>
+                        block &&
+                        typeof block ===
+                          "object"
+                    )
+                  : [];
 
-            const poem =
-              chapter.poem &&
-              typeof chapter.poem === "object"
-                ? {
-                    title: safeText(
-                      chapter.poem.title,
-                      "Untitled Verse"
-                    ),
+              const poem =
+                chapter.poem &&
+                typeof chapter.poem ===
+                  "object"
+                  ? {
+                      title:
+                        safeText(
+                          chapter.poem.title,
+                          "Untitled Verse"
+                        ),
 
-                    stanzas:
-                      Array.isArray(
-                        chapter.poem.stanzas
-                      )
-                        ? chapter.poem.stanzas
-                            .map((stanza) =>
-                              safeText(
-                                stanza,
-                                ""
+                      stanzas:
+                        Array.isArray(
+                          chapter.poem.stanzas
+                        )
+                          ? chapter.poem.stanzas
+                              .map(
+                                (stanza) =>
+                                  safeText(
+                                    stanza,
+                                    ""
+                                  )
                               )
-                            )
-                            .filter(Boolean)
-                        : []
-                  }
-                : null;
+                              .filter(Boolean)
+                          : []
+                    }
+                  : null;
 
-            return {
-              id,
+              return {
+                id,
 
-              chapter_number:
-                safeText(
-                  chapter.chapter_number,
-                  `Chapter ${index + 1}`
-                ),
+                chapter_number:
+                  safeText(
+                    chapter.chapter_number,
+                    `Chapter ${index + 1}`
+                  ),
 
-              title:
-                safeText(
-                  chapter.title,
-                  `Untitled Chronicle ${index + 1}`
-                ),
+                title:
+                  safeText(
+                    chapter.title,
+                    `Untitled Chronicle ${index + 1}`
+                  ),
 
-              summary:
-                safeText(
-                  chapter.summary,
-                  "A sealed chapter awaits within."
-                ),
+                summary:
+                  safeText(
+                    chapter.summary,
+                    "A sealed chapter awaits within."
+                  ),
 
-              cover_image:
-                safeImageUrl(
-                  chapter.cover_image
-                ),
+                cover_image:
+                  safeImageURL(
+                    chapter.cover_image
+                  ),
 
-              content,
+                content,
 
-              has_poem:
-                Boolean(chapter.has_poem),
+                has_poem:
+                  Boolean(
+                    chapter.has_poem
+                  ),
 
-              poem
-            };
-          });
+                poem
+              };
+            }
+          );
+
+      const eventSource =
+        Array.isArray(raw.events)
+          ? raw.events
+          : [];
 
       const events =
-        rawEvents
+        eventSource
           .filter(
             (event) =>
               event &&
               typeof event === "object"
           )
-          .map((event, index) => ({
-            id:
-              safeText(
-                event.id,
-                `event_${index + 1}`
-              ),
+          .map(
+            (event, index) => ({
+              id:
+                safeText(
+                  event.id,
+                  `event_${index + 1}`
+                ),
 
-            year_or_era:
-              safeText(
-                event.year_or_era,
-                "An Unrecorded Age"
-              ),
+              year_or_era:
+                safeText(
+                  event.year_or_era,
+                  "An Unrecorded Age"
+                ),
 
-            title:
-              safeText(
-                event.title,
-                `Forgotten Event ${index + 1}`
-              ),
+              title:
+                safeText(
+                  event.title,
+                  `Forgotten Event ${index + 1}`
+                ),
 
-            description:
-              safeText(
-                event.description,
-                "The surviving records reveal little."
-              ),
+              description:
+                safeText(
+                  event.description,
+                  "The surviving records reveal little."
+                ),
 
-            image:
-              safeImageUrl(event.image),
+              image:
+                safeImageURL(
+                  event.image
+                ),
 
-            related_chapter_id:
-              Number.isFinite(
-                Number(
-                  event.related_chapter_id
-                )
-              )
-                ? Number(
+              related_chapter_id:
+                Number.isFinite(
+                  Number(
                     event.related_chapter_id
                   )
-                : null
-          }));
+                )
+                  ? Number(
+                      event.related_chapter_id
+                    )
+                  : null
+            })
+          );
+
+      const relicSource =
+        Array.isArray(raw.relics)
+          ? raw.relics
+          : [];
 
       const relics =
-        rawRelics
+        relicSource
           .filter(
             (relic) =>
               relic &&
               typeof relic === "object"
           )
-          .map((relic, index) => ({
-            id:
-              safeText(
-                relic.id,
-                `relic_${index + 1}`
-              ),
+          .map(
+            (relic, index) => ({
+              id:
+                safeText(
+                  relic.id,
+                  `relic_${index + 1}`
+                ),
 
-            name:
-              safeText(
-                relic.name,
-                `Unnamed Relic ${index + 1}`
-              ),
+              name:
+                safeText(
+                  relic.name,
+                  `Unnamed Relic ${index + 1}`
+                ),
 
-            type:
-              safeText(
-                relic.type,
-                "Artifact"
-              ),
+              type:
+                safeText(
+                  relic.type,
+                  "Artifact"
+                ),
 
-            icon_id:
-              normalizeIconReference(
-                relic.icon_id,
-                relic.type
-              ),
+              icon_id:
+                normalizeIcon(
+                  relic.icon_id,
+                  relic.type
+                ),
 
-            image_url:
-              safeImageUrl(relic.image_url),
+              image_url:
+                safeImageURL(
+                  relic.image_url
+                ),
 
-            description:
-              safeText(
-                relic.description,
-                "Its origin remains hidden beneath the dust of ages."
-              )
-          }));
+              description:
+                safeText(
+                  relic.description,
+                  "Its origin remains hidden beneath the dust of ages."
+                )
+            })
+          );
 
       return {
         book_metadata: {
@@ -4123,7 +4227,7 @@
           subtitle:
             safeText(
               metadata.subtitle,
-              "A Tale of Sacrifice in Shadows"
+              "A Tale of Fate & Shadows"
             ),
 
           author:
@@ -4140,7 +4244,9 @@
 
           total_chapters:
             Number.isFinite(
-              Number(metadata.total_chapters)
+              Number(
+                metadata.total_chapters
+              )
             )
               ? Number(
                   metadata.total_chapters
@@ -4154,38 +4260,32 @@
       };
     }
 
-    /* =========================================================
-       6. NETWORK AND IMAGE PRELOADING
-       ========================================================= */
-
-    async function fetchWithTimeout(
-      url,
-      timeout
-    ) {
+    async function fetchStoryText() {
       const controller =
         new AbortController();
 
       const timeoutId =
-        window.setTimeout(
+        setTimeout(
           () => controller.abort(),
-          timeout
+          CONFIG.requestTimeout
         );
 
       try {
-        const response = await fetch(
-          url,
-          {
-            method: "GET",
-            cache: "no-store",
-            mode: "cors",
-            credentials: "omit",
-            signal: controller.signal,
-            headers: {
-              Accept:
-                "application/json, text/plain;q=0.9, */*;q=0.5"
+        const response =
+          await fetch(
+            CONFIG.contentURL,
+            {
+              method: "GET",
+              mode: "cors",
+              cache: "no-store",
+              credentials: "omit",
+              signal: controller.signal,
+              headers: {
+                Accept:
+                  "application/json, text/plain;q=0.9, */*;q=0.5"
+              }
             }
-          }
-        );
+          );
 
         if (!response.ok) {
           throw new Error(
@@ -4193,327 +4293,348 @@
           );
         }
 
-        const text = await response.text();
-
-        try {
-          return JSON.parse(text);
-        } catch (error) {
-          throw new Error(
-            "The remote file was reached, but it does not contain valid JSON."
-          );
-        }
+        return await response.text();
       } catch (error) {
-        if (error.name === "AbortError") {
+        if (
+          error.name === "AbortError"
+        ) {
           throw new Error(
-            "The story request exceeded the permitted loading window."
+            "The content request timed out."
           );
         }
 
         throw error;
       } finally {
-        window.clearTimeout(timeoutId);
+        clearTimeout(timeoutId);
       }
     }
 
-    function collectImageUrls(data) {
-      const urls = new Set();
+    function setLoader(
+      message,
+      percentage
+    ) {
+      elements.loaderStatus.textContent =
+        message;
 
-      data.chapters.forEach((chapter) => {
-        urls.add(chapter.cover_image);
+      elements
+        .loaderProgressFill
+        .style
+        .width =
+          `${Math.max(
+            0,
+            Math.min(
+              100,
+              percentage
+            )
+          )}%`;
+    }
 
-        chapter.content.forEach((block) => {
-          if (
-            String(block.type).toLowerCase() ===
-            "image"
-          ) {
-            urls.add(
-              safeImageUrl(block.url)
-            );
-          }
-        });
-      });
+    async function loadApplication() {
+      state.isLoading = true;
 
-      data.events.forEach((event) => {
-        urls.add(event.image);
-      });
+      elements.errorGate.classList.remove(
+        "is-visible"
+      );
 
-      data.relics.forEach((relic) => {
-        urls.add(relic.image_url);
-      });
+      elements.loadingGate.classList.remove(
+        "is-hidden"
+      );
+
+      setLoader(
+        "Seeking the forgotten scrolls...",
+        18
+      );
+
+      try {
+        const sourceText =
+          await fetchStoryText();
+
+        setLoader(
+          "Deciphering the manuscript...",
+          56
+        );
+
+        const parsedData =
+          parseRemoteStoryText(
+            sourceText
+          );
+
+        state.data =
+          normalizeData(
+            parsedData
+          );
+
+        setLoader(
+          "Opening the chronicle...",
+          84
+        );
+
+        renderApplication();
+
+        await nextFrame();
+
+        setLoader(
+          "The path is open.",
+          100
+        );
+
+        state.isLoading = false;
+
+        elements.loadingGate.classList.add(
+          "is-hidden"
+        );
+
+        updateResumeButton();
+        applyLocationRoute();
+
+        if (
+          state.repairedRemoteData
+        ) {
+          showRepairNotice();
+        }
+
+        requestIdle(
+          preloadStoryImages
+        );
+      } catch (error) {
+        state.isLoading = false;
+        showLoadError(error);
+      }
+    }
+
+    function showRepairNotice() {
+      elements.dataNotice.classList.add(
+        "is-visible"
+      );
+
+      setTimeout(() => {
+        elements.dataNotice.classList.remove(
+          "is-visible"
+        );
+      }, 5000);
+    }
+
+    function showLoadError(error) {
+      elements.loadingGate.classList.add(
+        "is-hidden"
+      );
+
+      elements.errorGate.classList.add(
+        "is-visible"
+      );
+
+      const openedFromFile =
+        location.protocol === "file:";
+
+      elements.errorMessage.textContent =
+        openedFromFile
+          ? "This page was opened through file://. Some browsers block remote requests in this mode. Publish the file through GitHub Pages or run it through a local HTTP server."
+          : "The story data could not be downloaded or repaired. Verify that the remote file is publicly accessible and still contains the expected book structure.";
+
+      elements.errorDetail.textContent =
+        `${error?.name || "Error"}: ` +
+        `${error?.message || "Unknown loading error"}\n\n` +
+        `Source: ${CONFIG.contentURL}`;
+    }
+
+    function collectImageURLs() {
+      const urls =
+        new Set();
+
+      if (!state.data) {
+        return [];
+      }
+
+      state.data.chapters.forEach(
+        (chapter) => {
+          urls.add(
+            chapter.cover_image
+          );
+
+          chapter.content.forEach(
+            (block) => {
+              if (
+                String(
+                  block.type || ""
+                ).toLowerCase() ===
+                  "image"
+              ) {
+                urls.add(
+                  safeImageURL(
+                    block.url
+                  )
+                );
+              }
+            }
+          );
+        }
+      );
+
+      state.data.events.forEach(
+        (event) => {
+          urls.add(event.image);
+        }
+      );
+
+      state.data.relics.forEach(
+        (relic) => {
+          urls.add(
+            relic.image_url
+          );
+        }
+      );
 
       urls.delete(PLACEHOLDER_IMAGE);
 
       return [...urls];
     }
 
-    function preloadSingleImage(url) {
-      return new Promise((resolve) => {
-        const image = new Image();
+    function preloadStoryImages() {
+      const queue =
+        collectImageURLs();
 
-        const timeoutId =
-          window.setTimeout(() => {
-            image.onload = null;
-            image.onerror = null;
-
-            resolve({
-              url,
-              loaded: false,
-              reason: "timeout"
-            });
-          }, CONFIG.imageTimeout);
-
-        const settle = (
-          loaded,
-          reason = ""
-        ) => {
-          window.clearTimeout(timeoutId);
-          image.onload = null;
-          image.onerror = null;
-
-          resolve({
-            url,
-            loaded,
-            reason
-          });
-        };
-
-        image.onload = () => {
-          if (
-            typeof image.decode ===
-            "function"
-          ) {
-            image
-              .decode()
-              .catch(() => {})
-              .finally(() =>
-                settle(true)
-              );
-
-            return;
-          }
-
-          settle(true);
-        };
-
-        image.onerror = () =>
-          settle(false, "network");
-
-        image.decoding = "async";
-        image.src = url;
-      });
-    }
-
-    async function preloadImages(
-      urls,
-      onProgress
-    ) {
-      if (!urls.length) {
-        onProgress(1);
-        return [];
-      }
-
-      const results = [];
-      let completed = 0;
-
-      /*
-        Limit concurrent image requests to remain responsive on
-        mobile or slower connections.
-      */
-      const queue = [...urls];
       const workerCount =
-        Math.min(5, queue.length);
+        Math.min(
+          4,
+          queue.length
+        );
 
-      async function worker() {
-        while (queue.length) {
-          const url = queue.shift();
+      function work() {
+        const url =
+          queue.shift();
 
-          if (!url) {
-            break;
-          }
-
-          const result =
-            await preloadSingleImage(url);
-
-          results.push(result);
-          completed += 1;
-
-          onProgress(
-            completed / urls.length
-          );
-        }
-      }
-
-      await Promise.all(
-        Array.from(
-          { length: workerCount },
-          () => worker()
-        )
-      );
-
-      return results;
-    }
-
-    async function loadApplicationData() {
-  state.loading = true;
-  state.imagePreloadComplete = false;
-
-  /*
-    Reset the loading interface whenever this function runs,
-    including retry attempts.
-  */
-  elements.loadingGate.classList.remove("is-hidden");
-  elements.errorGate.classList.remove("is-visible");
-
-  setLoader(
-    "Seeking the forgotten scrolls...",
-    0.18
-  );
-
-  try {
-    /*
-      Only the JSON request controls the loading screen.
-
-      Images no longer block the application from opening.
-      This prevents a slow, broken, or unreachable image URL
-      from keeping the page stuck on the loading screen.
-    */
-    const raw = await fetchWithTimeout(
-      CONFIG.contentUrl,
-      CONFIG.fetchTimeout
-    );
-
-    setLoader(
-      "Deciphering the manuscript...",
-      0.62
-    );
-
-    const normalized =
-      validateAndNormalizeData(raw);
-
-    state.data = normalized;
-
-    setLoader(
-      "Opening the chronicle...",
-      0.85
-    );
-
-    /*
-      Render as soon as valid JSON has been received.
-    */
-    renderAllViews();
-    updateResumeAvailability();
-
-    setLoader(
-      "The path is open.",
-      1
-    );
-
-    state.loading = false;
-
-    /*
-      Use only two animation frames instead of waiting for
-      images or using a fixed loading delay.
-    */
-    await new Promise((resolve) => {
-      window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(resolve);
-      });
-    });
-
-    /*
-      Hide the loading screen immediately after rendering.
-    */
-    elements.loadingGate.classList.add(
-      "is-hidden"
-    );
-
-    applyInitialHash();
-
-    /*
-      Preload remote images silently after the application
-      is already visible.
-
-      Image failures are logged only. They never reopen or
-      block the loading screen.
-    */
-    requestIdle(async () => {
-      try {
-        const imageUrls =
-          collectImageUrls(normalized);
-
-        if (!imageUrls.length) {
-          state.imagePreloadComplete = true;
+        if (!url) {
           return;
         }
 
-        const imageResults =
-          await preloadImages(
-            imageUrls,
-            () => {
-              /*
-                Intentionally empty.
+        const image =
+          new Image();
 
-                Image loading must not affect the visible
-                JSON loading screen.
-              */
-            }
-          );
+        image.decoding = "async";
 
-        state.imagePreloadComplete = true;
+        image.onload =
+          image.onerror =
+            () => work();
 
-        const failedImages =
-          imageResults.filter(
-            (item) => !item.loaded
-          );
-
-        if (failedImages.length) {
-          console.warn(
-            "Some remote story images could not be preloaded.",
-            failedImages
-          );
-        }
-      } catch (imagePreloadError) {
-        /*
-          Image preloading is non-critical.
-          Keep the rendered application available.
-        */
-        state.imagePreloadComplete = true;
-
-        console.warn(
-          "Background image preloading was skipped.",
-          imagePreloadError
-        );
-      }
-    });
-  } catch (error) {
-    state.loading = false;
-    state.imagePreloadComplete = false;
-
-    /*
-      Only JSON retrieval or JSON validation errors reach
-      the application's existing error screen.
-    */
-    throw error;
-  }
-}
-
-    /* =========================================================
-       7. RENDERING
-       ========================================================= */
-
-    function renderAllViews() {
-      if (!state.data) {
-        return;
+        image.src = url;
       }
 
-      renderMetadata();
-      renderChapters();
-      renderEvents();
-      renderRelics();
-      updateAudioInterface();
+      for (
+        let index = 0;
+        index < workerCount;
+        index += 1
+      ) {
+        work();
+      }
     }
 
-    function renderMetadata() {
+    function createStoryImage(
+      source,
+      alternateText,
+      eager = false
+    ) {
+      const image =
+        document.createElement("img");
+
+      image.alt =
+        safeText(
+          alternateText,
+          "Story artwork"
+        );
+
+      image.loading =
+        eager
+          ? "eager"
+          : "lazy";
+
+      image.decoding = "async";
+
+      let fallbackApplied =
+        false;
+
+      image.addEventListener(
+        "load",
+        () => {
+          image.classList.add(
+            "is-loaded"
+          );
+        }
+      );
+
+      image.addEventListener(
+        "error",
+        () => {
+          if (!fallbackApplied) {
+            fallbackApplied = true;
+
+            image.src =
+              PLACEHOLDER_IMAGE;
+          }
+        }
+      );
+
+      image.src =
+        safeImageURL(source);
+
+      return image;
+    }
+
+    function createEmptyState(
+      title,
+      description
+    ) {
+      const wrapper =
+        document.createElement("div");
+
+      wrapper.className =
+        "empty-state";
+
+      const icon =
+        document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+
+      icon.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      const use =
+        document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "use"
+        );
+
+      use.setAttribute(
+        "href",
+        "#icon-empty"
+      );
+
+      icon.append(use);
+
+      const heading =
+        document.createElement("h3");
+
+      heading.textContent =
+        title;
+
+      const paragraph =
+        document.createElement("p");
+
+      paragraph.textContent =
+        description;
+
+      wrapper.append(
+        icon,
+        heading,
+        paragraph
+      );
+
+      return wrapper;
+    }
+
+    function renderApplication() {
       const metadata =
         state.data.book_metadata;
 
@@ -4528,34 +4649,55 @@
 
       elements.heroStatline.replaceChildren();
 
-      const statItems = [
+      [
         `${metadata.total_chapters} Chronicles`,
         `By ${metadata.author}`,
         `Archive ${metadata.version}`
-      ];
+      ].forEach(
+        (text) => {
+          const item =
+            document.createElement("span");
 
-      statItems.forEach((item) => {
-        const span =
-          document.createElement("span");
+          item.textContent = text;
 
-        span.textContent = item;
+          elements.heroStatline.append(
+            item
+          );
+        }
+      );
 
-        elements.heroStatline.append(span);
-      });
+      renderChapters();
+      renderEvents();
+      renderRelics();
+      updateAudioInterface();
+    }
+
+    function romanMarker(
+      chapterNumber,
+      index
+    ) {
+      const match =
+        String(chapterNumber)
+          .match(
+            /\b([IVXLCDM]+)\b/i
+          );
+
+      return match
+        ? match[1].toUpperCase()
+        : String(index + 1)
+            .padStart(2, "0");
     }
 
     function renderChapters() {
-      const chapters =
-        state.data.chapters;
-
       elements.chapterGrid.replaceChildren();
 
-      if (!chapters.length) {
+      if (
+        !state.data.chapters.length
+      ) {
         elements.chapterGrid.append(
-          buildEmptyState(
+          createEmptyState(
             "No Scrolls Were Found",
-            "The remote archive does not currently contain any chapters.",
-            "#icon-scroll"
+            "The archive does not currently contain any chapters."
           )
         );
 
@@ -4565,7 +4707,7 @@
       const fragment =
         document.createDocumentFragment();
 
-      chapters.forEach(
+      state.data.chapters.forEach(
         (chapter, index) => {
           const article =
             document.createElement(
@@ -4576,72 +4718,79 @@
             "chapter-card glass-card";
 
           const button =
-            document.createElement("button");
+            document.createElement(
+              "button"
+            );
 
           button.type = "button";
+
           button.className =
-            "chapter-button interactive-sound";
+            "chapter-button sound-interactive";
 
           button.dataset.chapterId =
             String(chapter.id);
 
           button.setAttribute(
             "aria-label",
-            `Read ${formatChapterLabel(
-              chapter,
-              index
-            )}: ${chapter.title}`
+            `Read ${chapter.chapter_number}: ${chapter.title}`
           );
 
-          const imageWrap =
-            document.createElement("div");
+          const imageContainer =
+            document.createElement(
+              "div"
+            );
 
-          imageWrap.className =
+          imageContainer.className =
             "chapter-image";
 
-          const image =
+          imageContainer.append(
             createStoryImage(
               chapter.cover_image,
               `${chapter.title} cover art`
-            );
+            )
+          );
 
           const marker =
-            document.createElement("div");
+            document.createElement(
+              "span"
+            );
 
           marker.className =
             "chapter-marker";
 
           marker.textContent =
-            extractRomanMarker(
-              chapter,
+            romanMarker(
+              chapter.chapter_number,
               index
             );
 
-          imageWrap.append(
-            image,
+          imageContainer.append(
             marker
           );
 
           const body =
-            document.createElement("div");
+            document.createElement(
+              "div"
+            );
 
           body.className =
             "chapter-body";
 
           const label =
-            document.createElement("span");
+            document.createElement(
+              "span"
+            );
 
           label.className =
             "chapter-label";
 
           label.textContent =
-            formatChapterLabel(
-              chapter,
-              index
-            );
+            chapter.chapter_number;
 
           const title =
-            document.createElement("h3");
+            document.createElement(
+              "h3"
+            );
 
           title.className =
             "chapter-card-title";
@@ -4650,7 +4799,9 @@
             chapter.title;
 
           const summary =
-            document.createElement("p");
+            document.createElement(
+              "p"
+            );
 
           summary.className =
             "chapter-summary";
@@ -4658,13 +4809,15 @@
           summary.textContent =
             chapter.summary;
 
-          const openRow =
-            document.createElement("span");
+          const open =
+            document.createElement(
+              "span"
+            );
 
-          openRow.className =
-            "chapter-open-row";
+          open.className =
+            "chapter-open";
 
-          openRow.innerHTML = `
+          open.innerHTML = `
             Open the scroll
             <svg aria-hidden="true">
               <use href="#icon-arrow-right"></use>
@@ -4675,11 +4828,11 @@
             label,
             title,
             summary,
-            openRow
+            open
           );
 
           button.append(
-            imageWrap,
+            imageContainer,
             body
           );
 
@@ -4694,17 +4847,15 @@
     }
 
     function renderEvents() {
-      const events =
-        state.data.events;
-
       elements.eventsList.replaceChildren();
 
-      if (!events.length) {
+      if (
+        !state.data.events.length
+      ) {
         elements.eventsList.append(
-          buildEmptyState(
+          createEmptyState(
             "The Codex Is Silent",
-            "No historical events are recorded in the current archive.",
-            "#icon-event"
+            "No historical events are recorded in the current archive."
           )
         );
 
@@ -4714,98 +4865,115 @@
       const fragment =
         document.createDocumentFragment();
 
-      events.forEach((event) => {
-        const article =
-          document.createElement(
-            "article"
-          );
-
-        article.className =
-          "event-card";
-
-        const art =
-          document.createElement("div");
-
-        art.className =
-          "event-art";
-
-        art.append(
-          createStoryImage(
-            event.image,
-            `${event.title} artwork`
-          )
-        );
-
-        const content =
-          document.createElement("div");
-
-        content.className =
-          "event-content";
-
-        const era =
-          document.createElement("p");
-
-        era.className =
-          "event-era";
-
-        era.textContent =
-          event.year_or_era;
-
-        const title =
-          document.createElement("h3");
-
-        title.className =
-          "event-title";
-
-        title.textContent =
-          event.title;
-
-        const description =
-          document.createElement("p");
-
-        description.className =
-          "event-description";
-
-        description.textContent =
-          event.description;
-
-        content.append(
-          era,
-          title,
-          description
-        );
-
-        const relatedChapter =
-          getChapterById(
-            event.related_chapter_id
-          );
-
-        if (relatedChapter) {
-          const action =
+      state.data.events.forEach(
+        (event) => {
+          const article =
             document.createElement(
-              "button"
+              "article"
             );
 
-          action.type = "button";
-          action.className =
-            "mythic-button event-action interactive-sound";
+          article.className =
+            "event-card";
 
-          action.dataset.chapterId =
-            String(relatedChapter.id);
+          const artwork =
+            document.createElement(
+              "div"
+            );
 
-          action.innerHTML = `
-            <svg aria-hidden="true">
-              <use href="#icon-scroll"></use>
-            </svg>
-            Read Related Chapter
-          `;
+          artwork.className =
+            "event-art";
 
-          content.append(action);
+          artwork.append(
+            createStoryImage(
+              event.image,
+              `${event.title} artwork`
+            )
+          );
+
+          const content =
+            document.createElement(
+              "div"
+            );
+
+          content.className =
+            "event-content";
+
+          const era =
+            document.createElement(
+              "p"
+            );
+
+          era.className =
+            "event-era";
+
+          era.textContent =
+            event.year_or_era;
+
+          const title =
+            document.createElement(
+              "h3"
+            );
+
+          title.className =
+            "event-title";
+
+          title.textContent =
+            event.title;
+
+          const description =
+            document.createElement(
+              "p"
+            );
+
+          description.className =
+            "event-description";
+
+          description.textContent =
+            event.description;
+
+          content.append(
+            era,
+            title,
+            description
+          );
+
+          const chapter =
+            getChapterById(
+              event.related_chapter_id
+            );
+
+          if (chapter) {
+            const action =
+              document.createElement(
+                "button"
+              );
+
+            action.type = "button";
+
+            action.className =
+              "mythic-button event-action sound-interactive";
+
+            action.dataset.chapterId =
+              String(chapter.id);
+
+            action.innerHTML = `
+              <svg aria-hidden="true">
+                <use href="#icon-scroll"></use>
+              </svg>
+              Read Related Chapter
+            `;
+
+            content.append(action);
+          }
+
+          article.append(
+            artwork,
+            content
+          );
+
+          fragment.append(article);
         }
-
-        article.append(art, content);
-        fragment.append(article);
-      });
+      );
 
       elements.eventsList.append(
         fragment
@@ -4813,17 +4981,15 @@
     }
 
     function renderRelics() {
-      const relics =
-        state.data.relics;
-
       elements.relicGrid.replaceChildren();
 
-      if (!relics.length) {
+      if (
+        !state.data.relics.length
+      ) {
         elements.relicGrid.append(
-          buildEmptyState(
+          createEmptyState(
             "The Vault Is Empty",
-            "No relics have yet been placed within the archive.",
-            "#icon-relic"
+            "No relics have yet been placed within the archive."
           )
         );
 
@@ -4833,104 +4999,137 @@
       const fragment =
         document.createDocumentFragment();
 
-      relics.forEach((relic) => {
-        const article =
-          document.createElement(
-            "article"
+      state.data.relics.forEach(
+        (relic) => {
+          const article =
+            document.createElement(
+              "article"
+            );
+
+          article.className =
+            "relic-card glass-card";
+
+          const header =
+            document.createElement(
+              "div"
+            );
+
+          header.className =
+            "relic-header";
+
+          const aura =
+            document.createElement(
+              "div"
+            );
+
+          aura.className =
+            "relic-aura";
+
+          aura.setAttribute(
+            "aria-hidden",
+            "true"
           );
 
-        article.className =
-          "relic-card glass-card";
+          aura.innerHTML = `
+            <svg>
+              <use href="${relic.icon_id}"></use>
+            </svg>
+          `;
 
-        const header =
-          document.createElement("div");
+          const badge =
+            document.createElement(
+              "span"
+            );
 
-        header.className =
-          "relic-header";
+          badge.className =
+            "relic-badge";
 
-        const aura =
-          document.createElement("div");
+          badge.textContent =
+            relic.type;
 
-        aura.className =
-          "relic-aura";
+          header.append(
+            aura,
+            badge
+          );
 
-        aura.setAttribute(
-          "aria-hidden",
-          "true"
-        );
+          const imageContainer =
+            document.createElement(
+              "div"
+            );
 
-        aura.innerHTML = `
-          <svg>
-            <use href="${escapeHTML(
-              relic.icon_id
-            )}"></use>
-          </svg>
-        `;
+          imageContainer.className =
+            "relic-image";
 
-        const badge =
-          document.createElement("span");
+          imageContainer.append(
+            createStoryImage(
+              relic.image_url,
+              relic.name
+            )
+          );
 
-        badge.className =
-          "relic-badge";
+          const copy =
+            document.createElement(
+              "div"
+            );
 
-        badge.textContent =
-          relic.type;
+          copy.className =
+            "relic-copy";
 
-        header.append(aura, badge);
+          const title =
+            document.createElement(
+              "h3"
+            );
 
-        const imageWrap =
-          document.createElement("div");
+          title.className =
+            "relic-title";
 
-        imageWrap.className =
-          "relic-image";
+          title.textContent =
+            relic.name;
 
-        imageWrap.append(
-          createStoryImage(
-            relic.image_url,
-            relic.name
-          )
-        );
+          const description =
+            document.createElement(
+              "p"
+            );
 
-        const copy =
-          document.createElement("div");
+          description.className =
+            "relic-description";
 
-        copy.className =
-          "relic-copy";
+          description.textContent =
+            relic.description;
 
-        const title =
-          document.createElement("h3");
+          copy.append(
+            title,
+            description
+          );
 
-        title.className =
-          "relic-title";
+          article.append(
+            header,
+            imageContainer,
+            copy
+          );
 
-        title.textContent =
-          relic.name;
-
-        const description =
-          document.createElement("p");
-
-        description.className =
-          "relic-description";
-
-        description.textContent =
-          relic.description;
-
-        copy.append(
-          title,
-          description
-        );
-
-        article.append(
-          header,
-          imageWrap,
-          copy
-        );
-
-        fragment.append(article);
-      });
+          fragment.append(article);
+        }
+      );
 
       elements.relicGrid.append(
         fragment
+      );
+    }
+
+    function getChapterById(id) {
+      if (!state.data) {
+        return null;
+      }
+
+      const numericId =
+        Number(id);
+
+      return (
+        state.data.chapters.find(
+          (chapter) =>
+            chapter.id === numericId
+        ) || null
       );
     }
 
@@ -4965,13 +5164,17 @@
       elements.readerShell.replaceChildren();
 
       const banner =
-        document.createElement("header");
+        document.createElement(
+          "header"
+        );
 
       banner.className =
         "reader-banner";
 
       const media =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       media.className =
         "reader-banner-media";
@@ -4979,32 +5182,38 @@
       media.append(
         createStoryImage(
           chapter.cover_image,
-          `${chapter.title} chapter banner`
+          `${chapter.title} chapter banner`,
+          true
         )
       );
 
       const heading =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       heading.className =
         "reader-heading";
 
       const number =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       number.className =
         "reader-chapter-number";
 
       number.textContent =
-        formatChapterLabel(
-          chapter,
-          index
-        );
+        chapter.chapter_number;
 
       const title =
-        document.createElement("h2");
+        document.createElement(
+          "h2"
+        );
 
-      title.id = "readerTitle";
+      title.id =
+        "readerTitle";
+
       title.className =
         "reader-title";
 
@@ -5012,7 +5221,9 @@
         chapter.title;
 
       const summary =
-        document.createElement("p");
+        document.createElement(
+          "p"
+        );
 
       summary.className =
         "reader-summary";
@@ -5026,57 +5237,74 @@
         summary
       );
 
-      banner.append(media, heading);
+      banner.append(
+        media,
+        heading
+      );
 
       const manuscript =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       manuscript.className =
         "manuscript";
 
       const content =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       content.className =
         "manuscript-content";
 
-      let firstParagraphFound = false;
+      let firstParagraphFound =
+        false;
 
       chapter.content.forEach(
         (block) => {
           const type =
             String(
-              block.type ?? ""
+              block.type || ""
             )
               .trim()
               .toLowerCase();
 
           if (type === "paragraph") {
             const text =
-              safeText(block.text, "");
+              safeText(
+                block.text,
+                ""
+              );
 
             if (!text) {
               return;
             }
 
             const paragraph =
-              document.createElement("p");
+              document.createElement(
+                "p"
+              );
 
             paragraph.className =
               "prose-paragraph";
 
             if (!firstParagraphFound) {
+              firstParagraphFound =
+                true;
+
               paragraph.classList.add(
                 "first-paragraph"
               );
-
-              firstParagraphFound = true;
             }
 
             paragraph.textContent =
               text;
 
-            content.append(paragraph);
+            content.append(
+              paragraph
+            );
+
             return;
           }
 
@@ -5090,14 +5318,16 @@
               "inline-figure";
 
             const frame =
-              document.createElement("div");
+              document.createElement(
+                "div"
+              );
 
             frame.className =
               "inline-figure-frame";
 
             frame.append(
               createStoryImage(
-                safeImageUrl(block.url),
+                block.url,
                 safeText(
                   block.caption,
                   "An illustration from the chronicle"
@@ -5122,10 +5352,14 @@
               caption.textContent =
                 captionText;
 
-              figure.append(caption);
+              figure.append(
+                caption
+              );
             }
 
-            content.append(figure);
+            content.append(
+              figure
+            );
           }
         }
       );
@@ -5136,21 +5370,24 @@
         chapter.poem.stanzas.length
       ) {
         content.append(
-          buildPoem(chapter.poem)
+          createPoemBlock(
+            chapter.poem
+          )
         );
       }
 
       if (!content.children.length) {
         content.append(
-          buildEmptyState(
+          createEmptyState(
             "This Scroll Is Unwritten",
-            "The chapter exists, but no readable content was found within it.",
-            "#icon-scroll"
+            "The chapter exists, but no readable content was found within it."
           )
         );
       }
 
-      manuscript.append(content);
+      manuscript.append(
+        content
+      );
 
       elements.readerShell.append(
         banner,
@@ -5160,18 +5397,18 @@
       updateReaderControls();
 
       const readerView =
-        getViewElement("reader");
+        getView("reader");
 
-      /*
-        Rendering alters the document height. Restore only after
-        the browser has completed layout.
-      */
-      window.requestAnimationFrame(() => {
-        window.requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
           readerView.scrollTop =
-            Math.max(0, restoreOffset);
+            Math.max(
+              0,
+              restoreOffset
+            );
 
           updateReaderProgress();
+
           saveProgress(
             chapter.id,
             readerView.scrollTop
@@ -5180,20 +5417,24 @@
       });
     }
 
-    function buildPoem(poem) {
-      const block =
-        document.createElement("section");
+    function createPoemBlock(poem) {
+      const section =
+        document.createElement(
+          "section"
+        );
 
-      block.className =
+      section.className =
         "poem-block";
 
-      block.setAttribute(
+      section.setAttribute(
         "aria-label",
         poem.title
       );
 
       const title =
-        document.createElement("h3");
+        document.createElement(
+          "h3"
+        );
 
       title.className =
         "poem-title";
@@ -5201,188 +5442,126 @@
       title.textContent =
         poem.title;
 
-      block.append(title);
+      section.append(title);
 
-      poem.stanzas.forEach((stanza) => {
-        const stanzaElement =
-          document.createElement("p");
+      poem.stanzas.forEach(
+        (stanza) => {
+          const stanzaElement =
+            document.createElement(
+              "p"
+            );
 
-        stanzaElement.className =
-          "poem-stanza";
+          stanzaElement.className =
+            "poem-stanza";
 
-        stanzaElement.textContent =
-          stanza;
+          stanzaElement.textContent =
+            stanza;
 
-        block.append(stanzaElement);
-      });
-
-      return block;
-    }
-
-    function buildEmptyState(
-      title,
-      message,
-      iconId
-    ) {
-      const stateElement =
-        document.createElement("div");
-
-      stateElement.className =
-        "empty-state";
-
-      stateElement.innerHTML = `
-        <svg aria-hidden="true">
-          <use href="${escapeHTML(
-            iconId
-          )}"></use>
-        </svg>
-
-        <h2>${escapeHTML(title)}</h2>
-
-        <p>${escapeHTML(message)}</p>
-      `;
-
-      return stateElement;
-    }
-
-    function createStoryImage(
-      src,
-      alt
-    ) {
-      const image =
-        document.createElement("img");
-
-      image.src =
-        safeImageUrl(src);
-
-      image.alt =
-        safeText(
-          alt,
-          "Story artwork"
-        );
-
-      image.decoding = "async";
-      image.loading = "eager";
-
-      image.addEventListener(
-        "error",
-        () => {
-          if (
-            image.src !== PLACEHOLDER_IMAGE
-          ) {
-            image.src =
-              PLACEHOLDER_IMAGE;
-          }
-        },
-        { once: true }
+          section.append(
+            stanzaElement
+          );
+        }
       );
 
-      return image;
+      return section;
     }
 
-    /* =========================================================
-       8. ROUTER
-       ========================================================= */
+    function getView(route) {
+      return document.querySelector(
+        `.view[data-view="${route}"]`
+      );
+    }
 
     function navigate(
-      route,
+      requestedRoute,
       options = {}
     ) {
-      const requestedRoute =
-        CONFIG.routes.has(route)
-          ? route
+      const route =
+        CONFIG.routes.has(
+          requestedRoute
+        )
+          ? requestedRoute
           : "home";
 
       if (
-        requestedRoute === "reader" &&
-        !state.activeChapterId &&
-        state.data?.chapters?.length
-      ) {
-        renderReader(
-          state.data.chapters[0].id,
-          0
-        );
-      }
-
-      if (
         state.route === "reader" &&
-        requestedRoute !== "reader"
+        route !== "reader"
       ) {
         persistCurrentReaderPosition();
       }
 
-      state.route =
-        requestedRoute;
+      state.route = route;
 
       document
         .querySelectorAll(".view")
-        .forEach((view) => {
-          const isActive =
-            view.dataset.view ===
-            requestedRoute;
+        .forEach(
+          (view) => {
+            const active =
+              view.dataset.view ===
+              route;
 
-          view.classList.toggle(
-            "is-active",
-            isActive
-          );
+            view.classList.toggle(
+              "is-active",
+              active
+            );
 
-          view.setAttribute(
-            "aria-hidden",
-            String(!isActive)
-          );
-        });
+            view.setAttribute(
+              "aria-hidden",
+              String(!active)
+            );
+          }
+        );
 
       document
         .querySelectorAll(
           ".nav-button[data-route]"
         )
-        .forEach((button) => {
-          const navRoute =
-            button.dataset.route;
+        .forEach(
+          (button) => {
+            const activeRoute =
+              route === "reader"
+                ? "chapters"
+                : route;
 
-          const activeRoute =
-            requestedRoute === "reader"
-              ? "chapters"
-              : requestedRoute;
+            const active =
+              button.dataset.route ===
+              activeRoute;
 
-          button.classList.toggle(
-            "is-active",
-            navRoute === activeRoute
-          );
-
-          if (
-            navRoute === activeRoute
-          ) {
-            button.setAttribute(
-              "aria-current",
-              "page"
+            button.classList.toggle(
+              "is-active",
+              active
             );
-          } else {
-            button.removeAttribute(
-              "aria-current"
-            );
+
+            if (active) {
+              button.setAttribute(
+                "aria-current",
+                "page"
+              );
+            } else {
+              button.removeAttribute(
+                "aria-current"
+              );
+            }
           }
-        });
+        );
 
-      elements.body.classList.toggle(
+      document.body.classList.toggle(
         "is-deep-view",
-        requestedRoute !== "home"
+        route !== "home"
       );
 
-      elements.body.classList.toggle(
+      document.body.classList.toggle(
         "reader-open",
-        requestedRoute === "reader"
+        route === "reader"
       );
 
       const activeView =
-        getViewElement(
-          requestedRoute
-        );
+        getView(route);
 
       if (
         activeView &&
-        !options.preserveScroll &&
-        requestedRoute !== "reader"
+        route !== "reader" &&
+        !options.preserveScroll
       ) {
         activeView.scrollTo({
           top: 0,
@@ -5393,42 +5572,34 @@
         });
       }
 
-      const hash =
-        requestedRoute === "reader" &&
+      const newHash =
+        route === "reader" &&
         state.activeChapterId
           ? `#reader/${state.activeChapterId}`
-          : `#${requestedRoute}`;
+          : `#${route}`;
 
-      if (
-        options.replaceHistory
-      ) {
+      if (options.replaceHistory) {
         history.replaceState(
-          {
-            route:
-              requestedRoute
-          },
+          { route },
           "",
-          hash
+          newHash
         );
       } else if (
-        window.location.hash !== hash
+        location.hash !== newHash
       ) {
         history.pushState(
-          {
-            route:
-              requestedRoute
-          },
+          { route },
           "",
-          hash
+          newHash
         );
       }
 
       updateScrollHints();
     }
 
-    function applyInitialHash() {
+    function applyLocationRoute() {
       const hash =
-        window.location.hash
+        location.hash
           .replace(/^#/, "")
           .trim();
 
@@ -5446,7 +5617,8 @@
       const [
         route,
         chapterIdValue
-      ] = hash.split("/");
+      ] =
+        hash.split("/");
 
       if (
         route === "reader" &&
@@ -5459,14 +5631,14 @@
           getChapterById(chapterId);
 
         if (chapter) {
-          const saved =
+          const progress =
             readProgress();
 
           const offset =
-            saved &&
-            saved.chapterId ===
+            progress &&
+            progress.chapterId ===
               chapter.id
-              ? saved.scrollOffset
+              ? progress.scrollOffset
               : 0;
 
           renderReader(
@@ -5496,28 +5668,6 @@
       );
     }
 
-    function getViewElement(route) {
-      return document.querySelector(
-        `.view[data-view="${route}"]`
-      );
-    }
-
-    function getChapterById(id) {
-      if (!state.data) {
-        return null;
-      }
-
-      const numericId =
-        Number(id);
-
-      return (
-        state.data.chapters.find(
-          (chapter) =>
-            chapter.id === numericId
-        ) ?? null
-      );
-    }
-
     function openChapter(
       chapterId,
       restoreOffset = 0
@@ -5533,8 +5683,6 @@
         return;
       }
 
-      audioEngine.playSelect();
-
       renderReader(
         chapter.id,
         restoreOffset
@@ -5549,19 +5697,26 @@
     }
 
     function updateReaderControls() {
-      const total =
-        state.data?.chapters?.length ?? 0;
+      const chapterCount =
+        state.data?.chapters?.length ||
+        0;
 
-      elements.previousChapterButton.disabled =
-        state.activeChapterIndex <= 0;
+      elements
+        .previousChapterButton
+        .disabled =
+          state.activeChapterIndex <= 0;
 
-      elements.nextChapterButton.disabled =
-        state.activeChapterIndex < 0 ||
-        state.activeChapterIndex >=
-          total - 1;
+      elements
+        .nextChapterButton
+        .disabled =
+          state.activeChapterIndex < 0 ||
+          state.activeChapterIndex >=
+            chapterCount - 1;
     }
 
-    function openAdjacentChapter(direction) {
+    function openAdjacentChapter(
+      direction
+    ) {
       if (!state.data) {
         return;
       }
@@ -5585,18 +5740,11 @@
         return;
       }
 
-      openChapter(chapter.id, 0);
-    }
-
-    /* =========================================================
-       9. READING PROGRESS
-       ========================================================= */
-
-    const persistReaderDebounced =
-      debounce(
-        persistCurrentReaderPosition,
-        CONFIG.scrollSaveDelay
+      openChapter(
+        chapter.id,
+        0
       );
+    }
 
     function persistCurrentReaderPosition() {
       if (
@@ -5607,7 +5755,7 @@
       }
 
       const readerView =
-        getViewElement("reader");
+        getView("reader");
 
       saveProgress(
         state.activeChapterId,
@@ -5615,34 +5763,46 @@
       );
     }
 
+    const persistProgressDebounced =
+      debounce(
+        persistCurrentReaderPosition,
+        180
+      );
+
     function updateReaderProgress() {
       const readerView =
-        getViewElement("reader");
+        getView("reader");
 
       if (!readerView) {
         return;
       }
 
-      const scrollableDistance =
+      const maximum =
         readerView.scrollHeight -
         readerView.clientHeight;
 
-      const progress =
-        scrollableDistance > 0
+      const ratio =
+        maximum > 0
           ? readerView.scrollTop /
-            scrollableDistance
+            maximum
           : 1;
 
-      elements.readerProgressFill.style.width =
-        `${
-          Math.max(
-            0,
-            Math.min(1, progress)
-          ) * 100
-        }%`;
+      elements
+        .readerProgressFill
+        .style
+        .width =
+          `${
+            Math.max(
+              0,
+              Math.min(
+                1,
+                ratio
+              )
+            ) * 100
+          }%`;
     }
 
-    function updateResumeAvailability() {
+    function updateResumeButton() {
       const progress =
         readProgress();
 
@@ -5664,27 +5824,79 @@
       }
     }
 
-    /* =========================================================
-       10. PROCEDURAL WEB AUDIO ENGINE
-       ========================================================= */
+    function updateScrollHints() {
+      document
+        .querySelectorAll(
+          ".view.is-active .scroll-hint"
+        )
+        .forEach(
+          (hint) => {
+            const view =
+              hint.closest(".view");
+
+            if (!view) {
+              return;
+            }
+
+            const canScroll =
+              view.scrollHeight >
+              view.clientHeight + 12;
+
+            const nearTop =
+              view.scrollTop < 24;
+
+            hint.classList.toggle(
+              "is-hidden",
+              !canScroll ||
+              !nearTop
+            );
+          }
+        );
+    }
+
+    function showToast(
+      message,
+      duration = 2200
+    ) {
+      const toast =
+        document.createElement(
+          "div"
+        );
+
+      toast.className =
+        "toast";
+
+      toast.textContent =
+        message;
+
+      elements.toastRegion.append(
+        toast
+      );
+
+      setTimeout(() => {
+        toast.classList.add(
+          "is-leaving"
+        );
+
+        setTimeout(
+          () => toast.remove(),
+          270
+        );
+      }, duration);
+    }
 
     class MythologyAudioEngine {
       constructor() {
         this.context = null;
         this.masterGain = null;
-        this.ambientGain = null;
-        this.sfxGain = null;
-
-        this.droneNodes = [];
-        this.initialized = false;
-        this.unlocked = false;
         this.enabled =
           state.audioEnabled;
-
-        this.lastHoverTime = 0;
+        this.unlocked = false;
+        this.lastHoverAt = 0;
+        this.lastScrollAt = 0;
       }
 
-      get AudioContextClass() {
+      get ContextClass() {
         return (
           window.AudioContext ||
           window.webkitAudioContext ||
@@ -5694,61 +5906,37 @@
 
       initialize() {
         if (
-          this.initialized ||
-          !this.AudioContextClass
+          this.context ||
+          !this.ContextClass
         ) {
           return;
         }
 
         this.context =
-          new this.AudioContextClass();
+          new this.ContextClass();
 
         this.masterGain =
           this.context.createGain();
 
-        this.ambientGain =
-          this.context.createGain();
-
-        this.sfxGain =
-          this.context.createGain();
-
         this.masterGain.gain.value =
           this.enabled
-            ? 0.78
+            ? 0.72
             : 0.0001;
-
-        this.ambientGain.gain.value =
-          0.0001;
-
-        this.sfxGain.gain.value =
-          0.62;
-
-        this.ambientGain.connect(
-          this.masterGain
-        );
-
-        this.sfxGain.connect(
-          this.masterGain
-        );
 
         this.masterGain.connect(
           this.context.destination
         );
-
-        this.createAmbientDrone();
-
-        this.initialized = true;
       }
 
       async unlock() {
         if (!this.enabled) {
-          return;
+          return false;
         }
 
         this.initialize();
 
         if (!this.context) {
-          return;
+          return false;
         }
 
         if (
@@ -5759,22 +5947,22 @@
             await this.context.resume();
           } catch (error) {
             console.warn(
-              "Audio context could not resume.",
+              "Audio could not be unlocked.",
               error
             );
 
-            return;
+            return false;
           }
         }
 
         this.unlocked = true;
-        this.fadeAmbient(true);
+        return true;
       }
 
-      createAmbientDrone() {
+      setMasterLevel(level) {
         if (
           !this.context ||
-          !this.ambientGain
+          !this.masterGain
         ) {
           return;
         }
@@ -5782,130 +5970,15 @@
         const now =
           this.context.currentTime;
 
-        const lowpass =
-          this.context.createBiquadFilter();
+        this.masterGain.gain
+          .cancelScheduledValues(now);
 
-        lowpass.type = "lowpass";
-        lowpass.frequency.value = 165;
-        lowpass.Q.value = 0.7;
-
-        const bodyGain =
-          this.context.createGain();
-
-        bodyGain.gain.value = 0.24;
-
-        const droneA =
-          this.context.createOscillator();
-
-        const droneB =
-          this.context.createOscillator();
-
-        droneA.type = "sawtooth";
-        droneB.type = "triangle";
-
-        droneA.frequency.value = 43.65;
-        droneB.frequency.value = 65.28;
-
-        droneA.detune.value = -7;
-        droneB.detune.value = 5;
-
-        droneA.connect(bodyGain);
-        droneB.connect(bodyGain);
-
-        bodyGain.connect(lowpass);
-        lowpass.connect(
-          this.ambientGain
-        );
-
-        const lfo =
-          this.context.createOscillator();
-
-        const lfoFilterGain =
-          this.context.createGain();
-
-        const lfoVolumeGain =
-          this.context.createGain();
-
-        lfo.type = "sine";
-        lfo.frequency.value = 0.075;
-
-        lfoFilterGain.gain.value = 38;
-        lfoVolumeGain.gain.value = 0.055;
-
-        lfo.connect(lfoFilterGain);
-        lfo.connect(lfoVolumeGain);
-
-        lfoFilterGain.connect(
-          lowpass.frequency
-        );
-
-        lfoVolumeGain.connect(
-          bodyGain.gain
-        );
-
-        /*
-          A very quiet sublayer adds low resonance without using
-          an external audio sample.
-        */
-        const sub =
-          this.context.createOscillator();
-
-        const subGain =
-          this.context.createGain();
-
-        sub.type = "sine";
-        sub.frequency.value = 32.7;
-        subGain.gain.value = 0.045;
-
-        sub.connect(subGain);
-        subGain.connect(lowpass);
-
-        droneA.start(now);
-        droneB.start(now);
-        sub.start(now);
-        lfo.start(now);
-
-        this.droneNodes.push(
-          droneA,
-          droneB,
-          sub,
-          lfo,
-          bodyGain,
-          subGain,
-          lowpass,
-          lfoFilterGain,
-          lfoVolumeGain
-        );
-      }
-
-      fadeAmbient(shouldRise) {
-        if (
-          !this.context ||
-          !this.ambientGain
-        ) {
-          return;
-        }
-
-        const now =
-          this.context.currentTime;
-
-        const target =
-          shouldRise &&
-          this.enabled
-            ? 0.11
-            : 0.0001;
-
-        this.ambientGain.gain.cancelScheduledValues(
-          now
-        );
-
-        this.ambientGain.gain.setTargetAtTime(
-          target,
-          now,
-          shouldRise
-            ? 1.35
-            : 0.2
-        );
+        this.masterGain.gain
+          .setTargetAtTime(
+            level,
+            now,
+            0.035
+          );
       }
 
       async setEnabled(enabled) {
@@ -5916,59 +5989,32 @@
           this.enabled;
 
         safeStorageSet(
-          CONFIG.storageKeys.audio,
+          CONFIG.storage.audio,
           String(this.enabled)
         );
 
         updateAudioInterface();
 
         if (this.enabled) {
-          await this.unlock();
+          const unlocked =
+            await this.unlock();
 
-          if (
-            this.context &&
-            this.masterGain
-          ) {
-            const now =
-              this.context.currentTime;
-
-            this.masterGain.gain.cancelScheduledValues(
-              now
-            );
-
-            this.masterGain.gain.setTargetAtTime(
-              0.78,
-              now,
-              0.08
-            );
-
-            this.fadeAmbient(true);
+          if (unlocked) {
+            this.setMasterLevel(0.72);
             this.playSelect();
           }
 
-          showToast("Audio awakened.");
+          showToast(
+            "Interface audio enabled."
+          );
         } else {
-          if (
-            this.context &&
-            this.masterGain
-          ) {
-            const now =
-              this.context.currentTime;
+          this.setMasterLevel(
+            0.0001
+          );
 
-            this.fadeAmbient(false);
-
-            this.masterGain.gain.cancelScheduledValues(
-              now
-            );
-
-            this.masterGain.gain.setTargetAtTime(
-              0.0001,
-              now,
-              0.06
-            );
-          }
-
-          showToast("Audio silenced.");
+          showToast(
+            "Interface audio disabled."
+          );
         }
       }
 
@@ -5983,80 +6029,94 @@
           !this.enabled ||
           !this.context ||
           !this.unlocked ||
-          !this.sfxGain
+          !this.masterGain
         ) {
           return;
         }
 
-        const nowMs =
+        const currentTime =
           performance.now();
 
         if (
-          nowMs - this.lastHoverTime <
-          CONFIG.hoverSoundDelay
+          currentTime -
+            this.lastHoverAt <
+          72
         ) {
           return;
         }
 
-        this.lastHoverTime = nowMs;
+        this.lastHoverAt =
+          currentTime;
+
+        const context =
+          this.context;
 
         const now =
-          this.context.currentTime;
+          context.currentTime;
 
         const gain =
-          this.context.createGain();
+          context.createGain();
 
-        const filter =
-          this.context.createBiquadFilter();
+        const highpass =
+          context.createBiquadFilter();
 
         const sine =
-          this.context.createOscillator();
+          context.createOscillator();
 
         const triangle =
-          this.context.createOscillator();
+          context.createOscillator();
 
         sine.type = "sine";
         triangle.type = "triangle";
 
         sine.frequency.setValueAtTime(
-          870,
+          835,
           now
         );
 
-        sine.frequency.exponentialRampToValueAtTime(
-          1160,
-          now + 0.12
-        );
+        sine.frequency
+          .exponentialRampToValueAtTime(
+            1110,
+            now + 0.115
+          );
 
-        triangle.frequency.setValueAtTime(
-          1305,
-          now
-        );
+        triangle.frequency
+          .setValueAtTime(
+            1260,
+            now
+          );
 
-        triangle.detune.value = 6;
+        triangle.detune.value = 7;
 
-        filter.type = "highpass";
-        filter.frequency.value = 540;
+        highpass.type =
+          "highpass";
+
+        highpass.frequency.value =
+          520;
 
         gain.gain.setValueAtTime(
           0.0001,
           now
         );
 
-        gain.gain.exponentialRampToValueAtTime(
-          0.028,
-          now + 0.009
-        );
+        gain.gain
+          .exponentialRampToValueAtTime(
+            0.026,
+            now + 0.008
+          );
 
-        gain.gain.exponentialRampToValueAtTime(
-          0.0001,
-          now + 0.145
-        );
+        gain.gain
+          .exponentialRampToValueAtTime(
+            0.0001,
+            now + 0.145
+          );
 
         sine.connect(gain);
         triangle.connect(gain);
-        gain.connect(filter);
-        filter.connect(this.sfxGain);
+        gain.connect(highpass);
+        highpass.connect(
+          this.masterGain
+        );
 
         sine.start(now);
         triangle.start(now);
@@ -6070,13 +6130,16 @@
           !this.enabled ||
           !this.context ||
           !this.unlocked ||
-          !this.sfxGain
+          !this.masterGain
         ) {
           return;
         }
 
+        const context =
+          this.context;
+
         const now =
-          this.context.currentTime;
+          context.currentTime;
 
         const frequencies = [
           146.83,
@@ -6088,71 +6151,171 @@
         frequencies.forEach(
           (frequency, index) => {
             const oscillator =
-              this.context.createOscillator();
-
-            const gain =
-              this.context.createGain();
+              context.createOscillator();
 
             const filter =
-              this.context.createBiquadFilter();
+              context.createBiquadFilter();
+
+            const gain =
+              context.createGain();
 
             oscillator.type =
-              index === 0
-                ? "sine"
-                : index === 1
-                  ? "triangle"
-                  : "sine";
+              index === 1
+                ? "triangle"
+                : "sine";
 
-            oscillator.frequency.setValueAtTime(
-              frequency,
-              now
-            );
+            oscillator.frequency
+              .setValueAtTime(
+                frequency,
+                now
+              );
 
-            oscillator.detune.setValueAtTime(
+            oscillator.detune.value =
               index % 2 === 0
                 ? -5 + index
-                : 7 - index,
-              now
-            );
+                : 7 - index;
 
-            filter.type = "bandpass";
+            filter.type =
+              "bandpass";
+
             filter.frequency.value =
               frequency * 1.35;
 
             filter.Q.value =
-              2.1 + index * 0.45;
+              2.1 +
+              index * 0.45;
 
             const peak =
-              0.07 /
+              0.068 /
               (1 + index * 0.52);
 
-            gain.gain.setValueAtTime(
-              0.0001,
-              now
+            gain.gain
+              .setValueAtTime(
+                0.0001,
+                now
+              );
+
+            gain.gain
+              .exponentialRampToValueAtTime(
+                peak,
+                now +
+                  0.012 +
+                  index * 0.004
+              );
+
+            gain.gain
+              .exponentialRampToValueAtTime(
+                0.0001,
+                now +
+                  0.78 +
+                  index * 0.16
+              );
+
+            oscillator.connect(
+              filter
             );
 
-            gain.gain.exponentialRampToValueAtTime(
-              peak,
-              now + 0.012 + index * 0.004
-            );
-
-            gain.gain.exponentialRampToValueAtTime(
-              0.0001,
-              now + 0.85 + index * 0.17
-            );
-
-            oscillator.connect(filter);
             filter.connect(gain);
-            gain.connect(this.sfxGain);
+
+            gain.connect(
+              this.masterGain
+            );
 
             oscillator.start(
-              now + index * 0.009
+              now +
+              index * 0.009
             );
 
             oscillator.stop(
               now + 1.55
             );
           }
+        );
+      }
+
+      playScrollTick(
+        direction = 1
+      ) {
+        if (
+          !this.enabled ||
+          !this.context ||
+          !this.unlocked ||
+          !this.masterGain
+        ) {
+          return;
+        }
+
+        const currentTime =
+          performance.now();
+
+        if (
+          currentTime -
+            this.lastScrollAt <
+          230
+        ) {
+          return;
+        }
+
+        this.lastScrollAt =
+          currentTime;
+
+        const context =
+          this.context;
+
+        const now =
+          context.currentTime;
+
+        const oscillator =
+          context.createOscillator();
+
+        const gain =
+          context.createGain();
+
+        oscillator.type =
+          "triangle";
+
+        oscillator.frequency
+          .setValueAtTime(
+            direction > 0
+              ? 280
+              : 335,
+            now
+          );
+
+        oscillator.frequency
+          .exponentialRampToValueAtTime(
+            direction > 0
+              ? 235
+              : 285,
+            now + 0.07
+          );
+
+        gain.gain.setValueAtTime(
+          0.0001,
+          now
+        );
+
+        gain.gain
+          .exponentialRampToValueAtTime(
+            0.008,
+            now + 0.006
+          );
+
+        gain.gain
+          .exponentialRampToValueAtTime(
+            0.0001,
+            now + 0.085
+          );
+
+        oscillator.connect(gain);
+
+        gain.connect(
+          this.masterGain
+        );
+
+        oscillator.start(now);
+        oscillator.stop(
+          now + 0.095
         );
       }
     }
@@ -6164,36 +6327,46 @@
       const enabled =
         state.audioEnabled;
 
-      elements.headerAudioToggle.classList.toggle(
-        "is-muted",
-        !enabled
-      );
+      elements
+        .headerAudioToggle
+        .classList.toggle(
+          "is-muted",
+          !enabled
+        );
 
-      elements.headerAudioToggle.setAttribute(
-        "aria-label",
-        enabled
-          ? "Turn audio off"
-          : "Turn audio on"
-      );
+      elements
+        .headerAudioToggle
+        .setAttribute(
+          "aria-label",
+          enabled
+            ? "Turn interface audio off"
+            : "Turn interface audio on"
+        );
 
-      elements.headerAudioToggle.title =
-        enabled
-          ? "Audio: On"
-          : "Audio: Off";
+      elements
+        .headerAudioToggle
+        .title =
+          enabled
+            ? "Audio: On"
+            : "Audio: Off";
 
-      elements.headerAudioIcon.setAttribute(
-        "href",
-        enabled
-          ? "#icon-volume"
-          : "#icon-muted"
-      );
+      elements
+        .headerAudioIcon
+        .setAttribute(
+          "href",
+          enabled
+            ? "#icon-volume"
+            : "#icon-muted"
+        );
 
-      elements.homeAudioIcon.setAttribute(
-        "href",
-        enabled
-          ? "#icon-volume"
-          : "#icon-muted"
-      );
+      elements
+        .homeAudioIcon
+        .setAttribute(
+          "href",
+          enabled
+            ? "#icon-volume"
+            : "#icon-muted"
+        );
 
       elements.homeAudioText.textContent =
         enabled
@@ -6201,11 +6374,7 @@
           : "Audio: Off";
     }
 
-    /* =========================================================
-       11. PROCEDURAL EMBER FIREFLIES
-       ========================================================= */
-
-    class EmberField {
+    class EmberFireflyField {
       constructor(canvas) {
         this.canvas = canvas;
 
@@ -6218,12 +6387,13 @@
             }
           );
 
-        this.width = 0;
-        this.height = 0;
+        this.width = 1;
+        this.height = 1;
         this.pixelRatio = 1;
         this.particles = [];
         this.animationFrame = null;
-        this.lastTime = 0;
+        this.lastTimestamp = 0;
+        this.visible = true;
 
         this.pointer = {
           x: 0,
@@ -6231,16 +6401,14 @@
           strength: 0
         };
 
-        this.isVisible = true;
+        this.animate =
+          this.animate.bind(this);
 
         this.handleResize =
           debounce(
             () => this.resize(),
             120
           );
-
-        this.animate =
-          this.animate.bind(this);
       }
 
       start() {
@@ -6253,7 +6421,9 @@
         window.addEventListener(
           "resize",
           this.handleResize,
-          { passive: true }
+          {
+            passive: true
+          }
         );
 
         window.addEventListener(
@@ -6275,35 +6445,39 @@
             this.pointer.strength =
               1;
           },
-          { passive: true }
+          {
+            passive: true
+          }
         );
 
         window.addEventListener(
           "pointerleave",
           () => {
-            this.pointer.strength = 0;
+            this.pointer.strength =
+              0;
           },
-          { passive: true }
+          {
+            passive: true
+          }
         );
 
         document.addEventListener(
           "visibilitychange",
           () => {
-            this.isVisible =
+            this.visible =
               !document.hidden;
 
-            if (this.isVisible) {
-              this.lastTime =
+            if (
+              this.visible &&
+              !this.animationFrame
+            ) {
+              this.lastTimestamp =
                 performance.now();
 
-              if (
-                !this.animationFrame
-              ) {
-                this.animationFrame =
-                  requestAnimationFrame(
-                    this.animate
-                  );
-              }
+              this.animationFrame =
+                requestAnimationFrame(
+                  this.animate
+                );
             }
           }
         );
@@ -6315,24 +6489,25 @@
       }
 
       resize() {
-        const rect =
-          this.canvas.getBoundingClientRect();
+        const rectangle =
+          this.canvas
+            .getBoundingClientRect();
 
         this.width =
           Math.max(
             1,
-            rect.width
+            rectangle.width
           );
 
         this.height =
           Math.max(
             1,
-            rect.height
+            rectangle.height
           );
 
         this.pixelRatio =
           Math.min(
-            window.devicePixelRatio || 1,
+            devicePixelRatio || 1,
             2
           );
 
@@ -6357,21 +6532,21 @@
           0
         );
 
-        this.reseed();
+        this.seedParticles();
       }
 
-      reseed() {
+      seedParticles() {
         const area =
           this.width *
           this.height;
 
-        const desiredCount =
+        const count =
           Math.max(
             24,
             Math.min(
-              72,
+              74,
               Math.round(
-                area / 26000
+                area / 25500
               )
             )
           );
@@ -6379,8 +6554,7 @@
         this.particles =
           Array.from(
             {
-              length:
-                desiredCount
+              length: count
             },
             () =>
               this.createParticle(
@@ -6389,7 +6563,7 @@
           );
       }
 
-      createParticle(randomY = false) {
+      createParticle(randomY) {
         const depth =
           Math.random();
 
@@ -6417,7 +6591,7 @@
             Math.random() * 7,
 
           opacity:
-            0.15 +
+            0.14 +
             depth * 0.48 +
             Math.random() * 0.16,
 
@@ -6444,10 +6618,10 @@
         particle,
         elapsed
       ) {
-        const ctx =
+        const context =
           this.context;
 
-        const wobbleX =
+        const wobble =
           Math.sin(
             elapsed *
               particle.frequency +
@@ -6461,39 +6635,49 @@
         if (
           this.pointer.strength > 0
         ) {
-          const dx =
-            particle.x -
+          const currentX =
+            particle.x +
+            wobble;
+
+          const deltaX =
+            currentX -
             this.pointer.x;
 
-          const dy =
+          const deltaY =
             particle.y -
             this.pointer.y;
 
           const distance =
-            Math.hypot(dx, dy);
+            Math.hypot(
+              deltaX,
+              deltaY
+            );
 
           if (
             distance > 0 &&
             distance < 180
           ) {
             const force =
-              (1 - distance / 180) *
+              (1 -
+                distance / 180) *
               particle.depth *
               9;
 
             influenceX =
-              (dx / distance) *
+              deltaX /
+              distance *
               force;
 
             influenceY =
-              (dy / distance) *
+              deltaY /
+              distance *
               force;
           }
         }
 
         const x =
           particle.x +
-          wobbleX +
+          wobble +
           influenceX;
 
         const y =
@@ -6513,63 +6697,71 @@
           Math.max(
             0.04,
             particle.opacity *
-            pulse
+              pulse
           );
 
         const radius =
           particle.radius *
-          (0.74 +
-            particle.depth * 0.26);
-
-        const glow =
-          ctx.createRadialGradient(
-            x,
-            y,
-            0,
-            x,
-            y,
-            radius * 4.5
+          (
+            0.74 +
+            particle.depth * 0.26
           );
 
-        glow.addColorStop(
+        const gradient =
+          context
+            .createRadialGradient(
+              x,
+              y,
+              0,
+              x,
+              y,
+              radius * 4.5
+            );
+
+        gradient.addColorStop(
           0,
-          `rgba(255, 242, 164, ${alpha})`
+          `rgba(255, 244, 175, ${alpha})`
         );
 
-        glow.addColorStop(
+        gradient.addColorStop(
           0.22,
           `rgba(245, 215, 110, ${alpha * 0.9})`
         );
 
-        glow.addColorStop(
+        gradient.addColorStop(
           0.58,
           `rgba(212, 175, 55, ${alpha * 0.24})`
         );
 
-        glow.addColorStop(
+        gradient.addColorStop(
           1,
           "rgba(212, 175, 55, 0)"
         );
 
-        ctx.beginPath();
-        ctx.fillStyle = glow;
-        ctx.arc(
+        context.beginPath();
+
+        context.fillStyle =
+          gradient;
+
+        context.arc(
           x,
           y,
           radius * 4.5,
           0,
           Math.PI * 2
         );
-        ctx.fill();
 
-        ctx.beginPath();
-        ctx.fillStyle =
-          `rgba(255, 247, 193, ${Math.min(
+        context.fill();
+
+        context.beginPath();
+
+        context.fillStyle =
+          `rgba(255, 248, 198, ${Math.min(
             0.98,
             alpha * 1.2
           )})`;
 
-        ctx.arc(
+        context.arc(
           x,
           y,
           Math.max(
@@ -6580,13 +6772,14 @@
           Math.PI * 2
         );
 
-        ctx.fill();
+        context.fill();
       }
 
-      animate(time) {
-        this.animationFrame = null;
+      animate(timestamp) {
+        this.animationFrame =
+          null;
 
-        if (!this.isVisible) {
+        if (!this.visible) {
           return;
         }
 
@@ -6595,14 +6788,18 @@
             0.05,
             Math.max(
               0.001,
-              (time -
-                (this.lastTime ||
-                  time)) /
-                1000
+              (
+                timestamp -
+                (
+                  this.lastTimestamp ||
+                  timestamp
+                )
+              ) / 1000
             )
           );
 
-        this.lastTime = time;
+        this.lastTimestamp =
+          timestamp;
 
         this.context.clearRect(
           0,
@@ -6612,7 +6809,7 @@
         );
 
         const elapsed =
-          time / 1000;
+          timestamp / 1000;
 
         this.pointer.strength *=
           0.985;
@@ -6629,8 +6826,10 @@
                 particle.phase
               ) *
               delta *
-              (1.5 +
-                particle.depth * 2);
+              (
+                1.5 +
+                particle.depth * 2
+              );
 
             if (
               particle.y < -35 ||
@@ -6660,232 +6859,58 @@
       }
     }
 
-    const emberField =
-      new EmberField(
-        elements.emberCanvas
+    const fireflyField =
+      new EmberFireflyField(
+        elements.particleCanvas
       );
 
-    /* =========================================================
-       12. UI NOTIFICATIONS AND SCROLL HINTS
-       ========================================================= */
+    const readerView =
+      getView("reader");
 
-    function showToast(
-      message,
-      duration = 2300
-    ) {
-      const toast =
-        document.createElement("div");
+    let previousReaderScrollTop =
+      0;
 
-      toast.className = "toast";
-      toast.textContent = message;
+    readerView.addEventListener(
+      "scroll",
+      () => {
+        const direction =
+          readerView.scrollTop >=
+          previousReaderScrollTop
+            ? 1
+            : -1;
 
-      elements.toastRegion.append(
-        toast
-      );
+        previousReaderScrollTop =
+          readerView.scrollTop;
 
-      window.setTimeout(() => {
-        toast.classList.add(
-          "is-leaving"
-        );
-
-        window.setTimeout(
-          () => toast.remove(),
-          280
-        );
-      }, duration);
-    }
-
-    function updateScrollHints() {
-      document
-        .querySelectorAll(
-          ".view.is-active .scroll-hint"
-        )
-        .forEach((hint) => {
-          const view =
-            hint.closest(".view");
-
-          if (!view) {
-            return;
-          }
-
-          const canScroll =
-            view.scrollHeight >
-            view.clientHeight + 12;
-
-          const isNearTop =
-            view.scrollTop < 24;
-
-          hint.classList.toggle(
-            "is-hidden",
-            !canScroll ||
-              !isNearTop
-          );
-        });
-    }
-
-    /* =========================================================
-       13. ERROR HANDLING
-       ========================================================= */
-
-    function showLoadError(error) {
-      state.loading = false;
-
-      elements.loadingGate.classList.add(
-        "is-hidden"
-      );
-
-      elements.errorGate.classList.add(
-        "is-visible"
-      );
-
-      const isFileProtocol =
-        window.location.protocol ===
-        "file:";
-
-      elements.errorMessage.textContent =
-        isFileProtocol
-          ? "The page is running directly from the file system. Some browsers block remote JSON requests in this mode. Publish it through GitHub Pages or open it from a local HTTP server."
-          : "The story data could not be retrieved or validated. Verify that content.json is public, valid JSON, and follows the required schema.";
-
-      elements.errorDetail.textContent =
-        `${error?.name || "Error"}: ${
-          error?.message ||
-          "An unknown loading error occurred."
-        }\n\nSource: ${CONFIG.contentUrl}`;
-    }
-
-    function hideLoadError() {
-      elements.errorGate.classList.remove(
-        "is-visible"
-      );
-
-      elements.loadingGate.classList.remove(
-        "is-hidden"
-      );
-
-      elements.loaderProgressFill.style.width =
-        "12%";
-    }
-
-    function enterEmptyShell() {
-      state.data =
-        validateAndNormalizeData({
-          book_metadata: {
-            title:
-              "The Legend of Adonis",
-            subtitle:
-              "A Tale of Sacrifice in Shadows",
-            author:
-              "Mayur Borgude",
-            version:
-              "Unavailable",
-            total_chapters: 0
-          },
-          chapters: [],
-          events: [],
-          relics: []
-        });
-
-      renderAllViews();
-
-      elements.errorGate.classList.remove(
-        "is-visible"
-      );
-
-      navigate(
-        "home",
-        {
-          replaceHistory: true
-        }
-      );
-
-      showToast(
-        "Entered the empty archive."
-      );
-    }
-
-    /* =========================================================
-       14. EVENT DELEGATION
-       ========================================================= */
-
-    function handleRouteInteraction(
-      target
-    ) {
-      const routeElement =
-        target.closest(
-          "[data-route]"
-        );
-
-      if (!routeElement) {
-        return false;
-      }
-
-      const route =
-        routeElement.dataset.route;
-
-      if (!CONFIG.routes.has(route)) {
-        return false;
-      }
-
-      audioEngine.playSelect();
-      navigate(route);
-
-      return true;
-    }
-
-    function handleChapterInteraction(
-      target
-    ) {
-      const chapterElement =
-        target.closest(
-          "[data-chapter-id]"
-        );
-
-      if (!chapterElement) {
-        return false;
-      }
-
-      const chapterId =
-        Number(
-          chapterElement.dataset.chapterId
-        );
-
-      if (
-        !Number.isFinite(chapterId)
-      ) {
-        return false;
-      }
-
-      openChapter(chapterId, 0);
-
-      return true;
-    }
-
-    document.addEventListener(
-      "click",
-      async (event) => {
-        await audioEngine.unlock();
-
-        const target =
-          event.target instanceof Element
-            ? event.target
-            : null;
-
-        if (!target) {
-          return;
-        }
+        updateReaderProgress();
+        persistProgressDebounced();
 
         if (
-          handleChapterInteraction(
-            target
-          )
+          readerView.scrollTop > 8
         ) {
-          return;
+          audioEngine.playScrollTick(
+            direction
+          );
         }
-
-        handleRouteInteraction(target);
+      },
+      {
+        passive: true
       }
     );
+
+    document
+      .querySelectorAll(".view")
+      .forEach(
+        (view) => {
+          view.addEventListener(
+            "scroll",
+            updateScrollHints,
+            {
+              passive: true
+            }
+          );
+        }
+      );
 
     document.addEventListener(
       "pointerover",
@@ -6899,7 +6924,7 @@
         const target =
           event.target instanceof Element
             ? event.target.closest(
-                ".interactive-sound"
+                ".sound-interactive"
               )
             : null;
 
@@ -6919,15 +6944,102 @@
 
         audioEngine.playHover();
       },
-      { passive: true }
+      {
+        passive: true
+      }
     );
 
-    /*
-      AudioContext must be resumed from a real user gesture.
-    */
-    const unlockAudioOnce = async () => {
-      await audioEngine.unlock();
-    };
+    document.addEventListener(
+      "focusin",
+      (event) => {
+        const target =
+          event.target instanceof Element
+            ? event.target.closest(
+                ".sound-interactive"
+              )
+            : null;
+
+        if (target) {
+          audioEngine.playHover();
+        }
+      }
+    );
+
+    document.addEventListener(
+      "click",
+      async (event) => {
+        const target =
+          event.target instanceof Element
+            ? event.target
+            : null;
+
+        if (!target) {
+          return;
+        }
+
+        await audioEngine.unlock();
+
+        const interactive =
+          target.closest(
+            ".sound-interactive"
+          );
+
+        if (
+          interactive &&
+          interactive !==
+            elements.headerAudioToggle &&
+          interactive !==
+            elements.homeAudioToggle
+        ) {
+          audioEngine.playSelect();
+        }
+
+        const chapterTarget =
+          target.closest(
+            "[data-chapter-id]"
+          );
+
+        if (chapterTarget) {
+          event.preventDefault();
+
+          openChapter(
+            Number(
+              chapterTarget
+                .dataset
+                .chapterId
+            ),
+            0
+          );
+
+          return;
+        }
+
+        const routeTarget =
+          target.closest(
+            "[data-route]"
+          );
+
+        if (routeTarget) {
+          event.preventDefault();
+
+          const route =
+            routeTarget
+              .dataset
+              .route;
+
+          if (
+            CONFIG.routes.has(route)
+          ) {
+            navigate(route);
+          }
+        }
+      }
+    );
+
+    const unlockAudioOnce =
+      () => {
+        audioEngine.unlock();
+      };
 
     document.addEventListener(
       "touchstart",
@@ -6941,146 +7053,118 @@
     document.addEventListener(
       "keydown",
       unlockAudioOnce,
-      { once: true }
-    );
-
-    /* =========================================================
-       15. DIRECT CONTROLS
-       ========================================================= */
-
-    elements.headerAudioToggle.addEventListener(
-      "click",
-      (event) => {
-        event.stopPropagation();
-        audioEngine.toggle();
+      {
+        once: true
       }
     );
 
-    elements.homeAudioToggle.addEventListener(
-      "click",
-      (event) => {
-        event.stopPropagation();
-        audioEngine.toggle();
-      }
-    );
+    elements
+      .headerAudioToggle
+      .addEventListener(
+        "click",
+        (event) => {
+          event.stopPropagation();
+          audioEngine.toggle();
+        }
+      );
 
-    elements.startJourneyButton.addEventListener(
-      "click",
-      (event) => {
-        event.stopPropagation();
+    elements
+      .homeAudioToggle
+      .addEventListener(
+        "click",
+        (event) => {
+          event.stopPropagation();
+          audioEngine.toggle();
+        }
+      );
 
-        if (
-          !state.data?.chapters?.length
-        ) {
-          showToast(
-            "No chapters are currently available."
+    elements
+      .startJourneyButton
+      .addEventListener(
+        "click",
+        () => {
+          if (
+            !state.data?.chapters
+              ?.length
+          ) {
+            showToast(
+              "No chapters are currently available."
+            );
+
+            navigate("chapters");
+            return;
+          }
+
+          openChapter(
+            state.data.chapters[0].id,
+            0
           );
-
-          navigate("chapters");
-          return;
         }
+      );
 
-        openChapter(
-          state.data.chapters[0].id,
-          0
-        );
-      }
-    );
+    elements
+      .resumeButton
+      .addEventListener(
+        "click",
+        () => {
+          const progress =
+            readProgress();
 
-    elements.resumeButton.addEventListener(
-      "click",
-      (event) => {
-        event.stopPropagation();
+          if (!progress) {
+            return;
+          }
 
-        const progress =
-          readProgress();
+          const chapter =
+            getChapterById(
+              progress.chapterId
+            );
 
-        if (!progress) {
-          return;
-        }
+          if (!chapter) {
+            updateResumeButton();
+            return;
+          }
 
-        const chapter =
-          getChapterById(
-            progress.chapterId
+          openChapter(
+            chapter.id,
+            progress.scrollOffset
           );
-
-        if (!chapter) {
-          updateResumeAvailability();
-          return;
         }
+      );
 
-        openChapter(
-          chapter.id,
-          progress.scrollOffset
-        );
-      }
-    );
-
-    elements.previousChapterButton.addEventListener(
-      "click",
-      () => {
-        openAdjacentChapter(-1);
-      }
-    );
-
-    elements.nextChapterButton.addEventListener(
-      "click",
-      () => {
-        openAdjacentChapter(1);
-      }
-    );
-
-    elements.retryButton.addEventListener(
-      "click",
-      async () => {
-        hideLoadError();
-
-        try {
-          await loadApplicationData();
-        } catch (error) {
-          showLoadError(error);
+    elements
+      .previousChapterButton
+      .addEventListener(
+        "click",
+        () => {
+          openAdjacentChapter(-1);
         }
-      }
-    );
+      );
 
-    elements.continueShellButton.addEventListener(
-      "click",
-      enterEmptyShell
-    );
+    elements
+      .nextChapterButton
+      .addEventListener(
+        "click",
+        () => {
+          openAdjacentChapter(1);
+        }
+      );
 
-    const readerView =
-      getViewElement("reader");
-
-    readerView.addEventListener(
-      "scroll",
-      () => {
-        updateReaderProgress();
-        persistReaderDebounced();
-      },
-      { passive: true }
-    );
-
-    document
-      .querySelectorAll(".view")
-      .forEach((view) => {
-        view.addEventListener(
-          "scroll",
-          updateScrollHints,
-          { passive: true }
-        );
-      });
+    elements
+      .retryButton
+      .addEventListener(
+        "click",
+        loadApplication
+      );
 
     window.addEventListener(
       "hashchange",
       () => {
         if (
-          state.loading ||
-          !state.data
+          !state.isLoading &&
+          state.data
         ) {
-          return;
+          applyLocationRoute();
         }
-
-        applyInitialHash();
       }
     );
 
@@ -7091,11 +7175,16 @@
 
     window.addEventListener(
       "resize",
-      debounce(() => {
-        updateReaderProgress();
-        updateScrollHints();
-      }, 130),
-      { passive: true }
+      debounce(
+        () => {
+          updateReaderProgress();
+          updateScrollHints();
+        },
+        130
+      ),
+      {
+        passive: true
+      }
     );
 
     document.addEventListener(
@@ -7107,13 +7196,14 @@
           return;
         }
 
-        const tag =
-          document.activeElement?.tagName;
+        const activeTag =
+          document.activeElement
+            ?.tagName;
 
         if (
-          tag === "INPUT" ||
-          tag === "TEXTAREA" ||
-          tag === "SELECT"
+          activeTag === "INPUT" ||
+          activeTag === "TEXTAREA" ||
+          activeTag === "SELECT"
         ) {
           return;
         }
@@ -7132,44 +7222,29 @@
       }
     );
 
-    /* =========================================================
-       16. BOOTSTRAP
-       ========================================================= */
-
-    async function initializeApp() {
-      emberField.start();
+    function initialize() {
       updateAudioInterface();
+      fireflyField.start();
 
       document
         .querySelectorAll(".view")
-        .forEach((view) => {
-          view.setAttribute(
-            "aria-hidden",
-            String(
-              !view.classList.contains(
-                "is-active"
+        .forEach(
+          (view) => {
+            view.setAttribute(
+              "aria-hidden",
+              String(
+                !view.classList.contains(
+                  "is-active"
+                )
               )
-            )
-          );
-        });
-
-      try {
-        await loadApplicationData();
-      } catch (error) {
-        console.error(
-          "The Legend of Adonis failed to initialize.",
-          error
+            );
+          }
         );
 
-        showLoadError(error);
-      }
-
-      requestIdle(() => {
-        updateScrollHints();
-      });
+      loadApplication();
     }
 
-    initializeApp();
+    initialize();
   </script>
 </body>
 </html>
