@@ -6324,56 +6324,48 @@
       new MythologyAudioEngine();
 
     function updateAudioInterface() {
-      const enabled =
-        state.audioEnabled;
+  const enabled = state.audioEnabled;
 
-      elements
-        .headerAudioToggle
-        .classList.toggle(
-          "is-muted",
-          !enabled
-        );
+  elements.headerAudioToggle?.classList.toggle(
+    "is-muted",
+    !enabled
+  );
 
-      elements
-        .headerAudioToggle
-        .setAttribute(
-          "aria-label",
-          enabled
-            ? "Turn interface audio off"
-            : "Turn interface audio on"
-        );
+  elements.headerAudioToggle?.setAttribute(
+    "aria-label",
+    enabled
+      ? "Turn interface audio off"
+      : "Turn interface audio on"
+  );
 
-      elements
-        .headerAudioToggle
-        .title =
-          enabled
-            ? "Audio: On"
-            : "Audio: Off";
+  if (elements.headerAudioToggle) {
+    elements.headerAudioToggle.title =
+      enabled
+        ? "Audio: On"
+        : "Audio: Off";
+  }
 
-      elements
-        .headerAudioIcon
-        .setAttribute(
-          "href",
-          enabled
-            ? "#icon-volume"
-            : "#icon-muted"
-        );
+  elements.headerAudioIcon?.setAttribute(
+    "href",
+    enabled
+      ? "#icon-volume"
+      : "#icon-muted"
+  );
 
-      elements
-        .homeAudioIcon
-        .setAttribute(
-          "href",
-          enabled
-            ? "#icon-volume"
-            : "#icon-muted"
-        );
+  elements.homeAudioIcon?.setAttribute(
+    "href",
+    enabled
+      ? "#icon-volume"
+      : "#icon-muted"
+  );
 
-      elements.homeAudioText.textContent =
-        enabled
-          ? "Audio: On"
-          : "Audio: Off";
-    }
-
+  if (elements.homeAudioText) {
+    elements.homeAudioText.textContent =
+      enabled
+        ? "Audio: On"
+        : "Audio: Off";
+  }
+}
     class EmberFireflyField {
       constructor(canvas) {
         this.canvas = canvas;
